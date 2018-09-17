@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1537203312298" clover="3.2.0">
-  <project timestamp="1537203312298" name="All files">
-    <metrics statements="78" coveredstatements="67" conditionals="14" coveredconditionals="6" methods="14" coveredmethods="10" elements="106" coveredelements="83" complexity="0" loc="78" ncloc="78" packages="5" files="7" classes="7">
+<coverage generated="1537208311933" clover="3.2.0">
+  <project timestamp="1537208311934" name="All files">
+    <metrics statements="109" coveredstatements="84" conditionals="24" coveredconditionals="8" methods="24" coveredmethods="14" elements="157" coveredelements="106" complexity="0" loc="109" ncloc="109" packages="5" files="8" classes="8">
       <package name="lib">
         <metrics statements="26" coveredstatements="26" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <file name="app.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\app.ts">
@@ -23,8 +23,8 @@
           <line num="22" count="2" type="stmt"/>
           <line num="28" count="2" type="stmt"/>
           <line num="31" count="2" type="stmt"/>
-          <line num="32" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="33" count="1" type="stmt"/>
+          <line num="32" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="33" count="2" type="stmt"/>
           <line num="37" count="2" type="stmt"/>
           <line num="38" count="2" type="stmt"/>
           <line num="39" count="2" type="stmt"/>
@@ -71,7 +71,14 @@
         </file>
       </package>
       <package name="lib.models">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="todoSchema.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\models\todoSchema.ts">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+        </file>
         <file name="usersSchema.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\models\usersSchema.ts">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="2" type="stmt"/>
@@ -81,14 +88,41 @@
         </file>
       </package>
       <package name="lib.routes">
-        <metrics statements="27" coveredstatements="21" conditionals="4" coveredconditionals="1" methods="7" coveredmethods="5"/>
+        <metrics statements="54" coveredstatements="34" conditionals="14" coveredconditionals="3" methods="17" coveredmethods="9"/>
         <file name="addToDo.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\routes\addToDo.ts">
-          <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <metrics statements="32" coveredstatements="18" conditionals="10" coveredconditionals="2" methods="11" coveredmethods="5"/>
           <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
           <line num="6" count="2" type="stmt"/>
           <line num="7" count="1" type="stmt"/>
-          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+          <line num="28" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="40" count="2" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="54" count="2" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="74" count="2" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="81" count="0" type="stmt"/>
+          <line num="87" count="2" type="stmt"/>
         </file>
         <file name="users.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\routes\users.ts">
           <metrics statements="22" coveredstatements="16" conditionals="4" coveredconditionals="1" methods="6" coveredmethods="4"/>
