@@ -7,6 +7,7 @@ import * as path  from 'path';
 import * as passport from 'passport';
 import setuppassport from './config/Passport';
 import usersRouter from './routes/users';
+import todoRouter from './routes/addToDo';
 var dbURI = require('./config/key');
 
 
@@ -37,10 +38,11 @@ App.use(passport.initialize());
 App.use(passport.session());
 setuppassport();
 
-
+//routes
 App.use('/user', usersRouter);
+App.use('/todo/api/v1.0', todoRouter);
+
+
+//serve static files
 App.use(express.static(path.join(__dirname, './build')));
-
-
-
 export {App};
