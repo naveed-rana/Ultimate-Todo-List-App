@@ -7,7 +7,7 @@ import * as path  from 'path';
 import * as passport from 'passport';
 import setuppassport from './config/Passport';
 import usersRouter from './routes/users';
-import todoRouter from './routes/addToDo';
+//import todoRouter from './routes/addToDo';
 
 
 
@@ -33,7 +33,7 @@ App.use(cookieparser());
 
 //routes
 App.use('/user', usersRouter);
-App.use('/todo/api/v1.0', todoRouter);
+//App.use('/todo/api/v1.0', todoRouter);
 
 
 //serve static files
