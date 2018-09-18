@@ -1,0 +1,1 @@
+module.exports = 'postgresql://naveed:1@localhost:5432/todo';
