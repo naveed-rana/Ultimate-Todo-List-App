@@ -8,4 +8,21 @@ router.get('/',(req,res)=>{
     res.status(200).json("AddTodo working!")
 })
 
+//todo post restfull api
 
+router.post('/tasks',(req,res)=>{
+
+    db.one('INSERT INTO todos(title, discription ,userid) VALUES($1, $2,$3) RETURNING id', [req.body.title, req.body.discription,req.body.userid])
+    .then(data => {
+        console.log(data.id); // print new user id;
+        res.status(200).json('Successfully Added');
+    })
+    .catch(error => {
+        console.log('ERROR:', error); // print error;
+        res.status(500).json("error occured!");
+    });
+
+});
+
+
+export default router;

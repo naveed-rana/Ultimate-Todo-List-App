@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1537372163447" clover="3.2.0">
-  <project timestamp="1537372163448" name="All files">
-    <metrics statements="82" coveredstatements="61" conditionals="14" coveredconditionals="4" methods="19" coveredmethods="10" elements="115" coveredelements="75" complexity="0" loc="82" ncloc="82" packages="5" files="6" classes="6">
+<coverage generated="1537376519408" clover="3.2.0">
+  <project timestamp="1537376519408" name="All files">
+    <metrics statements="96" coveredstatements="73" conditionals="14" coveredconditionals="4" methods="23" coveredmethods="13" elements="133" coveredelements="90" complexity="0" loc="96" ncloc="96" packages="5" files="7" classes="7">
       <package name="lib">
-        <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <file name="app.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\app.ts">
-          <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="2" type="stmt"/>
           <line num="2" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
@@ -14,6 +14,7 @@
           <line num="6" count="2" type="stmt"/>
           <line num="7" count="2" type="stmt"/>
           <line num="8" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
           <line num="14" count="2" type="stmt"/>
           <line num="15" count="2" type="stmt"/>
           <line num="20" count="2" type="stmt"/>
@@ -23,6 +24,7 @@
           <line num="30" count="2" type="stmt"/>
           <line num="31" count="2" type="stmt"/>
           <line num="34" count="2" type="stmt"/>
+          <line num="35" count="2" type="stmt"/>
           <line num="39" count="2" type="stmt"/>
           <line num="40" count="2" type="stmt"/>
         </file>
@@ -40,8 +42,8 @@
           <line num="15" count="2" type="stmt"/>
           <line num="17" count="2" type="stmt"/>
           <line num="19" count="2" type="stmt"/>
-          <line num="21" count="1" type="stmt"/>
-          <line num="22" count="1" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+          <line num="22" count="2" type="stmt"/>
           <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="29" count="2" type="stmt"/>
         </file>
@@ -88,7 +90,22 @@
         </file>
       </package>
       <package name="lib.routes">
-        <metrics statements="24" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="5"/>
+        <metrics statements="36" coveredstatements="27" conditionals="2" coveredconditionals="1" methods="13" coveredmethods="8"/>
+        <file name="addToDo.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\routes\addToDo.ts">
+          <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+          <line num="1" count="2" type="stmt"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+        </file>
         <file name="users.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\routes\users.ts">
           <metrics statements="24" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="5"/>
           <line num="1" count="2" type="stmt"/>
