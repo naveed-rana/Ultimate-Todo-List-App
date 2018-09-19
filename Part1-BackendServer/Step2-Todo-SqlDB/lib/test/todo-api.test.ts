@@ -9,3 +9,23 @@ describe("GET todo test", () => {
         .expect(200);
     });
   });
+
+  
+//test post signup req in user route
+describe('POST /task restful Api', function() {
+    it('responds with json', function(done) {
+      request(App)
+        .post('/todo/api/v1.0/tasks')
+        .send(
+            {
+              title: "sleep",
+              discription: "at 1 Pm!",
+              done: false
+          })
+        .expect(200)
+        .end(function(err, res) {
+          if (err) return done(err);
+          done();
+        });
+    });
+  });

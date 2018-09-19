@@ -29,7 +29,7 @@ describe("GET todo test", () => {
 });
 
 
-//test post signup req in user route
+//test post  route
 describe('POST /task restful Api', function() {
   it('responds with json', function(done) {
     request(App)
