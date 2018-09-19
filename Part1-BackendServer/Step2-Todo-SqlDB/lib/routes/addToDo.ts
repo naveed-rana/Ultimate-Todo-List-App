@@ -25,6 +25,21 @@ router.post('/tasks',(req,res)=>{
 });
 
 
+//get request restfull api using postgress db
+router.get('/tasks',(req,res)=>{
+    db.any('SELECT * FROM todos WHERE userid = $1', [req.query.userid])
+    .then(function(data) {
+        // success;
+        res.status(200).json(data);
+    })
+    .catch(function(error) {
+        // error;
+        res.status(500).json(error);
+    });
+
+    
+})
+
 
 
 
