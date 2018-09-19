@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1537378972788" clover="3.2.0">
-  <project timestamp="1537378972789" name="All files">
-    <metrics statements="104" coveredstatements="74" conditionals="14" coveredconditionals="4" methods="29" coveredmethods="13" elements="147" coveredelements="91" complexity="0" loc="104" ncloc="104" packages="5" files="7" classes="7">
+<coverage generated="1537380645839" clover="3.2.0">
+  <project timestamp="1537380645840" name="All files">
+    <metrics statements="108" coveredstatements="75" conditionals="14" coveredconditionals="4" methods="32" coveredmethods="13" elements="154" coveredelements="92" complexity="0" loc="108" ncloc="108" packages="5" files="7" classes="7">
       <package name="lib">
         <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <file name="app.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\app.ts">
@@ -90,9 +90,9 @@
         </file>
       </package>
       <package name="lib.routes">
-        <metrics statements="44" coveredstatements="28" conditionals="2" coveredconditionals="1" methods="19" coveredmethods="8"/>
+        <metrics statements="48" coveredstatements="29" conditionals="2" coveredconditionals="1" methods="22" coveredmethods="8"/>
         <file name="addToDo.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\routes\addToDo.ts">
-          <metrics statements="20" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="3"/>
+          <metrics statements="24" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="3"/>
           <line num="1" count="2" type="stmt"/>
           <line num="2" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
@@ -109,10 +109,14 @@
           <line num="33" count="2" type="stmt"/>
           <line num="37" count="0" type="stmt"/>
           <line num="44" count="2" type="stmt"/>
-          <line num="46" count="0" type="stmt"/>
-          <line num="49" count="0" type="stmt"/>
-          <line num="53" count="0" type="stmt"/>
-          <line num="58" count="2" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="57" count="2" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="73" count="2" type="stmt"/>
         </file>
         <file name="users.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\routes\users.ts">
           <metrics statements="24" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="5"/>

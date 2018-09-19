@@ -61,8 +61,7 @@ describe('Put /tasks restful Api', function() {
             {
               title: "sleep plan",
               discription: "at 1pm",
-              done: false,
-              userid:2
+              done: true,
           })
         .expect(200)
         .end(function(err, res) {
