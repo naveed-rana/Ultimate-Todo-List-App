@@ -40,7 +40,19 @@ router.get('/tasks',(req,res)=>{
     
 })
 
+//get one request restfull api
+router.get('/tasks:id',(req,res)=>{
 
+    db.oneOrNone('SELECT * FROM todos WHERE id = $1', [req.params.id])
+    .then(function(data) {
+        // success;
+        res.status(200).json(data);
+    })
+    .catch(function(error) {
+        // error;
+        res.status(500).json(error);
+    });
+});
 
 
 export default router;
