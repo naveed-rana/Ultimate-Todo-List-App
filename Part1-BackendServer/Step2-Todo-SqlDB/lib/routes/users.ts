@@ -39,6 +39,11 @@ router.post('/signup',(req,res)=>{
 });
 
 
+//login Route
+router.post('/login',passport.authenticate('local'),(req,res)=>{
+        res.status(200).json(req.user);
+  
+   })
 
 export default router;
 

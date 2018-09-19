@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1537368763718" clover="3.2.0">
-  <project timestamp="1537368763718" name="All files">
-    <metrics statements="72" coveredstatements="46" conditionals="12" coveredconditionals="1" methods="16" coveredmethods="4" elements="100" coveredelements="51" complexity="0" loc="72" ncloc="72" packages="5" files="6" classes="6">
+<coverage generated="1537368974001" clover="3.2.0">
+  <project timestamp="1537368974001" name="All files">
+    <metrics statements="75" coveredstatements="55" conditionals="12" coveredconditionals="3" methods="17" coveredmethods="8" elements="104" coveredelements="66" complexity="0" loc="75" ncloc="75" packages="5" files="6" classes="6">
       <package name="lib">
         <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <file name="app.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\app.ts">
@@ -60,27 +60,27 @@
         </file>
       </package>
       <package name="lib.config.Passport">
-        <metrics statements="22" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
+        <metrics statements="22" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="4"/>
         <file name="index.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\config\Passport\index.ts">
-          <metrics statements="22" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
+          <metrics statements="22" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="4"/>
           <line num="1" count="1" type="stmt"/>
           <line num="2" count="1" type="stmt"/>
           <line num="3" count="1" type="stmt"/>
           <line num="5" count="1" type="stmt"/>
           <line num="8" count="1" type="stmt"/>
-          <line num="11" count="0" type="stmt"/>
-          <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="16" count="0" type="stmt"/>
           <line num="17" count="0" type="stmt"/>
-          <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="21" count="0" type="stmt"/>
           <line num="22" count="0" type="stmt"/>
           <line num="23" count="0" type="stmt"/>
-          <line num="25" count="0" type="stmt"/>
-          <line num="26" count="0" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
           <line num="30" count="0" type="stmt"/>
           <line num="36" count="1" type="stmt"/>
-          <line num="37" count="0" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
           <line num="40" count="1" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
           <line num="45" count="0" type="stmt"/>
@@ -88,10 +88,11 @@
         </file>
       </package>
       <package name="lib.routes">
-        <metrics statements="14" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+        <metrics statements="17" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
         <file name="users.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\routes\users.ts">
-          <metrics statements="14" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="2"/>
+          <metrics statements="17" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
           <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
           <line num="3" count="1" type="stmt"/>
           <line num="4" count="1" type="stmt"/>
           <line num="8" count="1" type="stmt"/>
@@ -105,6 +106,8 @@
           <line num="34" count="0" type="stmt"/>
           <line num="35" count="0" type="stmt"/>
           <line num="43" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="48" count="1" type="stmt"/>
         </file>
       </package>
     </metrics>

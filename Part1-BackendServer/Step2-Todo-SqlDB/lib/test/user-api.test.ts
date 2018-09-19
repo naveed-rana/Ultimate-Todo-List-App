@@ -11,7 +11,7 @@ describe("GET /Api", () => {
 });
 
 // //test post signup req in user route
-
+//commit due to every time one its run it create a same use
 // describe('POST /users', function() {
 //   it('responds with json', function(done) {
 //     request(App)
@@ -33,6 +33,19 @@ describe('POST /users/login using sqldb', function() {
     request(App)
       .post('/user/login')
       .send({email:'rana.naveed812@gmail.com',password:'124'})
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
+
+//test post Logout req in user route using sql
+describe('POST logout sql test', function() {
+  it('responds with json', function(done) {
+    request(App)
+      .post('/user/logout')
       .expect(200)
       .end(function(err, res) {
         if (err) return done(err);

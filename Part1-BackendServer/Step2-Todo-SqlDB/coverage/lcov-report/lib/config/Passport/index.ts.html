@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.82% </span>
+        <span class="strong">59.09% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/22</span>
+        <span class='fraction'>13/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.82% </span>
+        <span class="strong">59.09% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/22</span>
+        <span class='fraction'>13/22</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -107,22 +107,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,7 +133,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -159,24 +159,24 @@ export default function() {
 &nbsp;
    
 passport.use(new LocalStrategy({usernameField:'email'},
-<span class="fstat-no" title="function not covered" >function (</span>email, password, done) {
+function (email, password, done) {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    db.oneOrNone('SELECT * FROM users WHERE email = $1', [email])</span>
-  .then(<span class="fstat-no" title="function not covered" >function(</span>user) {
+    db.oneOrNone('SELECT * FROM users WHERE email = $1', [email])
+  .then(function(user) {
     
       // success;
-<span class="cstat-no" title="statement not covered" >      if(!user){</span>
+      <span class="missing-if-branch" title="if path not taken" >I</span>if(!user){
 <span class="cstat-no" title="statement not covered" >        console.log(user);</span>
 <span class="cstat-no" title="statement not covered" >        return done(null, false, { message: 'Incorrect username.' } )</span>
       }
       
-<span class="cstat-no" title="statement not covered" >      if(user.password != password){</span>
+      <span class="missing-if-branch" title="if path not taken" >I</span>if(user.password != password){
 <span class="cstat-no" title="statement not covered" >        console.log(user);</span>
 <span class="cstat-no" title="statement not covered" >        console.log(user.email);</span>
 <span class="cstat-no" title="statement not covered" >        return done(null, false, { message: 'Incorrect password.' } )</span>
       }
-<span class="cstat-no" title="statement not covered" >      console.log(user);</span>
-<span class="cstat-no" title="statement not covered" >      return done(null,user);</span>
+      console.log(user);
+      return done(null,user);
   })
   .catch(<span class="fstat-no" title="function not covered" >function(</span>error) {
       // error;
@@ -186,8 +186,8 @@ passport.use(new LocalStrategy({usernameField:'email'},
 }
 ));
 &nbsp;
-passport.serializeUser(<span class="fstat-no" title="function not covered" >function (</span>user, done) {
-<span class="cstat-no" title="statement not covered" >   done(null, user._id);</span>
+passport.serializeUser(function (user, done) {
+   done(null, user._id);
 });
 &nbsp;
 passport.deserializeUser(<span class="fstat-no" title="function not covered" >function (</span>id, done) {
@@ -211,7 +211,7 @@ passport.deserializeUser(<span class="fstat-no" title="function not covered" >fu
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 19 2018 19:52:43 GMT+0500 (Pakistan Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 19 2018 19:56:13 GMT+0500 (Pakistan Standard Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>
