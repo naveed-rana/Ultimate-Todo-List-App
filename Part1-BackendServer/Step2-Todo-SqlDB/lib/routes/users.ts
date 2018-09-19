@@ -46,11 +46,22 @@ router.post('/login',passport.authenticate('local'),(req,res)=>{
    });
 
 
-
+//logout route
 router.post('/logout',(req,res)=>{
     req.logout();
     res.status(200).json("succefully logout!");  
      });  
+
+
+//athenticate user
+router.post('/authenticate',(req,res)=>{
+    if(req.isAuthenticated()){
+        res.status(200).json(req.user)
+     }
+     else{
+        res.status(401).json('user is not logged in!')
+     }
+}) ;
 
 export default router;
 
