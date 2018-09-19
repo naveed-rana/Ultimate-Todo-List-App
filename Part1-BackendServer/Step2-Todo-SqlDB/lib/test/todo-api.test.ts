@@ -11,7 +11,7 @@ describe("GET todo test", () => {
   });
 
   
-//test post signup req in user route
+//test post todo req
 describe('POST /task restful Api', function() {
     it('responds with json', function(done) {
       request(App)
@@ -29,3 +29,13 @@ describe('POST /task restful Api', function() {
         });
     });
   });
+
+
+//test v1.0 todo route to get all items using sql db
+describe("GET todo test", () => {
+    it("should return 200 OK", () => {
+      return request(App).get("/todo/api/v1.0/tasks")
+        .expect(200);
+    });
+  });
+

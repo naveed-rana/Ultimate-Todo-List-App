@@ -12,7 +12,7 @@ router.get('/',(req,res)=>{
 
 router.post('/tasks',(req,res)=>{
 
-    db.one('INSERT INTO todos(title, discription ,userid) VALUES($1, $2,$3) RETURNING id', [req.body.title, req.body.discription,req.body.userid])
+    db.one('INSERT INTO todos(title, discription ,userid,done) VALUES($1, $2,$3,$4) RETURNING id', [req.body.title, req.body.discription,req.body.userid,false])
     .then(data => {
         console.log(data.id); // print new user id;
         res.status(200).json('Successfully Added');
@@ -23,6 +23,9 @@ router.post('/tasks',(req,res)=>{
     });
 
 });
+
+
+
 
 
 export default router;

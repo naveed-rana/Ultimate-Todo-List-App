@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1537376519408" clover="3.2.0">
-  <project timestamp="1537376519408" name="All files">
+<coverage generated="1537377561939" clover="3.2.0">
+  <project timestamp="1537377561939" name="All files">
     <metrics statements="96" coveredstatements="73" conditionals="14" coveredconditionals="4" methods="23" coveredmethods="13" elements="133" coveredelements="90" complexity="0" loc="96" ncloc="96" packages="5" files="7" classes="7">
       <package name="lib">
         <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -104,7 +104,7 @@
           <line num="18" count="1" type="stmt"/>
           <line num="21" count="0" type="stmt"/>
           <line num="22" count="0" type="stmt"/>
-          <line num="28" count="2" type="stmt"/>
+          <line num="31" count="2" type="stmt"/>
         </file>
         <file name="users.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step2-Todo-SqlDB\lib\routes\users.ts">
           <metrics statements="24" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="5"/>
