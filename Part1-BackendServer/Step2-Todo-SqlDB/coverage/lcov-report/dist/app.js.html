@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for lib/app.ts</title>
+    <title>Code coverage report for dist/app.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\prettify.css" />
     <link rel="stylesheet" href="..\base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\index.html">All files</a> / <a href="index.html">lib</a> app.ts
+      <a href="..\index.html">All files</a> / <a href="index.html">dist</a> app.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>19/19</span>
+        <span class='fraction'>20/20</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>19/19</span>
+        <span class='fraction'>20/20</span>
       </div>
     </div>
   </div>
@@ -77,12 +77,9 @@
 32
 33
 34
-35
-36
-37
-38
-39
-40</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+35</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -92,12 +89,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,64 +103,55 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import * as express from "express";
-import * as bodyParser from "body-parser";
-import * as session from 'express-session';
-import * as cookieparser from 'cookie-parser';
-import * as path  from 'path';
-import * as passport from 'passport';
-import setuppassport from './config/Passport';
-import usersRouter from './routes/users';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const cookieparser = require("cookie-parser");
+const path = require("path");
+const passport = require("passport");
+const Passport_1 = require("./config/Passport");
+const users_1 = require("./routes/users");
 //import todoRouter from './routes/addToDo';
-&nbsp;
-&nbsp;
-&nbsp;
 //creating App
 const App = express();
+exports.App = App;
 App.use(bodyParser.urlencoded({
     extended: true
-  }));
-&nbsp;
+}));
 // Body Parser implement  
 App.use(bodyParser.json());
 App.use(session({
-  secret: "@#^&amp;$!#_)(@!#)**(@^%*&amp;^*#${}|{@#$@#$(#@",
-  resave: true,
-  saveUninitialized: true
+    secret: "@#^&amp;$!#_)(@!#)**(@^%*&amp;^*#${}|{@#$@#$(#@",
+    resave: true,
+    saveUninitialized: true
 }));
 App.use(cookieparser());
-&nbsp;
 //setup 
 App.use(passport.initialize());
 App.use(passport.session());
-setuppassport();
-&nbsp;
+Passport_1.default();
 //routes
-App.use('/user', usersRouter);
+App.use('/user', users_1.default);
 //App.use('/todo/api/v1.0', todoRouter);
-&nbsp;
-&nbsp;
 //serve static files
 App.use(express.static(path.join(__dirname, './build')));
-export {App};</pre></td></tr>
+//# sourceMappingURL=app.js.map</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 19 2018 19:52:43 GMT+0500 (Pakistan Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 18 2018 17:56:08 GMT+0500 (Pakistan Standard Time)
 </div>
 </div>
 <script src="..\prettify.js"></script>

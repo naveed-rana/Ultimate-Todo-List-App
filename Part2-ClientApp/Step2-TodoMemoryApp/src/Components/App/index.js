@@ -3,10 +3,14 @@ import 'typeface-roboto/index.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux';
+import {login} from '../Redux/actions/AddToDoActions';
 
 //Main App Component and Setup React Toastify
 
 class App extends Component {
+  componentDidMount() {
+    this.props.login({email:"rana.naveed812@gmail.com",password:"124"})
+  }
   render() {
     return (
       <div>
@@ -27,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default connect(null,null)(App);
+export default connect(null,{login})(App);

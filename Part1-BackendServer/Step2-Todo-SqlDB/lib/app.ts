@@ -1,6 +1,5 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import * as mongoose from "mongoose";
 import * as session from 'express-session';
 import * as cookieparser from 'cookie-parser';
 import * as path  from 'path';
@@ -26,10 +25,10 @@ App.use(session({
 }));
 App.use(cookieparser());
 
-// //setup 
-// App.use(passport.initialize());
-// App.use(passport.session());
-// setuppassport();
+//setup 
+App.use(passport.initialize());
+App.use(passport.session());
+setuppassport();
 
 //routes
 App.use('/user', usersRouter);

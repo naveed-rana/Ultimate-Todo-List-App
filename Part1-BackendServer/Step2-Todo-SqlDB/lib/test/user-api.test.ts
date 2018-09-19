@@ -13,11 +13,10 @@ describe("GET /Api", () => {
 // //test post signup req in user route
 
 // describe('POST /users', function() {
-
 //   it('responds with json', function(done) {
 //     request(App)
 //       .post('/user/signup')
-//       .send({name: 'Ali',email:'rana.naveed684@gmail.com',password:'124'})
+//       .send({name: 'Ali',email:'try@gmail.com',password:'200'})
 //       .expect(200)
 //       .end(function(err, res) {
 //         if (err) return done(err);

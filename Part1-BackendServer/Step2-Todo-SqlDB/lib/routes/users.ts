@@ -1,12 +1,21 @@
 import * as express from 'express';
 import * as passport from 'passport';
 var router = express.Router();
-import client from '../Sqlconnection';
+import db from '../Sqlconnection';
 
 //check route is working
+
 router.get('/',(req,res)=>{
-    
-    res.status(200).json("route working!");
+
+  db.oneOrNone('SELECT * FROM users WHERE email = $1', ["rana.naveed812@gmail.com"])
+  .then(function(data) {
+      // success;
+      res.status(200).json(data);
+  })
+  .catch(function(error) {
+      // error;
+      res.status(500).json("route not working!");
+  });
     
 })
 
@@ -15,25 +24,21 @@ router.get('/',(req,res)=>{
 //route for signup
 
 router.post('/signup',(req,res)=>{
-    const query = {
-        text: 'INSERT INTO users(name, email,password) VALUES($1, $2, $3)',
-        values: [req.body.name, req.body.email,req.body.password],
-      }
-      
-      // callback
-      client.query(query, (err, data) => {
-        if (err) {
-          console.log(err.stack)
-          client.end();
-          res.status(400).json(err);
-        } else {
-          console.log(data.rows);
-          client.end();
-          res.status(200).json(data.rows);
-        }
-      })
-      
+    
+  db.one('INSERT INTO users(name, email ,password) VALUES($1, $2) RETURNING _id', [req.body.name, req.body.email, req.body.password])
+  .then(data => {
+      console.log(data._id); // print new user id;
+      res.status(200).json('added');
+  })
+  .catch(error => {
+      console.log('ERROR:', error); // print error;
+      res.status(401).json('err');
+  });
+
+  
 });
+
+
 
 export default router;
 

@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.25% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/16</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>8/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">81.25% </span>
+        <span class="strong">33.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/16</span>
+        <span class='fraction'>8/14</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -82,38 +82,48 @@
 37
 38
 39
-40</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+40
+41
+42
+43
+44
+45</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,12 +134,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as express from 'express';
 import * as passport from 'passport';
 var router = express.Router();
-import client from '../Sqlconnection';
+import db from '../Sqlconnection';
 &nbsp;
 //check route is working
+&nbsp;
 router.get('/',(req,res)=&gt;{
-    
-    res.status(200).json("route working!");
+&nbsp;
+  db.oneOrNone('SELECT * FROM users WHERE email = $1', ["rana.naveed812@gmail.com"])
+  .then(function(data) {
+      // success;
+      res.status(200).json(data);
+  })
+  .catch(<span class="fstat-no" title="function not covered" >function(</span>error) {
+      // error;
+<span class="cstat-no" title="statement not covered" >      res.status(500).json("route not working!");</span>
+  });
     
 })
 &nbsp;
@@ -137,26 +156,22 @@ router.get('/',(req,res)=&gt;{
 &nbsp;
 //route for signup
 &nbsp;
-router.post('/signup',(req,res)=&gt;{
-    const query = {
-        text: 'INSERT INTO users(name, email,password) VALUES($1, $2, $3)',
-        values: [req.body.name, req.body.email,req.body.password],
-      }
-      
-      // callback
-      client.query(query, (err, data) =&gt; {
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
-<span class="cstat-no" title="statement not covered" >          console.log(err.stack)</span>
-<span class="cstat-no" title="statement not covered" >          client.end();</span>
-<span class="cstat-no" title="statement not covered" >          res.status(400).json(err);</span>
-        } else {
-          console.log(data.rows);
-          client.end();
-          res.status(200).json(data.rows);
-        }
-      })
-      
+router.post('/signup',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
+    
+<span class="cstat-no" title="statement not covered" >  db.one('INSERT INTO users(name, email ,password) VALUES($1, $2) RETURNING _id', [req.body.name, req.body.email, req.body.password])</span>
+  .then(<span class="fstat-no" title="function not covered" >data</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >      console.log(data._id); </span>// print new user id;
+<span class="cstat-no" title="statement not covered" >      res.status(200).json('added');</span>
+  })
+  .catch(<span class="fstat-no" title="function not covered" >error</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >      console.log('ERROR:', error); </span>// print error;
+<span class="cstat-no" title="statement not covered" >      res.status(401).json('err');</span>
+  });
+&nbsp;
+  
 });
+&nbsp;
+&nbsp;
 &nbsp;
 export default router;
 &nbsp;
@@ -166,7 +181,7 @@ export default router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 18 2018 14:10:42 GMT+0500 (Pakistan Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 19 2018 19:52:43 GMT+0500 (Pakistan Standard Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

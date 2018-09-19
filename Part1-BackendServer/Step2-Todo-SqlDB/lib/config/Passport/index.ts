@@ -1,30 +1,37 @@
 var passport = require("passport");
 import {Strategy as LocalStrategy} from 'passport-local';
-import client from '../../Sqlconnection';
-
+import db from '../../Sqlconnection'
     
 export default function() {
 
    
 passport.use(new LocalStrategy({usernameField:'email'},
 function (email, password, done) {
- 
-client.query(`SELECT * FROM USERS WHERE email=${email}`, function (err, user) {
-    if (err) { return done(err); }
-    if (!user) {
-        client.end();
-        return done(null, false, { message: 'Incorrect username.' });
-    }
-    if (user.rows[0].password !=password){
-        client.end();
-        return done(null, false, { message: 'Incorrect password.' });
-    }
-    client.end()
-    return done(null, user.rows[0]);
-    
-})
 
-}));
+    db.oneOrNone('SELECT * FROM users WHERE email = $1', [email])
+  .then(function(user) {
+    
+      // success;
+      if(!user){
+        console.log(user);
+        return done(null, false, { message: 'Incorrect username.' } )
+      }
+      
+      if(user.password != password){
+        console.log(user);
+        console.log(user.email);
+        return done(null, false, { message: 'Incorrect password.' } )
+      }
+      console.log(user);
+      return done(null,user);
+  })
+  .catch(function(error) {
+      // error;
+      return done(error);
+  });
+
+}
+));
 
 passport.serializeUser(function (user, done) {
    done(null, user._id);
@@ -32,9 +39,17 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
 
-    client.query(`SELECT * FROM USERS WHERE _id=${id}`, function (err, user) {
-        done(err, user.rows[0]);
-        client.end();
+    db.oneOrNone('SELECT * FROM users WHERE _id = $1', [id])
+    .then(function(user) {
+        // success;
+        done(null,user);
+    })
+    .catch(function(error) {
+        // error;
+        return done(error);
     });
 
-})};
+});
+
+
+};
