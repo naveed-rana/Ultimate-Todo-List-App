@@ -1,0 +1,40 @@
+.main-container2{
+    text-align: center;
+    width: 100%;
+    background: url('./icons/desktop/bgimage.png');
+    height: auto;
+    /* padding: 74.4px 0px; */
+    /* padding: 2.9% 0px; */
+    min-height: 501px;
+    height: 100vh;
+    overflow: hidden !important;
+}
+.sign-in-text{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 5px;
+}
+.MuiInput-underline-135:before{
+    border-bottom: 1px solid #fff !important;
+}
+label{
+    color:#fff !important;
+}
+.Login-textField-3{
+    width:300px !important;
+    font-family: 'Raleway', sans-serif;
+}
+.MuiInput-input-139{
+    color:#fff !important;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .main-container2{
+        text-align: center;
+        width: 100%;
+        height: auto;
+        /* padding: 74.4px 0px; */
+        /* padding: 14.15% 0px; */
+        min-height: 501px;
+        height: 100vh;
+        overflow: hidden !important;
+    }
+}
