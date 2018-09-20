@@ -9,7 +9,7 @@ import {login} from '../Redux/actions/AddToDoActions';
 
 class App extends Component {
   componentDidMount() {
-    this.props.login({email:"rana.naveed812@gmail.com",password:"124"})
+    this.props.login({title:"some",discription:"night at some",done:true,userid:2})
   }
   render() {
     return (

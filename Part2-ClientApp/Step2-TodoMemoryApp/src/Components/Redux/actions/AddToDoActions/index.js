@@ -15,7 +15,7 @@ function addToDo(data) {
 export function login(data) {
     alert(data);
     return (dispatch)=>{
-        axios.post(window.baseURL+'/user/login',data).then(response=>{
+        axios.get(window.baseURL+'/todo/api/v1.0/tasks?id=`1`').then(response=>{
             toast.success(response.data);
             console.log(response.data);
             

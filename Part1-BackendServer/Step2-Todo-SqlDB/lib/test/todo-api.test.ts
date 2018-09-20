@@ -70,3 +70,13 @@ describe('Put /tasks restful Api', function() {
         });
     });
   });
+
+
+  
+//test v1.0 todo delete
+describe("GET todo test", () => {
+    it("should return 200 OK", () => {
+      return request(App).delete("/todo/api/v1.0/tasks?id=1")
+        .expect(200);
+    });
+  });

@@ -6,8 +6,8 @@ import db from '../Sqlconnection';
 //check route is working
 
 router.get('/',(req,res)=>{
-
-  db.oneOrNone('SELECT * FROM users WHERE email = $1', ["rana.naveed812@gmail.com"])
+   
+  db.oneOrNone('SELECT * FROM users WHERE _id = $1', [1])
   .then(function(data) {
       // success;
       res.status(200).json(data);
