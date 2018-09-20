@@ -1,0 +1,28 @@
+.main-container3{
+    text-align: center;
+    width: 100%;
+    background: url('./icons/desktop/bgimage.png');
+    height: auto;
+    /* padding: 74.4px 0px; */
+    /* padding: 3.1% 0px; */
+    min-height: 501px;
+    height: 100vh;
+    overflow: hidden !important;
+}
+.signuptext{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 5px;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .main-container3{
+        text-align: center;
+        width: 100%;
+        background: url('./icons/desktop/bgimage.png');
+       
+        /* padding: 74.4px 0px; */
+        /* padding: 11% 0px; */
+        min-height: 501px;
+        height: 100vh;
+        overflow: hidden !important;
+    }
+}
