@@ -1,4 +1,4 @@
-import {ADDTODO} from '../../actions/AddToDoActions';
+import {ADD_TODO} from '../../actions/AddToDoActions';
 
 const INITIAL_STATE = {
     adsSuccess: '',
@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 function AddReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
 
-        case ADDTODO:
+        case ADD_TODO:
             {
                 return {
                     ...state,
