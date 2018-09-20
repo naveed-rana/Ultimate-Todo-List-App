@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,6 +11,7 @@ import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
 
+import { addToDo } from '../Redux/actions/AddToDoActions'
 
 class addTodo extends Component {
     constructor(props) {
@@ -30,6 +32,7 @@ class addTodo extends Component {
 
     //////////
     // 1: "saveTodo" is a arrow function to save the record of todo item into record Object
+    // 2: Then "record" Object pass to the add todo action to save the data into store of redux throuhg reducer
     //////////
     saveTodo = (e) => {
         e.preventDefault();
@@ -40,8 +43,14 @@ class addTodo extends Component {
         }
         console.log('Add Todo Record is: ', record);
 
+        //Call AddToDo action
+        this.props.addToDo(record);
+
         // Reset input fields of form
         this.addToDoForm.reset();
+
+        // redirect the path 
+        this.props.history.push("/todoList");
     }
 
     render() {
@@ -89,4 +98,6 @@ addTodo.propTypes = {
 // Export this component with the style.js file
 //////////
 
-export default withStyles(styles)(addTodo);
+// export default withStyles(styles)(addTodo);
+
+export default connect(null, { addToDo })(withStyles(styles)(addTodo));
