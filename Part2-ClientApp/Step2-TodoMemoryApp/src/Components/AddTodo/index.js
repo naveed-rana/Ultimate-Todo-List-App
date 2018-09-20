@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,13 +10,38 @@ import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
 
+
 class addTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            title: '',
+            desc: '',
         }
 
+
+    }
+
+    onChangeHandler = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        this.setState({ [name]: value });
+    }
+
+    //////////
+    // 1: "saveTodo" is a arrow function to save the record of todo item into record Object
+    //////////
+    saveTodo = (e) => {
+        e.preventDefault();
+        const record = {
+            id: Math.random() + 1,
+            title: this.state.title,
+            desc: this.state.desc
+        }
+        console.log('Add Todo Record is: ', record);
+
+        // Reset input fields of form
+        this.addToDoForm.reset();
     }
 
     render() {
@@ -65,5 +89,4 @@ addTodo.propTypes = {
 // Export this component with the style.js file
 //////////
 
-
-export default connect(null, null)(withStyles(styles)(addTodo));
+export default withStyles(styles)(addTodo);
