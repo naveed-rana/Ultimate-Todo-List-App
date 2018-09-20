@@ -11,6 +11,24 @@ function addToDo(data) {
     }
 }
 
+
+export function login(data) {
+    alert(data);
+    return (dispatch)=>{
+        axios.get(window.baseURL+'/todo/api/v1.0/tasks?id=`1`').then(response=>{
+            toast.success(response.data);
+            console.log(response.data);
+            
+          //  dispatch(addToDo(response.data));
+        }).catch(err=>{
+            toast.error("Error occoured! while processing");
+            console.log('====================================');
+            console.log(err);
+            console.log('====================================');
+        });
+    }
+    
+}
 //Api Call
 
 export function startAddToDo(message) {
