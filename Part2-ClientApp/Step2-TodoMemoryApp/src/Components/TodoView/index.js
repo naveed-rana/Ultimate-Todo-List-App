@@ -21,7 +21,7 @@ class Todoview extends Component {
         this.state = {
 
         }
-
+        console.log('Store data is : ', this.props.data)
     }
 
 
@@ -42,7 +42,7 @@ class Todoview extends Component {
     render() {
         const { classes } = this.props;
         const { expanded } = this.state;
-
+        const todos = this.props.data;
         return (
             <Fragment>
                 {/* Desktop Design Image */}
@@ -132,11 +132,11 @@ Todoview.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
+function mapStateToProps(data) {
+    return {
+        data: data.TodoApp.todoList
+    }
+}
 
 
-//////////
-// export this component with the style.js file
-//////////
-
-
-export default withStyles(styles)(Todoview);
+export default connect(mapStateToProps, null)(withStyles(styles)(Todoview));

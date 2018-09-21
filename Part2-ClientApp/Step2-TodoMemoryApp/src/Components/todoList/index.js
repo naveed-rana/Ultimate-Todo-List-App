@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -28,6 +29,7 @@ class Todolist extends React.Component {
             type: "hidden",
 
         };
+        console.log('Store data is : ', this.props.data)
     }
 
     handleChange = name => event => {
@@ -52,6 +54,7 @@ class Todolist extends React.Component {
 
         const { classes } = this.props;
         const { expanded } = this.state;
+        const todos = this.props.data;
         return (
             <div>
 
@@ -76,52 +79,60 @@ class Todolist extends React.Component {
 
                             <Grid item xs={12}>
 
-                                <ExpansionPanel expanded={expanded === 1}
-                                    onChange={this.handleChangeexpand(1)}
-                                    className={classes.todoItem}>
-                                    <ExpansionPanelSummary className={classes.expansionSummary}>
+                                {todos.length > 0 ?
+                                    todos.map((item, index) => {
+                                        return (
 
-                                        <Grid container className={classes.todoPanel}>
-                                            <Grid item xs={2} className={classes.checkboxGrid}>
-                                                <div class="round">
-                                                    <input type="checkbox" id="checkbox" />
-                                                    <label for="checkbox"></label>
-                                                </div>
+                                            <ExpansionPanel expanded={expanded === 1}
+                                                onChange={this.handleChangeexpand(1)}
+                                                className={classes.todoItem} key={index}>
+                                                <ExpansionPanelSummary className={classes.expansionSummary}>
 
-                                            </Grid>
-                                            <Grid item xs={8}>
+                                                    <Grid container className={classes.todoPanel}>
+                                                        <Grid item xs={2} className={classes.checkboxGrid}>
+                                                            <div class="round">
+                                                                <input type="checkbox" id="checkbox" />
+                                                                <label for="checkbox"></label>
+                                                            </div>
 
-                                                <Typography className={classes.description}>Expansion Panel</Typography>
+                                                        </Grid>
+                                                        <Grid item xs={8}>
 
-                                            </Grid>
-                                            {/* className={classes.manus} */}
-                                            <Grid className="some" item xs={2} >
-                                                <div className="some">
-                                                    <Manu className="some" />
-                                                </div>
-                                            </Grid>
-                                        </Grid>
+                                                            <Typography className={classes.description}>{item.title}</Typography>
 
-                                    </ExpansionPanelSummary>
-                                    <Divider />
-                                    <ExpansionPanelDetails>
-                                        <Grid container>
-                                            <Grid item xs={12}>
+                                                        </Grid>
+                                                        {/* className={classes.manus} */}
+                                                        <Grid className="some" item xs={2} >
+                                                            <div className="some">
+                                                                <Manu className="some" />
+                                                            </div>
+                                                        </Grid>
+                                                    </Grid>
 
-                                                <Typography variant="caption" className={classes.description}>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                                    sit amet blandit leo lobortis eget.
+                                                </ExpansionPanelSummary>
+                                                <Divider />
+                                                <ExpansionPanelDetails>
+                                                    <Grid container>
+                                                        <Grid item xs={12}>
+
+                                                            <Typography variant="caption" className={classes.description}>
+                                                                {item.desc}
                                                     </Typography>
-                                            </Grid>
-                                            <Grid item xs={10} md={11}>
+                                                        </Grid>
+                                                        <Grid item xs={10} md={11}>
 
-                                                <Typography variant="caption" align="right">
-                                                    June 20, 2020
+                                                            <Typography variant="caption" align="right">
+                                                                June 20, 2020
                                                     </Typography>
-                                            </Grid>
-                                        </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
+                                                        </Grid>
+                                                    </Grid>
+                                                </ExpansionPanelDetails>
+                                            </ExpansionPanel>
+
+                                        )
+                                    })
+                                    : <div><center><hr /><h2 style={{ color: 'lightgray' }}>Empty task list</h2></center></div>
+                                }
 
                             </Grid>
                             <Grid item xs={12} >
@@ -148,4 +159,12 @@ Todolist.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Todolist);
+function mapStateToProps(data) {
+    return {
+        data: data.TodoApp.todoList
+    }
+}
+
+export default connect(mapStateToProps, null)(withStyles(styles)(Todolist));
+
+// export default withStyles(styles)(Todolist);
