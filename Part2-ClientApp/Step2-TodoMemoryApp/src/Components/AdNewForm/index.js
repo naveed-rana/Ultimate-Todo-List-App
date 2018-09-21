@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+
 import Grid from '@material-ui/core/Grid';
 import { styles } from "./style";
 import PropTypes from 'prop-types';
@@ -13,13 +15,46 @@ import Hidden from '@material-ui/core/Hidden';
 import Addtodo from '../AddTodo';
 import Drawer from '../drawer'
 
+import { addToDo } from '../Redux/actions/AddToDoActions'
 
 class AdNewTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            title: '',
+            desc: '',
         }
 
+    }
+
+
+    onChangeHandler = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        this.setState({ [name]: value });
+    }
+
+    //////////
+    // 1: "saveTodo" is a arrow function to save the record of todo item into record Object
+    // 2: Then "record" Object pass to the add todo action to save the data into store of redux throuhg reducer
+    //////////
+    saveTodo = (e) => {
+        e.preventDefault();
+        const record = {
+            id: Math.random() + 1,
+            title: this.state.title,
+            desc: this.state.desc
+        }
+        console.log('Add Todo Record is: ', record);
+
+        //Call AddToDo action
+        this.props.addToDo(record);
+
+        // Reset input fields of form
+        this.addToDoForm.reset();
+
+        // redirect the path 
+        // this.props.history.push("/todoList");
     }
 
 
@@ -111,7 +146,11 @@ class AdNewTodo extends Component {
         );
     }
 }
+
 AdNewTodo.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(AdNewTodo);
+
+// export default withStyles(styles)(AdNewTodo);
+
+export default connect(null, { addToDo })(withStyles(styles)(AdNewTodo));

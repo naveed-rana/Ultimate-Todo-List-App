@@ -50,7 +50,7 @@ class addTodo extends Component {
         this.addToDoForm.reset();
 
         // redirect the path 
-        this.props.history.push("/todoList");
+        // this.props.history.push("/todoList");
     }
 
     render() {
