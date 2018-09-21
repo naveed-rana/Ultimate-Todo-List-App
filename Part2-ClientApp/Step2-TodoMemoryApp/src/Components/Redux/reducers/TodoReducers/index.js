@@ -1,5 +1,6 @@
 import { ADD_TODO } from '../../actions/AddToDoActions';
 import { REMOVE_TODO } from '../../actions/DeleteToDoActions';
+import { UPDATE_TODO } from '../../actions/UpdateToDoActions';
 
 const INITIAL_STATE = {
     todoList: [],
@@ -34,6 +35,24 @@ function AddReducer(state = INITIAL_STATE, action) {
                 return ({
                     ...state,
                     todoList: newList
+                });
+            }
+
+        case UPDATE_TODO:
+            {
+                var updateState = state.todoList;
+                const id = action.payload.id;
+
+                var index = updateState.findIndex((x) => x.id == id);
+
+                if (index > 0) {
+                    // "action.payload" object is coming from the update action 
+                    updateState[index] = action.payload;
+                }
+
+                return ({
+                    ...state,
+                    todoList: updateState
                 });
             }
 

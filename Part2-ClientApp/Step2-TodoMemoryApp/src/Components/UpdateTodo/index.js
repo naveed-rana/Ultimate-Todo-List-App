@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { updateToDo } from '../Redux/actions/UpdateToDoActions'
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,7 +19,26 @@ class Update extends Component {
         this.state = {
 
         }
-console.log('update id Is: ', this.props.match.params.id);
+        console.log('update id Is: ', this.props.match.params.id);
+    }
+
+    updateTodo = (e) => {
+        e.preventDefault();
+        const record = {
+            id: this.props.match.params.id,
+            title: e.target.title.value,
+            desc: e.target.desc.value
+        }
+        console.log('Update Todo Record is: ', record);
+
+        //Call Update-ToDo action
+        this.props.updateToDo(record);
+
+        // Reset input fields of form
+        this.updateToDoForm.reset();
+
+        // redirect the path 
+        // this.props.history.push("/todoList");
     }
 
 
@@ -91,4 +110,4 @@ function mapStateToProps(data) {
 
 // export default withStyles(styles)(Update);
 
-export default connect(mapStateToProps, null)(withStyles(styles)(Update));
+export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update));
