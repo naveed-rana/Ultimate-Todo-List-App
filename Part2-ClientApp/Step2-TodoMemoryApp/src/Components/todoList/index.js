@@ -104,7 +104,7 @@ class Todolist extends React.Component {
                                                         {/* className={classes.manus} */}
                                                         <Grid className="some" item xs={2} >
                                                             <div className="some">
-                                                                <Manu className="some" />
+                                                            <Manu className="some" keys={index} row={item} />
                                                             </div>
                                                         </Grid>
                                                     </Grid>

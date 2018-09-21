@@ -1,4 +1,5 @@
 import { ADD_TODO } from '../../actions/AddToDoActions';
+import { REMOVE_TODO } from '../../actions/DeleteToDoActions';
 
 const INITIAL_STATE = {
     todoList: [],
@@ -19,6 +20,21 @@ function AddReducer(state = INITIAL_STATE, action) {
                     ...state,
                     todoList: newList
                 }
+            }
+
+        case REMOVE_TODO:
+            {
+                var list = state.todoList;
+                console.log('Delete Todo Reducer', list);
+                ////////
+                // Take an id in the form of payload
+                ////////
+                let id = action.payload;
+                let newList = list.filter((item) => item.id !== id);
+                return ({
+                    ...state,
+                    todoList: newList
+                });
             }
 
         default:

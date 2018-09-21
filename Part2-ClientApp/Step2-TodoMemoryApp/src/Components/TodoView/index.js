@@ -73,7 +73,7 @@ class Todoview extends Component {
 
                                                 <ExpansionPanel expanded={expanded === 1}
                                                     onChange={this.handleChangeexpand(1)}
-                                                    className={classes.todoItem}>
+                                                    className={classes.todoItem} key={index}>
                                                     <ExpansionPanelSummary className={classes.expansionSummary}>
 
                                                         <Grid container className={classes.todoPanel}>
@@ -92,7 +92,7 @@ class Todoview extends Component {
                                                             {/* className={classes.manus} */}
                                                             <Grid className="some" item md={1} >
                                                                 <div className="some">
-                                                                    <Manu className="some" />
+                                                                    <Manu className="some" keys={index} row={item} />
                                                                 </div>
                                                             </Grid>
                                                         </Grid>
@@ -105,7 +105,7 @@ class Todoview extends Component {
 
                                                                 <Typography variant="caption" className={classes.description}>
                                                                     {item.desc}
-                                                    </Typography>
+                                                                </Typography>
                                                             </Grid>
                                                             <Grid item xs={10} md={11}>
 
@@ -119,7 +119,7 @@ class Todoview extends Component {
 
                                             )
                                         })
-                                        : <div><center><hr /><h2 style={{ color: 'lightgray' }}>Empty task list</h2></center></div>
+                                        : <div><center><h2 style={{ color: 'lightgray' }}>Empty task list</h2></center></div>
                                     }
 
                                 </Grid>

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { removeToDo } from '../Redux/actions/DeleteToDoActions';
+
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -13,23 +16,34 @@ import { withStyles } from '@material-ui/core/styles';
 const ITEM_HEIGHT = 60;
 
 class OptionsMenu extends React.Component {
-  state = {
-    anchorEl: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null,
+    }
+    console.log("props at options file", this.props.row);
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
+  handleClose1 = () => {
+    alert('kal')
+    // this.setState({ anchorEl: null });
   };
+
+  _DeleteHandler = (id) => {
+    // console.log('delete id Is: ', id);
+    this.props.removeToDo(id);
+  }
 
 
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const { classes } = this.props;
+    const row = this.props.row;
 
     return (
       <div className="some">
@@ -46,7 +60,7 @@ class OptionsMenu extends React.Component {
         </IconButton>
         <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
           <MenuItem className="some" onClick={this.handleClose}>Edit</MenuItem>
-          <MenuItem className="some" onClick={this.handleClose}>Delete</MenuItem>
+          <MenuItem className="some" onClick={() => this._DeleteHandler(row.id)}>Delete</MenuItem>
         </Menu>
       </div>
     );
@@ -56,4 +70,6 @@ OptionsMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(OptionsMenu);
+// export default withStyles(styles)(OptionsMenu);
+
+export default connect(null, { removeToDo })(withStyles(styles)(OptionsMenu));
