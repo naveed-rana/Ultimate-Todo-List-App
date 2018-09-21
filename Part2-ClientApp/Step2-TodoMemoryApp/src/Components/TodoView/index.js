@@ -67,53 +67,60 @@ class Todoview extends Component {
 
 
                                 <Grid item xs={12}>
+                                    {todos.length > 0 ?
+                                        todos.map((item, index) => {
+                                            return (
 
-                                    <ExpansionPanel expanded={expanded === 1}
-                                        onChange={this.handleChangeexpand(1)}
-                                        className={classes.todoItem}>
-                                        <ExpansionPanelSummary className={classes.expansionSummary}>
+                                                <ExpansionPanel expanded={expanded === 1}
+                                                    onChange={this.handleChangeexpand(1)}
+                                                    className={classes.todoItem}>
+                                                    <ExpansionPanelSummary className={classes.expansionSummary}>
 
-                                            <Grid container className={classes.todoPanel}>
-                                                <Grid item md={1} className={classes.checkboxGrid}>
-                                                    <div class="round">
-                                                        <input type="checkbox" id="checkbox" />
-                                                        <label for="checkbox"></label>
-                                                    </div>
+                                                        <Grid container className={classes.todoPanel}>
+                                                            <Grid item md={1} className={classes.checkboxGrid}>
+                                                                <div class="round">
+                                                                    <input type="checkbox" id="checkbox" />
+                                                                    <label for="checkbox"></label>
+                                                                </div>
 
-                                                </Grid>
-                                                <Grid item md={10} align="left">
+                                                            </Grid>
+                                                            <Grid item md={10} align="left">
 
-                                                    <Typography className={classes.description}>Expansion Panel</Typography>
+                                                                <Typography className={classes.description}>{item.title}</Typography>
 
-                                                </Grid>
-                                                {/* className={classes.manus} */}
-                                                <Grid className="some" item md={1} >
-                                                    <div className="some">
-                                                        <Manu className="some" />
-                                                    </div>
-                                                </Grid>
-                                            </Grid>
+                                                            </Grid>
+                                                            {/* className={classes.manus} */}
+                                                            <Grid className="some" item md={1} >
+                                                                <div className="some">
+                                                                    <Manu className="some" />
+                                                                </div>
+                                                            </Grid>
+                                                        </Grid>
 
-                                        </ExpansionPanelSummary>
-                                        <Divider />
-                                        <ExpansionPanelDetails>
-                                            <Grid container>
-                                                <Grid item xs={12}>
+                                                    </ExpansionPanelSummary>
+                                                    <Divider />
+                                                    <ExpansionPanelDetails>
+                                                        <Grid container>
+                                                            <Grid item xs={12}>
 
-                                                    <Typography variant="caption" className={classes.description}>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                                        sit amet blandit leo lobortis eget.
+                                                                <Typography variant="caption" className={classes.description}>
+                                                                    {item.desc}
                                                     </Typography>
-                                                </Grid>
-                                                <Grid item xs={10} md={11}>
+                                                            </Grid>
+                                                            <Grid item xs={10} md={11}>
 
-                                                    <Typography variant="caption" align="right">
-                                                        June 20, 2020
+                                                                <Typography variant="caption" align="right">
+                                                                    June 20, 2020
                                                     </Typography>
-                                                </Grid>
-                                            </Grid>
-                                        </ExpansionPanelDetails>
-                                    </ExpansionPanel>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </ExpansionPanelDetails>
+                                                </ExpansionPanel>
+
+                                            )
+                                        })
+                                        : <div><center><hr /><h2 style={{ color: 'lightgray' }}>Empty task list</h2></center></div>
+                                    }
 
                                 </Grid>
 
