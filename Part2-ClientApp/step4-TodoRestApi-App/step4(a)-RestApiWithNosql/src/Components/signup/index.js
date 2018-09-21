@@ -11,7 +11,11 @@ import back_arrow from './icons/mobile/Back.png';
 import SignupMobile from './icons/mobile/SignUpIcon.png';
 import SignupDesktop from './icons/desktop/SignUpIcon.png';
 import "./style.css";
-class Sigin extends Component {
+
+
+// This component have a sign up form both for mobile and desktop view
+
+class SigUp extends Component {
 
     render() {
 
@@ -21,6 +25,8 @@ class Sigin extends Component {
 
             <div className='main-container3'>
                 <Grid container >
+
+                    {/* Link to go to back (login) page */}
                     <Grid item xs={2} className={classes.back}>
                         <Link to="/login">
                             <img className={classes.backArrow} src={back_arrow} alt="Back Button" />
@@ -30,11 +36,11 @@ class Sigin extends Component {
                         {/* Desktop Design Image */}
                         <Hidden only={['sm', 'xs']}>
                             <img src={SignupDesktop} alt="Signup Icon" />
-                         </Hidden>
-                         {/* Mobile & Tablet Image */}
-                         <Hidden only={['md', 'lg', 'xl']}>
+                        </Hidden>
+                        {/* Mobile & Tablet Image */}
+                        <Hidden only={['md', 'lg', 'xl']}>
                             <img src={SignupMobile} alt="Sign Up Icon" className={classes.loinIcon} />
-                         </Hidden>
+                        </Hidden>
                     </Grid>
 
                     <Grid item xs={12} className={classes.FormHeader}>
@@ -42,9 +48,8 @@ class Sigin extends Component {
                     </Grid>
                     <form className={classes.container} autoComplete="off">
                         <Grid item xs={12} >
-                            {/* <div className={classes.inputLable}>
-                                
-                            </div> */}
+
+                            {/* TextField for user name */}
                             <TextField
                                 className={classes.margin}
                                 label="User Name"
@@ -64,9 +69,8 @@ class Sigin extends Component {
                             />
                         </Grid>
                         <Grid item xs={12} >
-                            {/* <div className={classes.inputLable}>
-                                <InputLabel className={classes.label} >Email</InputLabel>
-                            </div> */}
+
+                            {/* TextField for Email */}
                             <TextField
                                 className={classes.margin}
                                 id="input-with-icon-textfield search"
@@ -87,6 +91,8 @@ class Sigin extends Component {
                         </Grid>
 
                         <Grid item xs={12} >
+
+                            {/* TextField for Password */}
                             <TextField
                                 id="adornment-password"
                                 label="Password"
@@ -105,6 +111,8 @@ class Sigin extends Component {
                             />
                         </Grid>
                         <Grid item xs={12} >
+
+                            {/* TextField to re-enter password for comfirmation */}
                             <TextField
                                 id="adornment-password"
                                 label="Confirm Password"
@@ -128,11 +136,6 @@ class Sigin extends Component {
                                 Sign Up
                             </Button>
                         </Grid>
-                        <Grid item xs={12} className={classes.btmGrid}>
-
-
-                        </Grid>
-
 
                     </form>
                 </Grid>
@@ -143,8 +146,8 @@ class Sigin extends Component {
         );
     }
 }
-Sigin.propTypes = {
+SigUp.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Sigin);
+export default withStyles(styles)(SigUp);

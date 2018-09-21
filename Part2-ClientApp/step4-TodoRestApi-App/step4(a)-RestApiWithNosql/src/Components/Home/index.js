@@ -5,13 +5,16 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import AddIcon from '@material-ui/icons/Add';
 import Mobilelogo from './icons/mobile/main-logo.png';
 import DesktopLogo from './icons/desktop/main-logo.png';
 import Fbicon from './icons/desktop/facebook.png';
 import Mailicon from './icons/desktop/mail.png';
 import { Link } from 'react-router-dom';
 import "./style.css";
+
+
+
+//this component will show a first Welcome page both on mobile and desktop
 
 function Home(props) {
     const { classes } = props;
@@ -50,6 +53,8 @@ function Home(props) {
                 </div>
             </Hidden>
             {/* Desktop Design Ends */}
+
+
             {/* Mobile & Tablet View Starts */}
             <Hidden only={['md', 'lg', 'xl']}>
                 <div className={classes.root}>
@@ -87,7 +92,11 @@ function Home(props) {
 
     );
 }
+
+
 Home.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
+
 export default withStyles(styles)(Home);

@@ -3,8 +3,6 @@
     width: 100%;
     background: url('./icons/desktop/bgimage.png');
     height: auto;
-    /* padding: 74.4px 0px; */
-    /* padding: 2.9% 0px; */
     min-height: 501px;
     height: 100vh;
     overflow: hidden !important;
@@ -31,8 +29,6 @@ label{
         text-align: center;
         width: 100%;
         height: auto;
-        /* padding: 74.4px 0px; */
-        /* padding: 14.15% 0px; */
         min-height: 501px;
         height: 100vh;
         overflow: hidden !important;

@@ -4,16 +4,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux';
 import UltimateToDoApp from '../navigation'
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from "./style";
 
 
 //Main App Component and Setup React Toastify
 
 class App extends Component {
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <ToastContainer
@@ -28,7 +24,7 @@ class App extends Component {
                     pauseOnHover
                     />
 
-
+                  {/* Renders the whole app */}
                   <UltimateToDoApp />
     
       </div>
@@ -36,8 +32,6 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default connect(null,null)(withStyles(styles)(App));
+
+export default connect(null,null)(App);

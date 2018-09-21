@@ -4,32 +4,35 @@ import { styles } from "./style";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
 import loginIcondesktop from './icons/desktop/SignIcon.png';
-import loginIconmobile from './icons/mobile/SignIcon.png';
 import Backicon from './icons/mobile/Back.png';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Hidden from '@material-ui/core/Hidden';
 import "./style.css";
+
+
+
+// This component have a login form both for desktop and mobile view
 class Login extends Component {
     state = {
         showPassword: false,
     };
+
+
     handleMouseDownPassword = event => {
         event.preventDefault();
     };
+
+    //this will show or hide password by click on eye icon
     handleClickShowPassword = () => {
         this.setState(state => ({ showPassword: !state.showPassword }));
     };
+
+
     render() {
         const { classes } = this.props;
         return (
@@ -41,17 +44,18 @@ class Login extends Component {
                         </Link>
                     </Grid>
                     <Grid item xs={12} className={classes.iconDiv}>
-                         {/* Desktop Design Image */}
-                      
-                            <img src={loginIcondesktop} alt="Login Icon" />
-                 
-                      
+
+                        {/* Desktop Design Image */}
+                        <img src={loginIcondesktop} alt="Login Icon" />
                     </Grid>
                     <Grid item xs={12} className={classes.FormHeader}>
                         <h2 className="sign-in-text"> Sign In </h2>
                     </Grid>
+
                     <form className={classes.container} autoComplete="off">
                         <Grid item xs={12} >
+
+                            {/* textField for email */}
                             <TextField
                                 className='email_field'
                                 label="Email"
@@ -70,15 +74,16 @@ class Login extends Component {
                             />
                         </Grid>
                         <Grid item xs={12} className={classes.formGrid} >
+
+                        {/* textField for password */}
                             <TextField
-                                style={{color: '#fff'}}
+                                style={{ color: '#fff' }}
                                 id="adornment-password"
                                 label="Password"
                                 type={this.state.showPassword ? 'text' : 'password'}
                                 value={this.state.password}
                                 required={true}
                                 className={classes.password}
-                                // onChange={this.handleChange('password')}
                                 InputLabelProps={{
                                     className: classes.floatingLabelFocusStyle,
                                 }}
@@ -95,18 +100,23 @@ class Login extends Component {
                                 }
                             />
                         </Grid>
+
                         <Grid item xs={12} className={classes.btmGrid}>
                             <Button type="submit" variant="extendedFab" aria-label="SigIn" className={classes.button}>
                                 Sign In
                             </Button>
                         </Grid>
+
+                        {/* if the user have no account before, then he will click below buttom */}
+                        {/* this will redirect to Sign up page */}
+                        
                         <Grid item xs={12} className={classes.btmGrid}>
                             <p className={classes.OR}>OR</p>
-                            <Link to="signup" style={{textDecoration: 'none'}}>
-                            <Button variant="extendedFab" aria-label="Sigup" className={classes.SignUpBtn} >
-                              Create An Account
+                            <Link to="signup" style={{ textDecoration: 'none' }}>
+                                <Button variant="extendedFab" aria-label="Sigup" className={classes.SignUpBtn} >
+                                    Create An Account
                              </Button>
-                          </Link>
+                            </Link>
                         </Grid>
                     </form>
                 </Grid>

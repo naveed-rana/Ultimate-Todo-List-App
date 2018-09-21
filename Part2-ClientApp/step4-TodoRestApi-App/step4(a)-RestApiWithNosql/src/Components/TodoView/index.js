@@ -52,7 +52,6 @@ class Todoview extends Component {
 
     render() {
         const { classes } = this.props;
-        const todos = this.props.data;
         const { expanded } = this.state;
 
         return (
