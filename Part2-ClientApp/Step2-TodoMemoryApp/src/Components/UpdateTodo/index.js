@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -17,12 +19,14 @@ class Update extends Component {
         this.state = {
 
         }
-
+console.log('update id Is: ', this.props.match.params.id);
     }
 
 
     render() {
         const { classes } = this.props;
+        const todos = this.props.data;
+        const editID = this.props.match.params.id;
         return (
             <div className={classes.root}>
                 <Grid container>
@@ -38,20 +42,28 @@ class Update extends Component {
                             </div>
                         </Grid>
 
-                        <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} className={classes.container} noValidate autoComplete="off">
-                            <div className="headDiv-fields">
-                                <strong>Title:</strong>
-                                <Grid item xs={11} sm={10}><input type="text" name="title" className="myInput-field" /></Grid>
-                                <br />
-                                <strong>Description:</strong>
-                                <Grid item xs={11} sm={10}><textarea name="desc" className="myTextarea-field" rows={8}></textarea> </Grid>
+                        {todos.map((item, index) => {
+                            if (item.id == editID) {
 
-                                <Grid item sm={12}>
-                                    <button type="submit" className="addBtn"> Update Your Thing</button>
-                                </Grid>
-                            </div>
-                        </form>
+                                return (
+                                    <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} className={classes.container} noValidate autoComplete="off">
+                                        <div className="headDiv-fields">
+                                            <strong>Title:</strong>
+                                            <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} className="myInput-field" /></Grid>
+                                            <br />
+                                            <strong>Description:</strong>
+                                            <Grid item xs={11} sm={10}><textarea name="desc" className="myTextarea-field" rows={8}>{item.desc}</textarea> </Grid>
 
+                                            <Grid item sm={12}>
+                                                <button type="submit" className="addBtn"> Update Your Thing</button>
+                                            </Grid>
+                                        </div>
+                                    </form>
+
+                                )
+                            }
+                        })
+                        }
 
                     </Grid>
                 </Grid>
@@ -65,11 +77,18 @@ Update.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
+function mapStateToProps(data) {
+    return {
+        data: data.TodoApp.todoList
+    }
+}
+
 
 
 //////////
 // Export this component with the style.js file
 //////////
 
-export default withStyles(styles)(Update);
+// export default withStyles(styles)(Update);
 
+export default connect(mapStateToProps, null)(withStyles(styles)(Update));

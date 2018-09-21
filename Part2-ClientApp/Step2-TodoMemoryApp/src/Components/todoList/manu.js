@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { removeToDo } from '../Redux/actions/DeleteToDoActions';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import MenuList from '@material-ui/core/MenuList';
 import { styles } from './style'
-import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -28,10 +27,11 @@ class OptionsMenu extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose1 = () => {
-    alert('kal')
-    // this.setState({ anchorEl: null });
+  handleClose = () => {
+    this.setState({ anchorEl: null });
   };
+
+
 
   _DeleteHandler = (id) => {
     // console.log('delete id Is: ', id);
@@ -59,7 +59,7 @@ class OptionsMenu extends React.Component {
           <MoreVertIcon className="some" />
         </IconButton>
         <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
-          <MenuItem className="some" onClick={this.handleClose}>Edit</MenuItem>
+          <Link to={`/update/${row.id}`}><MenuItem className="some">Edit</MenuItem></Link>
           <MenuItem className="some" onClick={() => this._DeleteHandler(row.id)}>Delete</MenuItem>
         </Menu>
       </div>
