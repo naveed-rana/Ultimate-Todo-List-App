@@ -1,30 +1,11 @@
-import axios from 'axios';
-import {toast} from 'react-toastify';
-export const ADDTODO = 'ADDTODO';
+export const ADD_TODO = 'ADD_TODO';
 
 //Call Reducer
 
-function addToDo(data) {
-    return{
-        type:ADDTODO,
-        data
+export function addToDo(data) {
+    // alert('add action func')
+    return {
+        type: ADD_TODO,
+        payload: data
     }
-}
-
-//Api Call
-
-export function startAddToDo(message) {
-    
-    return (dispatch) => {
-
-        axios.post(window.baseURL+'/message/sendmessage',message).then((response=>{
-            toast.success(response.data);
-            dispatch(addToDo(response.data));
-        })).catch(err=>{
-            toast.error("Error occoured! while processing");
-            dispatch(addToDo(err));
-        });
-    }
-
-
 }
