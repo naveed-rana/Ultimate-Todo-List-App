@@ -8,10 +8,16 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from "./style";
 
+import { loadTodo } from '../Redux/actions/LoadToDoActions'
 
 //Main App Component and Setup React Toastify
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.loadTodo();
+  }
+
   render() {
     // const { classes } = this.props;
     return (
@@ -39,4 +45,9 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(null, null)(withStyles(styles)(App));
+//
+// conect function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+//
+export default connect(null, { loadTodo })(withStyles(styles)(App));
+
+// export default connect(null, null)(withStyles(styles)(App));npm
