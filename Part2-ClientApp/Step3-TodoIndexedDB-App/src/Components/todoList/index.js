@@ -55,6 +55,7 @@ class Todolist extends React.Component {
     }
 
     toggleCheck = (id, title, desc) => {
+        alert('check')
         const { done } = this.state;
         this.setState({ done: !done });
 
@@ -102,8 +103,8 @@ class Todolist extends React.Component {
                                     todos.map((item, index) => {
                                         return (
 
-                                            <ExpansionPanel expanded={expanded === 1}
-                                                onChange={this.handleChangeexpand(1)}
+                                            <ExpansionPanel expanded={expanded === index}
+                                                onChange={this.handleChangeexpand(index)}
                                                 className={classes.todoItem} key={index}>
                                                 <ExpansionPanelSummary className={classes.expansionSummary}>
 

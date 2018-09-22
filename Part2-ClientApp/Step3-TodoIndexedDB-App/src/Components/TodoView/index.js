@@ -58,16 +58,14 @@ class Todoview extends Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
-        const { done } = this.state;
-        this.setState({ done: !done });
-
+    toggleCheck = (id, title, desc,done,time) => {
+    
         const record = {
             id: id,
             title: title,
             desc: desc,
             done: !done,
-            createAt: moment().format('ll')
+            createAt:time
         }
 
         //Call Update-ToDo action
@@ -107,7 +105,7 @@ class Todoview extends Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item md={1} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id={item.id} checked={item.done} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                    <input type="checkbox" id={item.id} checked={item.done} onChange={() =>  this.toggleCheck(item.id, item.title, item.desc,item.done,item.createAt) } />
                                                                     <label htmlFor={item.id}></label>
                                                                 </div>
 
