@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
 
+
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -16,14 +18,28 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
 
+function searchingFor(searchText) {
+    return function (x) {
+        return x.title.toLowerCase().includes(searchText.toLowerCase()) || !searchText;
+    }
+}
 
 class Todoview extends Component {
     constructor(props) {
         super(props);
         this.state = {
             done: false,
+            searchText: '',
         }
         // console.log('Store data is : ', this .props.data)
+        this.searchHandler = this.searchHandler.bind(this);
+    }
+
+    
+    searchHandler(event) {
+        console.log('search called');
+        console.log('search text is : ', event.target.value);
+        this.setState({ searchText: event.target.value });
     }
 
 
@@ -52,8 +68,8 @@ class Todoview extends Component {
             done: !done
         }
 
-         //Call Update-ToDo action
-         this.props.updateToDo(record);
+        //Call Update-ToDo action
+        this.props.updateToDo(record);
     }
 
     render() {
@@ -67,7 +83,7 @@ class Todoview extends Component {
                     <div className={classes.root}>
                         <Grid container>
                             <Grid item sm={3}>
-                                <SideBar />
+                                <SideBar searchHandler={this.searchHandler} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} >
                                 <Grid item xs={12} sm={12} md={12} >
@@ -78,7 +94,7 @@ class Todoview extends Component {
 
                                 <Grid item xs={12}>
                                     {todos.length > 0 ?
-                                        todos.map((item, index) => {
+                                        todos.filter(searchingFor(this.state.searchText)).map((item, index) => {
                                             return (
 
                                                 <ExpansionPanel expanded={expanded === index}
@@ -89,7 +105,7 @@ class Todoview extends Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item md={1} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id={item.id} checked={item.done} onClick={() => {this.toggleCheck(item.id, item.title, item.desc)}} />
+                                                                    <input type="checkbox" id={item.id} checked={item.done} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
                                                                     <label htmlFor={item.id}></label>
                                                                 </div>
 
@@ -136,7 +152,9 @@ class Todoview extends Component {
 
                             </Grid>
                         </Grid>
+
                     </div>
+
                 </Hidden>
             </Fragment>
         );
@@ -155,4 +173,4 @@ function mapStateToProps(data) {
 }
 
 
-export default connect(mapStateToProps,  {updateToDo})(withStyles(styles)(Todoview));
+export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(Todoview));

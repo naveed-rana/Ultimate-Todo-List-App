@@ -49,7 +49,7 @@ class TodoDone extends Component {
             id: id,
             title: title,
             desc: desc,
-            done: !done
+            done: !done,
         }
 
         //Call Update-ToDo action

@@ -1,9 +1,11 @@
 import { ADD_TODO } from '../../actions/AddToDoActions';
 import { REMOVE_TODO } from '../../actions/DeleteToDoActions';
 import { UPDATE_TODO } from '../../actions/UpdateToDoActions';
+// import { SEARCH_TODO } from '../../actions/SearchToDoActions';
 
 const INITIAL_STATE = {
     todoList: [],
+    // copyDta: []
 };
 
 function AddReducer(state = INITIAL_STATE, action) {
@@ -56,6 +58,26 @@ function AddReducer(state = INITIAL_STATE, action) {
                     todoList: updateState
                 });
             }
+
+            // case SEARCH_TODO:
+            // {
+            //     var prevData = state.todoList;
+
+            //     var text = action.payload;
+              
+
+            //     if(true){
+            //         return ({
+            //             ...state,
+            //             copyData: foundData
+            //         });
+            //     }else{
+            //         return ({
+            //             ...state,
+            //             copyData: prevData
+            //         });
+            //     }
+            // }
 
         default:
             return state;

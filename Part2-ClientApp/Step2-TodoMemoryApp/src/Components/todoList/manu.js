@@ -3,6 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeToDo } from '../Redux/actions/DeleteToDoActions';
 
+//pop up
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button'
+
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -19,6 +27,7 @@ class OptionsMenu extends React.Component {
     super(props);
     this.state = {
       anchorEl: null,
+      open: false,
     }
     console.log("props at options file", this.props.row);
   }
@@ -33,10 +42,26 @@ class OptionsMenu extends React.Component {
 
 
 
-  _DeleteHandler = (id) => {
+  _DeleteHandler = () => {
     // console.log('delete id Is: ', id);
-    this.props.removeToDo(id);
+    this.props.removeToDo(this.props.row.id);
   }
+
+
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  // handleClose = () => {
+  //   this.props.startUserAdDelete({ id: this.props.ad._id });
+  //   this.setState({ open: false });
+  // };
+
+  close = () => {
+    this.setState({ open: false });
+  }
+
 
 
   render() {
@@ -60,8 +85,35 @@ class OptionsMenu extends React.Component {
         </IconButton>
         <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
           <Link to={`/update/${row.id}`}><MenuItem className="some">Edit</MenuItem></Link>
-          <MenuItem className="some" onClick={() => this._DeleteHandler(row.id)}>Delete</MenuItem>
+          <MenuItem className="some" onClick={ this.handleClickOpen}>Delete</MenuItem>
         </Menu>
+
+        {/* pop up */}
+
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Confirmations</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Confirmations! after delete your task permanently delete from your list,Are you sure you want to delete?
+                            </DialogContentText>
+          </DialogContent>
+
+          <DialogActions>
+            <Button onClick={this.close} color="primary">
+              Cancel
+                          </Button>
+            <Button onClick={this._DeleteHandler} color="primary">
+              Delete
+                             </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* end pop up */}
+
       </div>
     );
   }
