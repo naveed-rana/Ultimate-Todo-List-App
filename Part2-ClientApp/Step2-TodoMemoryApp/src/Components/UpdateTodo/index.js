@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions'
 
 import PropTypes from 'prop-types';
@@ -38,7 +39,7 @@ class Update extends Component {
         this.updateToDoForm.reset();
 
         // redirect the path 
-        // this.props.history.push("/todoList");
+        this.props.history.push("/todoList");
     }
 
 
@@ -65,13 +66,13 @@ class Update extends Component {
                             if (item.id == editID) {
 
                                 return (
-                                    <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} className={classes.container} noValidate autoComplete="off">
+                                    <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
                                         <div className="headDiv-fields">
                                             <strong>Title:</strong>
                                             <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} className="myInput-field" /></Grid>
                                             <br />
                                             <strong>Description:</strong>
-                                            <Grid item xs={11} sm={10}><textarea name="desc" className="myTextarea-field" rows={8}>{item.desc}</textarea> </Grid>
+                                            <Grid item xs={11} sm={10}><textarea name="desc" defaultValue={item.desc} className="myTextarea-field" rows={8}></textarea> </Grid>
 
                                             <Grid item sm={12}>
                                                 <button type="submit" className="addBtn"> Update Your Thing</button>
@@ -110,4 +111,4 @@ function mapStateToProps(data) {
 
 // export default withStyles(styles)(Update);
 
-export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update));
+export default withRouter(connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update)));

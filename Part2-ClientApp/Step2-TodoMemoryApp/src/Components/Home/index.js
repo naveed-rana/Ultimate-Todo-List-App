@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { styles } from "./style";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import AddIcon from '@material-ui/icons/Add';
+// import AddIcon from '@material-ui/icons/Add';
 import Mobilelogo from './icons/mobile/main-logo.png';
 import DesktopLogo from './icons/desktop/main-logo.png';
 import Fbicon from './icons/desktop/facebook.png';

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 
-const ITEM_HEIGHT = 60;
+// const ITEM_HEIGHT = 60;
 
 class OptionsMenu extends React.Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class OptionsMenu extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    const { classes } = this.props;
+    // const { classes } = this.props;
     const row = this.props.row;
 
     return (

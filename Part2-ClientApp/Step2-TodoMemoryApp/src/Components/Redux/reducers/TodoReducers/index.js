@@ -12,10 +12,10 @@ function AddReducer(state = INITIAL_STATE, action) {
         case ADD_TODO:
             {
                 var list = state.todoList;
-                console.log('Add Todo Reducer', list);
+                // console.log('Add Todo Reducer', list);
 
                 var newList = list.concat([action.payload]);
-                console.log('Add Todo Reducer, After Push', newList);
+                // console.log('Add Todo Reducer, After Push', newList);
 
                 return {
                     ...state,
@@ -26,7 +26,8 @@ function AddReducer(state = INITIAL_STATE, action) {
         case REMOVE_TODO:
             {
                 var list = state.todoList;
-                console.log('Delete Todo Reducer', list);
+                // console.log('Delete Todo Reducer', list);
+                
                 ////////
                 // Take an id in the form of payload
                 ////////
@@ -45,7 +46,7 @@ function AddReducer(state = INITIAL_STATE, action) {
 
                 var index = updateState.findIndex((x) => x.id == id);
 
-                if (index > 0) {
+                if (index > -1 ) {
                     // "action.payload" object is coming from the update action 
                     updateState[index] = action.payload;
                 }

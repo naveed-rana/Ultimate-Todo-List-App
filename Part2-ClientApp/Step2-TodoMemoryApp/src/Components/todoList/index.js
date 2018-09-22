@@ -29,13 +29,12 @@ class Todolist extends React.Component {
             type: "hidden",
 
         };
-        console.log('Store data is : ', this.props.data)
+        // console.log('Store data is : ', this.props.data)
     }
 
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
     };
-
 
     handleChangeexpand = id => (event, expanded) => {
         console.log(event.target)
@@ -50,8 +49,8 @@ class Todolist extends React.Component {
             })
         }
     }
-    render() {
 
+    render() {
         const { classes } = this.props;
         const { expanded } = this.state;
         const todos = this.props.data;
@@ -104,7 +103,7 @@ class Todolist extends React.Component {
                                                         {/* className={classes.manus} */}
                                                         <Grid className="some" item xs={2} >
                                                             <div className="some">
-                                                            <Manu className="some" keys={index} row={item} />
+                                                                <Manu className="some" keys={index} row={item} />
                                                             </div>
                                                         </Grid>
                                                     </Grid>
@@ -117,13 +116,13 @@ class Todolist extends React.Component {
 
                                                             <Typography variant="caption" className={classes.description}>
                                                                 {item.desc}
-                                                    </Typography>
+                                                            </Typography>
                                                         </Grid>
                                                         <Grid item xs={10} md={11}>
 
                                                             <Typography variant="caption" align="right">
-                                                                June 20, 2020
-                                                    </Typography>
+                                                                {item.createAt}
+                                                            </Typography>
                                                         </Grid>
                                                     </Grid>
                                                 </ExpansionPanelDetails>

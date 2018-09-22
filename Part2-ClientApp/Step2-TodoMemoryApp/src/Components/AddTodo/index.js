@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -36,10 +37,17 @@ class addTodo extends Component {
     //////////
     saveTodo = (e) => {
         e.preventDefault();
+
+        // Get currunt date 
+        var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var today = new Date();
+        var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+       
         const record = {
             id: Math.random() + 1,
             title: this.state.title,
-            desc: this.state.desc
+            desc: this.state.desc,
+            createAt: myDate
         }
         console.log('Add Todo Record is: ', record);
 
@@ -47,10 +55,10 @@ class addTodo extends Component {
         this.props.addToDo(record);
 
         // Reset input fields of form
-        this.addToDoForm.reset();
+        // this.addToDoForm.reset();
 
         // redirect the path 
-        // this.props.history.push("/todoList");
+        this.props.history.push("/todoList");
     }
 
     render() {
@@ -100,4 +108,6 @@ addTodo.propTypes = {
 
 // export default withStyles(styles)(addTodo);
 
-export default connect(null, { addToDo })(withStyles(styles)(addTodo));
+// export default connect(null, { addToDo })(withStyles(styles)(addTodo));
+
+export default withRouter(connect(null, { addToDo })(withStyles(styles)(addTodo)));

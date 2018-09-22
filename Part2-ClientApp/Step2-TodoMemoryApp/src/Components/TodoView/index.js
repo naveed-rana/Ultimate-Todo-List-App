@@ -21,7 +21,7 @@ class Todoview extends Component {
         this.state = {
 
         }
-        console.log('Store data is : ', this.props.data)
+        // console.log('Store data is : ', this .props.data)
     }
 
 
@@ -71,16 +71,16 @@ class Todoview extends Component {
                                         todos.map((item, index) => {
                                             return (
 
-                                                <ExpansionPanel expanded={expanded === 1}
-                                                    onChange={this.handleChangeexpand(1)}
+                                                <ExpansionPanel expanded={expanded === index}
+                                                    onChange={this.handleChangeexpand(index)}
                                                     className={classes.todoItem} key={index}>
                                                     <ExpansionPanelSummary className={classes.expansionSummary}>
 
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item md={1} className={classes.checkboxGrid}>
-                                                                <div class="round">
+                                                                <div className="round">
                                                                     <input type="checkbox" id="checkbox" />
-                                                                    <label for="checkbox"></label>
+                                                                    <label htmlFor="checkbox"></label>
                                                                 </div>
 
                                                             </Grid>
@@ -110,7 +110,7 @@ class Todoview extends Component {
                                                             <Grid item xs={10} md={11}>
 
                                                                 <Typography variant="caption" align="right">
-                                                                    June 20, 2020
+                                                                    {item.createAt}
                                                     </Typography>
                                                             </Grid>
                                                         </Grid>

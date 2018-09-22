@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import { styles } from "./style";
@@ -40,10 +41,17 @@ class AdNewTodo extends Component {
     //////////
     saveTodo = (e) => {
         e.preventDefault();
+        
+        // Get currunt date 
+        var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var today = new Date();
+        var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+       
         const record = {
             id: Math.random() + 1,
             title: this.state.title,
-            desc: this.state.desc
+            desc: this.state.desc,
+            createAt: myDate
         }
         console.log('Add Todo Record is: ', record);
 
@@ -51,10 +59,11 @@ class AdNewTodo extends Component {
         this.props.addToDo(record);
 
         // Reset input fields of form
-        this.addToDoForm.reset();
+        // this.addToDoForm.reset();
 
         // redirect the path 
-        // this.props.history.push("/todoList");
+        this.props.history.push("/todoList");
+
     }
 
 
@@ -73,14 +82,14 @@ class AdNewTodo extends Component {
                         <Grid container>
                             <Grid item xs={2} className={classes.icon}>
                                 <Link to="/">
-                                    <img className={classes.backArrow} src={arrow} alt="no image" />
+                                    <img className={classes.backArrow} src={arrow} alt="no media" />
                                 </Link>
                             </Grid>
                             <Grid item xs={10} className={classes.icon} align="right">
                                 <Drawer />
                             </Grid>
                             <Grid item xs={12} className={classes.iconDiv}>
-                                <img src={loginIcon} alt="no image" className={classes.editIcon} />
+                                <img src={loginIcon} alt="no media" className={classes.editIcon} />
                             </Grid>
                             <Grid item xs={12} className={classes.FormHeader}>
                                 <h3> Add a new To-Do </h3>
@@ -153,4 +162,4 @@ AdNewTodo.propTypes = {
 
 // export default withStyles(styles)(AdNewTodo);
 
-export default connect(null, { addToDo })(withStyles(styles)(AdNewTodo));
+export default withRouter(connect(null, { addToDo })(withStyles(styles)(AdNewTodo)));
