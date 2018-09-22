@@ -26,7 +26,8 @@ export const styles = theme => ({
         // padding: "5px",
         backgroundColor: "white",
         marginTop: "10px",
-        marginBottom: "10px !important"
+        marginBottom: "10px !important",
+        marginLeft:"10px"
     },
     manus: {
         textAlign: "right",

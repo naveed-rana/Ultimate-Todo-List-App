@@ -84,7 +84,7 @@ class Todoview extends Component {
                 <Hidden only={['sm', 'xs']}>
                     <div className={classes.root}>
                         <Grid container>
-                            <Grid item sm={3} style={{borderRight: "1px solid lightgrey", height:'622px'}}>
+                            <Grid item sm={3}>
                                 <SideBar searchHandler={this.searchHandler} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} >

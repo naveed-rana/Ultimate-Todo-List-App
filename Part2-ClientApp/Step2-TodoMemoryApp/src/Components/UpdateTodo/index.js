@@ -26,14 +26,14 @@ class Update extends Component {
         console.log('store dATA' , this.props.data);
     }
 
-    updateTodo = (e) => {
+    updateTodo = (e,data) => {
         e.preventDefault();
         const record = {
             id: this.props.match.params.id,
             title: e.target.title.value,
             desc: e.target.desc.value,
-            done: e.target.done.value,
-            createAt: moment().format('ll')
+            done: data.done,
+            createAt: data.createAt
         }
         // console.log('Update Todo Record is: ', record);
 
@@ -70,10 +70,9 @@ class Update extends Component {
                         {todos.map((item, index) => {
                             if (item.id == editID) {
                                 return (
-                                    <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
+                                    <form onSubmit={(e)=>this.updateTodo(e,item)} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
                                         <div className="headDiv-fields">
-                                        <input type="hidden" value={item.done} name="done" />
-                                            <strong>Title: {item.done}</strong>
+                                            <strong>Title:</strong>
                                             <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} className="myInput-field" /></Grid>
                                             <br />
                                             <strong>Description:</strong>

@@ -42,6 +42,7 @@ class SideBar extends Component {
     render() {
         const { classes } = this.props;
         return (
+        <div className="main-container-navbar">
             <Grid container className="user">
                 <Grid item sm={12} align="center">
                     <Avatar
@@ -115,6 +116,7 @@ class SideBar extends Component {
                 </Grid>
 
             </Grid>
+            </div>
         );
     }
 
