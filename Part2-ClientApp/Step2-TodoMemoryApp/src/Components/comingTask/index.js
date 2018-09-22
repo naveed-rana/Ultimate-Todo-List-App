@@ -19,8 +19,7 @@ import "./style.css"
 import Drawer from '../drawer'
 import Divider from '@material-ui/core/Divider'
 import { Hidden } from '@material-ui/core';
-// import ToDoListDeskTop from '../TodoView';
-import TodoComing from '../TodoComing'
+import TodoDone from '../TodoDone'
 
 class ComingTask extends React.Component {
     constructor(props) {
@@ -77,7 +76,7 @@ class ComingTask extends React.Component {
             <div>
 
                 <Hidden only={['sm', 'xs']}>
-                    <TodoComing />
+                    <TodoDone />
                 </Hidden>
                 {/* Mobile & Tablet View Starts */}
                 <Hidden only={['md', 'lg', 'xl']}>

@@ -4,7 +4,7 @@ import Home from '../Home';
 import AdNewToDo from '../AdNewForm';
 import TodoList from "../todoList";
 import UpdateTodo from '../UpdateTodo';
-import TodoDone from '../TodoDone';
+import TodoDone from '../doneTask';
 import TodoComing from '../comingTask';
 
 export default class Navigation extends Component {
