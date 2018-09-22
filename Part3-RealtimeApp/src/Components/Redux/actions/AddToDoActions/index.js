@@ -1,15 +1,13 @@
 import db from '../FirebaseConfig';
-import toast from 'react-toastify';
+import { toast } from 'react-toastify';
 export const ADD_TODO = 'ADD_TODO';
 
 
 export function addToDo(data) {
     return (dispatch) => {
-        console.log(data);
-        
+      //call todos collection and add single todo
         db.collection("todos").add(data)
             .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
                 toast.success("Successfully Added!")
                 dispatch({
                     //Call Reducer
