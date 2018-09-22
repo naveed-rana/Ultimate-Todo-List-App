@@ -1,30 +1,23 @@
-import axios from 'axios';
-import {toast} from 'react-toastify';
-export const ADDTODO = 'ADDTODO';
+import db from '../FirebaseConfig';
+import toast from 'react-toastify';
+export const ADD_TODO = 'ADD_TODO';
 
-//Call Reducer
 
-function addToDo(data) {
-    return{
-        type:ADDTODO,
-        data
-    }
-}
-
-//Api Call
-
-export function startAddToDo(message) {
-    
+export function addToDo(data) {
     return (dispatch) => {
-
-        axios.post(window.baseURL+'/message/sendmessage',message).then((response=>{
-            toast.success(response.data);
-            dispatch(addToDo(response.data));
-        })).catch(err=>{
-            toast.error("Error occoured! while processing");
-            dispatch(addToDo(err));
-        });
+        console.log(data);
+        
+        db.collection("todos").add(data)
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+                toast.success("Successfully Added!")
+                dispatch({
+                    //Call Reducer
+                    type: ADD_TODO,
+                    payload: data
+                });
+            }).catch((err)=>{
+                toast.error("Error Occored! Please Try Again Later");
+            });
     }
-
-
 }
