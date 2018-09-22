@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
+import {compose} from 'recompose';
 import moment from 'moment';
 
 import PropTypes from 'prop-types';
@@ -58,18 +58,19 @@ class Todoview extends Component {
         }
     }
 
-    toggleCheck = (id, title, desc,done,time) => {
+    toggleCheck = (id, title, desc,done,time,uid) => {
     
         const record = {
             id: id,
             title: title,
             desc: desc,
             done: !done,
-            createAt:time
+            createAt:time,
+            uid
         }
 
         //Call Update-ToDo action
-        this.props.updateToDo(record);
+        this.props.updateToDo(record,uid);
     }
 
     render() {
@@ -105,7 +106,7 @@ class Todoview extends Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item md={1} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id={item.id} checked={item.done} onChange={() =>  this.toggleCheck(item.id, item.title, item.desc,item.done,item.createAt) } />
+                                                                    <input type="checkbox" id={item.id} checked={item.done} onChange={() =>  this.toggleCheck(item.id, item.title, item.desc,item.done,item.createAt,item.uid) } />
                                                                     <label htmlFor={item.id}></label>
                                                                 </div>
 
@@ -173,4 +174,4 @@ function mapStateToProps(data) {
 }
 
 
-export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(Todoview));
+export default compose(connect(mapStateToProps, { updateToDo }),(withStyles(styles)))(Todoview);

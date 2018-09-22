@@ -55,14 +55,10 @@ class TodoDone extends Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
+    toggleCheck = (id, title, desc,uid) => {
         const { done } = this.state;
         this.setState({ done: !done });
 
-        //  // Get currunt date 
-        //  var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        //  var today = new Date();
-        //  var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
        
          
         const record = {
@@ -70,11 +66,13 @@ class TodoDone extends Component {
             title: title,
             desc: desc,
             done: !done,
+            uid
+            ,
             createAt: moment().format('ll')
         }
 
         //Call Update-ToDo action
-        this.props.updateToDo(record);
+        this.props.updateToDo(record,uid);
     }
 
     render() {
@@ -112,7 +110,7 @@ class TodoDone extends Component {
                                                             <Grid container className={classes.todoPanel}>
                                                                 <Grid item md={1} className={classes.checkboxGrid}>
                                                                     <div className="round">
-                                                                        <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                        <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item.id, item.title, item.desc,item.uid) }} />
                                                                         <label htmlFor={item.id}></label>
                                                                     </div>
 

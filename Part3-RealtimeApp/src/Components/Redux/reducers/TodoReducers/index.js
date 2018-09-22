@@ -44,19 +44,33 @@ function AddReducer(state = INITIAL_STATE, action) {
         case UPDATE_TODO:
             {
                 var updateState = state.todoList;
-                const id = action.payload.id;
+                // let id = action.payload.id;
+                // console.log('================id====================');
+                // console.log(id);
+                // console.log('====================================');
+                // var index = updateState.findIndex((x) => x.id === id);
+                // debugger;
+                // if (index > -1) {
+                //     debugger;
+                //     // "action.payload" object is coming from the update action 
+                //     updateState[index] = action.payload;
+                //     debugger;
+                // }
 
-                var index = updateState.findIndex((x) => x.id == id);
-
-                if (index > -1) {
-                    // "action.payload" object is coming from the update action 
-                    updateState[index] = action.payload;
-                }
+                
+            
+                updateState.map((todo,index)=>{
+                 if(todo.id === action.payload.id){
+                    updateState[index]  = action.payload;
+                    debugger;
+                 }
+                });
 
                 return ({
                     ...state,
                     todoList: updateState
                 });
+               
             }
 
         case LOAD_TODO:

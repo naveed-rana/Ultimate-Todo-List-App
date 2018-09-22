@@ -55,7 +55,7 @@ class ComingTask extends React.Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
+    toggleCheck = (id, title, desc,uid) => {
         const { done } = this.state;
         this.setState({ done: !done });
 
@@ -64,11 +64,12 @@ class ComingTask extends React.Component {
             title: title,
             desc: desc,
             done: !done,
+            uid,
             createAt: moment().format('ll')
         }
 
         //Call Update-ToDo action
-        this.props.updateToDo(record);
+        this.props.updateToDo(record,uid);
     }
 
     render() {
@@ -112,7 +113,7 @@ class ComingTask extends React.Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item xs={2} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                    <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item.id, item.title, item.desc,item.uid) }} />
                                                                     <label htmlFor={item.id}></label>
                                                                 </div>
 

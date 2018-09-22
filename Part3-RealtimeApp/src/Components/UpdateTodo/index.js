@@ -33,12 +33,13 @@ class Update extends Component {
             title: e.target.title.value,
             desc: e.target.desc.value,
             done: data.done,
+            uid:data.uid,
             createAt: data.createAt
         }
         // console.log('Update Todo Record is: ', record);
 
         //Call Update-ToDo action
-        this.props.updateToDo(record);
+        this.props.updateToDo(record,data.uid);
 
         // Reset input fields of form
         this.updateToDoForm.reset();
