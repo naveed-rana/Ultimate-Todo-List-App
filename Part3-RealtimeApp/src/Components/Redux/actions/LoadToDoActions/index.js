@@ -12,7 +12,11 @@ export function loadTodo() {
       .then((querySnapshot) => {
           let todos = [];
           querySnapshot.forEach((doc) => {
-            todos.push(doc.data());
+            let obj = {
+              ...doc.data(),
+                uid:doc.id,
+            }
+            todos.push(obj);
           });
           dispatch({
             type: LOAD_TODO,

@@ -8,11 +8,12 @@ export function addToDo(data) {
       //call todos collection and add single todo
         db.collection("todos").add(data)
             .then((docRef) => {
-                toast.success("Successfully Added!")
+                let obj = {uid:docRef.id,...data};
+                toast.success("Successfully Added!");
                 dispatch({
                     //Call Reducer
                     type: ADD_TODO,
-                    payload: data
+                    payload: obj
                 });
             }).catch((err)=>{
                 toast.error("Error Occored! Please Try Again Later");
