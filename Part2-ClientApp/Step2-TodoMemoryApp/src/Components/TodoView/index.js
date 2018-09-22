@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { updateToDo } from '../Redux/actions/UpdateToDoActions';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -19,7 +21,7 @@ class Todoview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            done: false,
         }
         // console.log('Store data is : ', this .props.data)
     }
@@ -37,6 +39,21 @@ class Todoview extends Component {
                     : false
             })
         }
+    }
+
+    toggleCheck = (id, title, desc) => {
+        const { done } = this.state;
+        this.setState({ done: !done });
+
+        const record = {
+            id: id,
+            title: title,
+            desc: desc,
+            done: !done
+        }
+
+         //Call Update-ToDo action
+         this.props.updateToDo(record);
     }
 
     render() {
@@ -59,13 +76,6 @@ class Todoview extends Component {
                                     </div>
                                 </Grid>
 
-                                {/* <div className="todo-task-view">
-                                    <span className="task-done"></span>
-                                    <span className="todotext"> Meeting With Doctor </span>
-                                    <img src={threedots} className="threedots" />
-                                </div> */}
-
-
                                 <Grid item xs={12}>
                                     {todos.length > 0 ?
                                         todos.map((item, index) => {
@@ -79,8 +89,8 @@ class Todoview extends Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item md={1} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id="checkbox" />
-                                                                    <label htmlFor="checkbox"></label>
+                                                                    <input type="checkbox" id={item.id} checked={item.done} onClick={() => {this.toggleCheck(item.id, item.title, item.desc)}} />
+                                                                    <label htmlFor={item.id}></label>
                                                                 </div>
 
                                                             </Grid>
@@ -111,7 +121,7 @@ class Todoview extends Component {
 
                                                                 <Typography variant="caption" align="right">
                                                                     {item.createAt}
-                                                    </Typography>
+                                                                </Typography>
                                                             </Grid>
                                                         </Grid>
                                                     </ExpansionPanelDetails>
@@ -123,7 +133,6 @@ class Todoview extends Component {
                                     }
 
                                 </Grid>
-
 
                             </Grid>
                         </Grid>
@@ -146,4 +155,4 @@ function mapStateToProps(data) {
 }
 
 
-export default connect(mapStateToProps, null)(withStyles(styles)(Todoview));
+export default connect(mapStateToProps,  {updateToDo})(withStyles(styles)(Todoview));

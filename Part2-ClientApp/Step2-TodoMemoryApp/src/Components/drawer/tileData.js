@@ -26,13 +26,13 @@ export const mailFolderListItems = (
         </ListItemIcon>
         <ListItemText primary="My Day" />
       </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="/todoComing">
       <ListItemIcon>
         <img src={commingTask} alt="No Icon" />
       </ListItemIcon>
       <ListItemText primary="Comming Tasks" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="/todoDone">
       <ListItemIcon>
         <img src={doneIcon} alt="No Icon" />
       </ListItemIcon>

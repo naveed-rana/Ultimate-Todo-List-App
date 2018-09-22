@@ -24,6 +24,7 @@ class AdNewTodo extends Component {
         this.state = {
             title: '',
             desc: '',
+            done: false,
         }
 
     }
@@ -51,6 +52,7 @@ class AdNewTodo extends Component {
             id: Math.random() + 1,
             title: this.state.title,
             desc: this.state.desc,
+            done: this.state.done,
             createAt: myDate
         }
         console.log('Add Todo Record is: ', record);

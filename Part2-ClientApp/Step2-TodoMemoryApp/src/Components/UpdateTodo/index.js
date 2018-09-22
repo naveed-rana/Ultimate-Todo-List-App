@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { updateToDo } from '../Redux/actions/UpdateToDoActions'
+import { updateToDo } from '../Redux/actions/UpdateToDoActions';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';

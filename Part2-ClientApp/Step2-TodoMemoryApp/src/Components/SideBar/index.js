@@ -43,7 +43,7 @@ class SideBar extends Component {
                         className={classNames(classes.avatar, classes.bigAvatar)}
                     />
                 </Grid>
-               
+
 
                 <Grid item sm={12}>
                     <input type="text" placeholder="Search" className="mySearch-field" />
@@ -59,46 +59,50 @@ class SideBar extends Component {
                                     onClick={event => this.handleListItemClick(event, 0)}
                                 >
                                     <ListItemIcon>
-                                    <img src={myDayIcon} alt="No Icon" />
+                                        <img src={myDayIcon} alt="No Icon" />
                                     </ListItemIcon>
                                     <ListItemText primary="My Day" />
                                 </ListItem>
                             </Link>
-                           
 
-                            <ListItem
-                                button
-                                selected={this.state.selectedIndex === 2}
-                                onClick={event => this.handleListItemClick(event, 2)}
-                            >
-                                <ListItemIcon>
-                                <img src={doneIcon} alt="No Icon" />
-                                </ListItemIcon>
-                                <ListItemText primary="Done Tasks" />
-                            </ListItem>
+                            <Link to="/todoDone" className="link-list" >
+                                <ListItem
+                                    button
+                                    selected={this.state.selectedIndex === 2}
+                                    onClick={event => this.handleListItemClick(event, 2)}
+                                >
+                                    <ListItemIcon>
+                                        <img src={doneIcon} alt="No Icon" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Done Tasks" />
+                                </ListItem>
+                            </Link>
 
-                            <ListItem
-                                button
-                                selected={this.state.selectedIndex === 3}
-                                onClick={event => this.handleListItemClick(event, 3)}
-                            >
-                                <ListItemIcon>
-                                <img src={commingTask} alt="No Icon" />
-                                </ListItemIcon>
-                                <ListItemText primary="Coming Tasks" />
-                            </ListItem>
+                            <Link to="/todoComing" className="link-list" >
+                                <ListItem
+                                    button
+                                    selected={this.state.selectedIndex === 3}
+                                    onClick={event => this.handleListItemClick(event, 3)}
+                                >
+                                    <ListItemIcon>
+                                        <img src={commingTask} alt="No Icon" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Coming Tasks" />
+                                </ListItem>
+                            </Link>
+
                             <br />
                             <Divider />
                         </List>
 
 
                         <Link to="/AdNewToDo" className="addNewList" >
-            
-                                <Grid item xs={12} className={classes.btmGrid}>
-                            <Button type="submit" variant="extendedFab" aria-label="SigIn" className={classes.button}>
-                                Add Your Thing
+
+                            <Grid item xs={12} className={classes.btmGrid}>
+                                <Button type="submit" variant="extendedFab" aria-label="SigIn" className={classes.button}>
+                                    Add Your Thing
                             </Button>
-                        </Grid>
+                            </Grid>
                         </Link>
 
                     </div>
