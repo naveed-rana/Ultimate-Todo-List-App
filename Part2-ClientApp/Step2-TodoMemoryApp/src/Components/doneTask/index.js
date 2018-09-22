@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -52,21 +50,6 @@ class Todolist extends React.Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
-        const { done } = this.state;
-        this.setState({ done: !done });
-
-        const record = {
-            id: id,
-            title: title,
-            desc: desc,
-            done: !done,
-        }
-
-        //Call Update-ToDo action
-        this.props.updateToDo(record);
-    }
-
     render() {
         const { classes } = this.props;
         const { expanded } = this.state;
@@ -107,8 +90,8 @@ class Todolist extends React.Component {
                                                     <Grid container className={classes.todoPanel}>
                                                         <Grid item xs={2} className={classes.checkboxGrid}>
                                                             <div class="round">
-                                                                <input type="checkbox" id={item.id} checked={item.done} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
-                                                                <label htmlFor={item.id}></label>
+                                                                <input type="checkbox" id="checkbox" />
+                                                                <label for="checkbox"></label>
                                                             </div>
 
                                                         </Grid>
@@ -181,6 +164,6 @@ function mapStateToProps(data) {
     }
 }
 
-export default connect(mapStateToProps,  { updateToDo })(withStyles(styles)(Todolist));
+export default connect(mapStateToProps, null)(withStyles(styles)(Todolist));
 
 // export default withStyles(styles)(Todolist);
