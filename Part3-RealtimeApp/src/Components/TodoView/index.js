@@ -31,7 +31,7 @@ class Todoview extends Component {
             done: false,
             searchText: '',
         }
-        // console.log('moment date is: ', moment().format('ll'))
+        
         // console.log('Store data is : ', this .props.data)
         this.searchHandler = this.searchHandler.bind(this);
     }
