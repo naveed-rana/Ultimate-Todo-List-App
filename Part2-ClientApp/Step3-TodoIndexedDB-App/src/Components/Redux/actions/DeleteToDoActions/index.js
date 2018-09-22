@@ -1,11 +1,18 @@
+import db from '../../../config/db';
+
 export const REMOVE_TODO = 'REMOVE_TODO';
 
-//Call Reducer
-
-export function removeToDo(data) {
-    // alert('del action func')
-    return {
-        type: REMOVE_TODO,
-        payload: data
-    }
+//Remove data from indexedDB
+export function removeToDo(id) {
+    return (dispatch) => {
+        db.table('todos')
+            .delete(id)
+            .then(() => {
+                dispatch({
+                    //Call Reducer
+                    type: REMOVE_TODO,
+                    payload: id
+                });
+            });
+    };
 }
