@@ -38,7 +38,7 @@ export const mailFolderListItems = (
       </ListItemIcon>
       <ListItemText primary="Done Tasks" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="/AdNewToDo">
       <ListItemIcon>
         <img src={adNewIcon} alt="No Icon" />
       </ListItemIcon>

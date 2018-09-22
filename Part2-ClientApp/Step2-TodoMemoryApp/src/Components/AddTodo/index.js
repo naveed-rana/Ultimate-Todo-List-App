@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -39,17 +41,18 @@ class addTodo extends Component {
     saveTodo = (e) => {
         e.preventDefault();
 
-        // Get currunt date 
-        var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        var today = new Date();
-        var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+        // // Get currunt date 
+        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        // var today = new Date();
+        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
        
         const record = {
             id: Math.random() + 1,
             title: this.state.title,
             desc: this.state.desc,
             done: this.state.done,
-            createAt: myDate
+            // format (sep 22, 2018)
+            createAt: moment().format('ll')
         }
         console.log('Add Todo Record is: ', record);
 

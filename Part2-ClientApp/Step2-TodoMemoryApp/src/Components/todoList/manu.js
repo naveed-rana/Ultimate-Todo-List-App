@@ -45,6 +45,7 @@ class OptionsMenu extends React.Component {
   _DeleteHandler = () => {
     // console.log('delete id Is: ', id);
     this.props.removeToDo(this.props.row.id);
+    this.setState({ anchorEl: null });
   }
 
 
@@ -84,7 +85,7 @@ class OptionsMenu extends React.Component {
           <MoreVertIcon className="some" />
         </IconButton>
         <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
-          <Link to={`/update/${row.id}`}><MenuItem className="some">Edit</MenuItem></Link>
+          <Link to={`/update/${row.id}`} style={{textDecoration: 'none'}}><MenuItem className="some">Edit</MenuItem></Link>
           <MenuItem className="some" onClick={ this.handleClickOpen}>Delete</MenuItem>
         </Menu>
 

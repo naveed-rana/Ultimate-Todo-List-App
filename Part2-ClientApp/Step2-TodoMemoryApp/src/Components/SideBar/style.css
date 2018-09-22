@@ -37,6 +37,7 @@
 
 .link-list {
     text-decoration: none;
+    /* font-family: 'Raleway', sans-serif !important; */
 }
 
 .mySearch-field {
@@ -52,4 +53,7 @@
 .addNewList {
     color: blue;
     text-Decoration: none;
+}
+.MuiTypography-subheading-174{
+    font-family: 'Raleway', sans-serif !important;
 }

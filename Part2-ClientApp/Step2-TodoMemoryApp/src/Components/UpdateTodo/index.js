@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
 
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -20,7 +22,8 @@ class Update extends Component {
         this.state = {
 
         }
-        console.log('update id Is: ', this.props.match.params.id);
+        // console.log('update id Is: ', this.props.match.params.id);
+        console.log('store dATA' , this.props.data);
     }
 
     updateTodo = (e) => {
@@ -28,9 +31,11 @@ class Update extends Component {
         const record = {
             id: this.props.match.params.id,
             title: e.target.title.value,
-            desc: e.target.desc.value
+            desc: e.target.desc.value,
+            done: e.target.done.value,
+            createAt: moment().format('ll')
         }
-        console.log('Update Todo Record is: ', record);
+        // console.log('Update Todo Record is: ', record);
 
         //Call Update-ToDo action
         this.props.updateToDo(record);
@@ -64,11 +69,11 @@ class Update extends Component {
 
                         {todos.map((item, index) => {
                             if (item.id == editID) {
-
                                 return (
                                     <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
                                         <div className="headDiv-fields">
-                                            <strong>Title:</strong>
+                                        <input type="hidden" value={item.done} name="done" />
+                                            <strong>Title: {item.done}</strong>
                                             <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} className="myInput-field" /></Grid>
                                             <br />
                                             <strong>Description:</strong>

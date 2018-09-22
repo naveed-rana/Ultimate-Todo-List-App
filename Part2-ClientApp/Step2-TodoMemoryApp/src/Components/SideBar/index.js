@@ -50,8 +50,6 @@ class SideBar extends Component {
                         className={classNames(classes.avatar, classes.bigAvatar)}
                     />
                 </Grid>
-
-
                 <Grid item sm={12}>
                     <input type="text" placeholder="Search" name="searchText" onChange={this.props.searchHandler} className="mySearch-field" />
                 </Grid>

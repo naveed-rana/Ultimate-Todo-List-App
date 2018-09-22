@@ -6,7 +6,7 @@
     /* padding: 74.4px 0px; */
     padding-top: 4.17%;
     min-height: 501px;
-    height: 100vh;
+    height: 91.3vh;
     overflow: hidden !important;
 }
 .welcome-heading {
@@ -33,9 +33,9 @@
 }
 .Facebook-text{
     color:#ff3366;
-    margin-left: 60px;
+    /* margin-left: 60px; */
     font-family: 'Raleway', sans-serif;
-    text-align: right;
+    /* text-align: right; */
 }
 .mail-btn{
     width: 340px !important;

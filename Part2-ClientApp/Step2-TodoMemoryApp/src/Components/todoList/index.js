@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
 
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -61,6 +63,7 @@ class Todolist extends React.Component {
             title: title,
             desc: desc,
             done: !done,
+            createAt: moment().format('ll')
         }
 
         //Call Update-ToDo action
@@ -106,7 +109,7 @@ class Todolist extends React.Component {
 
                                                     <Grid container className={classes.todoPanel}>
                                                         <Grid item xs={2} className={classes.checkboxGrid}>
-                                                            <div class="round">
+                                                            <div className="round">
                                                                 <input type="checkbox" id={item.id} checked={item.done} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
                                                                 <label htmlFor={item.id}></label>
                                                             </div>

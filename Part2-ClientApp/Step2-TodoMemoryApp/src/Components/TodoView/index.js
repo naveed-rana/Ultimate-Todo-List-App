@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
 
-
+import moment from 'moment';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -31,14 +31,15 @@ class Todoview extends Component {
             done: false,
             searchText: '',
         }
+        // console.log('moment date is: ', moment().format('ll'))
         // console.log('Store data is : ', this .props.data)
         this.searchHandler = this.searchHandler.bind(this);
     }
 
     
     searchHandler(event) {
-        console.log('search called');
-        console.log('search text is : ', event.target.value);
+        // console.log('search called');
+        // console.log('search text is : ', event.target.value);
         this.setState({ searchText: event.target.value });
     }
 
@@ -65,7 +66,8 @@ class Todoview extends Component {
             id: id,
             title: title,
             desc: desc,
-            done: !done
+            done: !done,
+            createAt: moment().format('ll')
         }
 
         //Call Update-ToDo action
@@ -82,7 +84,7 @@ class Todoview extends Component {
                 <Hidden only={['sm', 'xs']}>
                     <div className={classes.root}>
                         <Grid container>
-                            <Grid item sm={3}>
+                            <Grid item sm={3} style={{borderRight: "1px solid lightgrey", height:'622px'}}>
                                 <SideBar searchHandler={this.searchHandler} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} >

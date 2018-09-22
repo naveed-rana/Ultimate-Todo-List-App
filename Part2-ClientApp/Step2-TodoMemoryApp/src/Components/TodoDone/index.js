@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
 
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -50,7 +52,8 @@ class TodoDone extends Component {
             id: id,
             title: title,
             desc: desc,
-            done: !done
+            done: !done,
+            createAt: moment().format('ll')
         }
 
         //Call Update-ToDo action
