@@ -1,21 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { removeToDo } from '../Redux/actions/DeleteToDoActions';
+
+//pop up
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button'
+
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import MenuList from '@material-ui/core/MenuList';
 import { styles } from './style'
-import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 
-const ITEM_HEIGHT = 60;
+// const ITEM_HEIGHT = 60;
 
 class OptionsMenu extends React.Component {
-  state = {
-    anchorEl: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      anchorEl: null,
+      open: false,
+    }
+    console.log("props at options file", this.props.row);
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -24,12 +39,37 @@ class OptionsMenu extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
-  
+
+
+
+  _DeleteHandler = () => {
+    // console.log('delete id Is: ', id);
+    this.props.removeToDo(this.props.row.id);
+    this.setState({ anchorEl: null });
+  }
+
+
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  // handleClose = () => {
+  //   this.props.startUserAdDelete({ id: this.props.ad._id });
+  //   this.setState({ open: false });
+  // };
+
+  close = () => {
+    this.setState({ open: false });
+  }
+
+
 
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    const { classes } = this.props;
+    // const { classes } = this.props;
+    const row = this.props.row;
 
     return (
       <div className="some">
@@ -38,16 +78,43 @@ class OptionsMenu extends React.Component {
           aria-owns={open ? 'long-menu' : null}
           aria-haspopup="true"
           onClick={this.handleClick}
-          className= "some"
-          
+          className="some"
+
         >
 
           <MoreVertIcon className="some" />
         </IconButton>
- <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
-              <MenuItem className="some" onClick={this.handleClose}>Edit</MenuItem>
-              <MenuItem className="some" onClick={this.handleClose}>Delete</MenuItem>
-            </Menu>
+        <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
+          <Link to={`/update/${row.id}`} style={{textDecoration: 'none'}}><MenuItem className="some">Edit</MenuItem></Link>
+          <MenuItem className="some" onClick={ this.handleClickOpen}>Delete</MenuItem>
+        </Menu>
+
+        {/* pop up */}
+
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Confirmations</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Confirmations! after delete your task permanently delete from your list,Are you sure you want to delete?
+                            </DialogContentText>
+          </DialogContent>
+
+          <DialogActions>
+            <Button onClick={this.close} color="primary">
+              Cancel
+                          </Button>
+            <Button onClick={this._DeleteHandler} color="primary">
+              Delete
+                             </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* end pop up */}
+
       </div>
     );
   }
@@ -56,4 +123,6 @@ OptionsMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(OptionsMenu);
+// export default withStyles(styles)(OptionsMenu);
+
+export default connect(null, { removeToDo })(withStyles(styles)(OptionsMenu));

@@ -3,9 +3,10 @@
     width: 100%;
     background: url('./icons/desktop/bgimage.png');
     height: auto;
+    /* padding: 74.4px 0px; */
     padding-top: 4.17%;
     min-height: 501px;
-    height: 100vh;
+    height: 91.3vh;
     overflow: hidden !important;
 }
 .welcome-heading {
@@ -32,9 +33,9 @@
 }
 .Facebook-text{
     color:#ff3366;
-    margin-left: 60px;
+    /* margin-left: 60px; */
     font-family: 'Raleway', sans-serif;
-    text-align: right;
+    /* text-align: right; */
 }
 .mail-btn{
     width: 340px !important;
@@ -70,4 +71,14 @@
         font-size: 11px;
     }
 }
-
+/*Low resulation mobile landscapes*/
+/* @media (min-width: 481px) and (max-width: 767px) {
+    .mail-btn{
+        width: 275px !important;
+        margin-top: 100px !important;
+    }
+    .email-text{
+        margin-left: 37px;
+        font-size: 11px;
+    }
+} */

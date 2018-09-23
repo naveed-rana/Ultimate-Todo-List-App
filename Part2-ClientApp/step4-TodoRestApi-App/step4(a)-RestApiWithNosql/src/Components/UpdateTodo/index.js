@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { updateToDo } from '../Redux/actions/UpdateToDoActions';
+
+import moment from 'moment';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,43 +15,38 @@ import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
 
-import { updateFunction } from '../Redux/actions/UpdateToDoActions'
 
 class Update extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            desc: '',
-        }
-        console.log('Update id is: ', this.props.match.params.id);
-        console.log('update form store ', this.props.data);
 
+        }
+        // console.log('update id Is: ', this.props.match.params.id);
+        console.log('store dATA' , this.props.data);
     }
 
-    //////////
-    // 1: "saveTodo" is a arrow function to save the record of todo item into record Object
-    // 2: Then "record" Object pass to the add todo action to save the data into store of redux throuhg reducer
-    //////////
-    updateTodo = (e) => {
+    updateTodo = (e,data) => {
         e.preventDefault();
-        console.log('ok');
         const record = {
             id: this.props.match.params.id,
             title: e.target.title.value,
-            desc: e.target.desc.value
+            desc: e.target.desc.value,
+            done: data.done,
+            createAt: data.createAt
         }
-        console.log('Update Todo Record is: ', record);
+        // console.log('Update Todo Record is: ', record);
 
         //Call Update-ToDo action
-        this.props.updateFunction(record);
+        this.props.updateToDo(record);
 
         // Reset input fields of form
         this.updateToDoForm.reset();
 
         // redirect the path 
-        this.props.history.push("/todo_view");
+        this.props.history.push("/todoList");
     }
+
 
     render() {
         const { classes } = this.props;
@@ -67,17 +66,17 @@ class Update extends Component {
                                 <Typography variant="display3" gutterBottom className="title">Update Todo Item</Typography>
                             </div>
                         </Grid>
+
                         {todos.map((item, index) => {
                             if (item.id == editID) {
-
                                 return (
-                                    <form onSubmit={this.updateTodo} ref={(el) => this.updateToDoForm = el} className={classes.container} noValidate autoComplete="off">
+                                    <form onSubmit={(e)=>this.updateTodo(e,item)} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
                                         <div className="headDiv-fields">
                                             <strong>Title:</strong>
-                                            <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} onChange={this.onChangeHandler} className="myInput-field" /></Grid>
+                                            <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} className="myInput-field" /></Grid>
                                             <br />
                                             <strong>Description:</strong>
-                                            <Grid item xs={11} sm={10}><textarea name="desc" onChange={this.onChangeHandler} className="myTextarea-field" rows={8}>{item.desc}</textarea> </Grid>
+                                            <Grid item xs={11} sm={10}><textarea name="desc" defaultValue={item.desc} className="myTextarea-field" rows={8}></textarea> </Grid>
 
                                             <Grid item sm={12}>
                                                 <button type="submit" className="addBtn"> Update Your Thing</button>
@@ -102,17 +101,18 @@ Update.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-
 function mapStateToProps(data) {
     return {
-        data: data.AddTodo.todoList
+        data: data.TodoApp.todoList
     }
 }
+
+
 
 //////////
 // Export this component with the style.js file
 //////////
 
-// export default withStyles(styles)(addTodo);
+// export default withStyles(styles)(Update);
 
-export default connect(mapStateToProps, { updateFunction })(withStyles(styles)(Update));
+export default withRouter(connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update)));

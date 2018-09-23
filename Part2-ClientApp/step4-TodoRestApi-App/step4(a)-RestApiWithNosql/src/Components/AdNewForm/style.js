@@ -53,6 +53,7 @@ export const styles = theme => ({
     },
     underline: {
       '&:after': {
+        // The MUI source seems to use this but it doesn't work
         borderBottom: '2px solid white',
       }
     },

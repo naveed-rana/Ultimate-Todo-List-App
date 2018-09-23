@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+// import { searchToDo } from '../Redux/actions/SearchToDoActions';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -18,13 +20,6 @@ import doneIcon from './icon/calendar (2).png';
 import commingTask from './icon/calendar (6).png';
 import myDayIcon from './icon/calendar (7).png';
 
-
-
-// This component will show a Side bar on the page where all the toDos have been shown
-// on desktop screen
-// On mobile or tablet screen it will hide
-
-
 class SideBar extends Component {
     constructor(props) {
         super(props);
@@ -35,6 +30,11 @@ class SideBar extends Component {
 
     }
 
+
+    // searchText = (e) => {
+    //     this.props.searchToDo(e.target.value);
+    // }
+
     handleListItemClick = (event, index) => {
         this.setState({ selectedIndex: index });
     };
@@ -42,23 +42,19 @@ class SideBar extends Component {
     render() {
         const { classes } = this.props;
         return (
+        <div className="main-container-navbar">
             <Grid container className="user">
                 <Grid item sm={12} align="center">
-                    
-                    {/* User Icon */}
                     <Avatar
-                        alt="No Icon"
+                        alt="Abaid Malik"
                         src={profile}
                         className={classNames(classes.avatar, classes.bigAvatar)}
                     />
                 </Grid>
-
-                {/* textField for Search toDos */}
                 <Grid item sm={12}>
-                    <input type="text" placeholder="Search" className="mySearch-field" />
+                    <input type="text" placeholder="Search" name="searchText" onChange={this.props.searchHandler} className="mySearch-field" />
                 </Grid>
 
-                {/* Tabs to navigete and filter ToDos */}
                 <Grid item sm={12}>
                     <div className={classes.root}>
                         <List component="nav">
@@ -75,34 +71,37 @@ class SideBar extends Component {
                                 </ListItem>
                             </Link>
 
+                            <Link to="/todoDone" className="link-list" >
+                                <ListItem
+                                    button
+                                    selected={this.state.selectedIndex === 2}
+                                    onClick={event => this.handleListItemClick(event, 2)}
+                                >
+                                    <ListItemIcon>
+                                        <img src={doneIcon} alt="No Icon" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Done Tasks" />
+                                </ListItem>
+                            </Link>
 
-                            <ListItem
-                                button
-                                selected={this.state.selectedIndex === 2}
-                                onClick={event => this.handleListItemClick(event, 2)}
-                            >
-                                <ListItemIcon>
-                                    <img src={doneIcon} alt="No Icon" />
-                                </ListItemIcon>
-                                <ListItemText primary="Done Tasks" />
-                            </ListItem>
+                            <Link to="/todoComing" className="link-list" >
+                                <ListItem
+                                    button
+                                    selected={this.state.selectedIndex === 3}
+                                    onClick={event => this.handleListItemClick(event, 3)}
+                                >
+                                    <ListItemIcon>
+                                        <img src={commingTask} alt="No Icon" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Coming Tasks" />
+                                </ListItem>
+                            </Link>
 
-                            <ListItem
-                                button
-                                selected={this.state.selectedIndex === 3}
-                                onClick={event => this.handleListItemClick(event, 3)}
-                            >
-                                <ListItemIcon>
-                                    <img src={commingTask} alt="No Icon" />
-                                </ListItemIcon>
-                                <ListItemText primary="Coming Tasks" />
-                            </ListItem>
                             <br />
                             <Divider />
                         </List>
 
-                        {/* This button is for add a New ToDo. */}
-                        {/* This will redirect to add New ToDo form */}
+
                         <Link to="/AdNewToDo" className="addNewList" >
 
                             <Grid item xs={12} className={classes.btmGrid}>
@@ -117,6 +116,7 @@ class SideBar extends Component {
                 </Grid>
 
             </Grid>
+            </div>
         );
     }
 
@@ -130,5 +130,6 @@ SideBar.propTypes = {
 // Export this component with the style.js file
 //////////
 
-export default withStyles(styles)(SideBar);
+// export default connect(NULL, { searchToDo })(withStyles(styles)(SideBar));
 
+export default withStyles(styles)(SideBar);

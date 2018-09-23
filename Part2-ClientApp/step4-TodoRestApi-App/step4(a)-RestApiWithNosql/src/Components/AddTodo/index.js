@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
+
 import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
+
 import { addToDo } from '../Redux/actions/AddToDoActions'
-
-
-//This component have a form for desktop to add new ToDos
 
 class addTodo extends Component {
     constructor(props) {
@@ -18,12 +22,11 @@ class addTodo extends Component {
         this.state = {
             title: '',
             desc: '',
+            done: false,
         }
-    }
 
-    ///////
-    //  "onChangeHandler" collects the values from input and set to the state
-    /////
+
+    }
 
     onChangeHandler = (e) => {
         let name = e.target.name;
@@ -37,10 +40,19 @@ class addTodo extends Component {
     //////////
     saveTodo = (e) => {
         e.preventDefault();
+
+        // // Get currunt date 
+        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        // var today = new Date();
+        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+       
         const record = {
             id: Math.random() + 1,
             title: this.state.title,
-            desc: this.state.desc
+            desc: this.state.desc,
+            done: this.state.done,
+            // format (sep 22, 2018)
+            createAt: moment().format('ll')
         }
         console.log('Add Todo Record is: ', record);
 
@@ -48,21 +60,23 @@ class addTodo extends Component {
         this.props.addToDo(record);
 
         // Reset input fields of form
-        this.addToDoForm.reset();
+        // this.addToDoForm.reset();
 
         // redirect the path 
-        this.props.history.push("/todo_view");
+        this.props.history.push("/todoList");
     }
 
     render() {
+        {/* Desktop Design Starts */}
         const { classes } = this.props;
         return (
             <div className={classes.root}>
                 <Grid container>
-                    {/* "SideBar" component shows at the left side of desktop screen */}
-                    <Grid item sm={3}>
-                        <SideBar />
-                    </Grid>
+                    <Hidden only={['sm', 'xs']}>
+                        <Grid item sm={3}>
+                            <SideBar />
+                        </Grid>
+                    </Hidden>
                     <Grid item xs={12} sm={12} md={9} >
                         <Grid item xs={12} sm={12} md={12} >
                             <div className="addHead-bg">
@@ -72,16 +86,10 @@ class addTodo extends Component {
                         <form onSubmit={this.saveTodo} ref={(el) => this.addToDoForm = el} className={classes.container} noValidate autoComplete="off">
                             <div className="headDiv-fields">
                                 <strong>Title:</strong>
-                                <Grid item xs={11} sm={10}>
-                                    <input type="text" name="title" onChange={this.onChangeHandler} className="myInput-field" />
-                                </Grid>
+                                <Grid item xs={11} sm={10}><input type="text" name="title" onChange={this.onChangeHandler} className="myInput-field" /></Grid>
                                 <br />
                                 <strong>Description:</strong>
-
-                                <Grid item xs={11} sm={10}>
-                                    <textarea name="desc" onChange={this.onChangeHandler} className="myTextarea-field" rows={8}>
-                                    </textarea>
-                                </Grid>
+                                <Grid item xs={11} sm={10}><textarea name="desc" onChange={this.onChangeHandler} className="myTextarea-field" rows={8}></textarea> </Grid>
 
                                 <Grid item sm={12}>
                                     <button type="submit" className="addBtn"> Add Your Thing</button>
@@ -104,6 +112,8 @@ addTodo.propTypes = {
 // Export this component with the style.js file
 //////////
 
+// export default withStyles(styles)(addTodo);
 
+// export default connect(null, { addToDo })(withStyles(styles)(addTodo));
 
-export default connect(null, { addToDo })(withStyles(styles)(addTodo));
+export default withRouter(connect(null, { addToDo })(withStyles(styles)(addTodo)));

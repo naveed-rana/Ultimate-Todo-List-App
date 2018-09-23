@@ -4,6 +4,7 @@ export const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
+    // backgroundColor: "#ff3366",
    
   },
   appFrame: {
@@ -85,7 +86,8 @@ export const styles = theme => ({
     boxShadow: "none !important"
   },
   btn: {
-    color: "white !important"
+    color: "white !important",
+    marginTop:"11px"
   },
   list: {
     marginTop: "20px"

@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateToDo } from '../Redux/actions/UpdateToDoActions';
+
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -18,8 +23,6 @@ import Divider from '@material-ui/core/Divider'
 import { Hidden } from '@material-ui/core';
 import ToDoListDeskTop from '../TodoView'
 
-// This component will show all the ToDos
-
 class Todolist extends React.Component {
     constructor(props) {
         super(props);
@@ -30,12 +33,12 @@ class Todolist extends React.Component {
             type: "hidden",
 
         };
+        // console.log('Store data is : ', this.props.data)
     }
 
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
     };
-
 
     handleChangeexpand = id => (event, expanded) => {
         console.log(event.target)
@@ -50,22 +53,39 @@ class Todolist extends React.Component {
             })
         }
     }
-    render() {
 
+    toggleCheck = (id, title, desc) => {
+        alert('check')
+        const { done } = this.state;
+        this.setState({ done: !done });
+
+        const record = {
+            id: id,
+            title: title,
+            desc: desc,
+            done: !done,
+            createAt: moment().format('ll')
+        }
+
+        //Call Update-ToDo action
+        this.props.updateToDo(record);
+    }
+
+    render() {
         const { classes } = this.props;
         const { expanded } = this.state;
+        const todos = this.props.data;
         return (
             <div>
-                {/* For desktops, It will render below component */}
+
                 <Hidden only={['sm', 'xs']}>
                     <ToDoListDeskTop />
                 </Hidden>
-
-
                 {/* Mobile & Tablet View Starts */}
                 <Hidden only={['md', 'lg', 'xl']}>
 
                     <div className={classes.root}>
+
                         <Grid container>
                             <Grid item xs={6}  >
                                 <div className={classes.DrawerGrid}>
@@ -79,55 +99,60 @@ class Todolist extends React.Component {
 
                             <Grid item xs={12}>
 
-                            {/* Expansion Panel to show more detail about toDo */}
-                                <ExpansionPanel expanded={expanded === 1}
-                                    onChange={this.handleChangeexpand(1)}
-                                    className={classes.todoItem}>
-                                    <ExpansionPanelSummary className={classes.expansionSummary}>
+                                {todos.length > 0 ?
+                                    todos.map((item, index) => {
+                                        return (
 
-                                        <Grid container className={classes.todoPanel}>
-                                            <Grid item xs={2} className={classes.checkboxGrid}>
-                                                <div class="round">
-                                                    <input type="checkbox" id="checkbox" />
-                                                    <label for="checkbox"></label>
-                                                </div>
+                                            <ExpansionPanel expanded={expanded === index}
+                                                onChange={this.handleChangeexpand(index)}
+                                                className={classes.todoItem} key={index}>
+                                                <ExpansionPanelSummary className={classes.expansionSummary}>
 
-                                            </Grid>
-                                            <Grid item xs={8}>
+                                                    <Grid container className={classes.todoPanel}>
+                                                        <Grid item xs={2} className={classes.checkboxGrid}>
+                                                            <div className="round">
+                                                                <input type="checkbox" id={item.id} checked={item.done} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                <label htmlFor={item.id}></label>
+                                                            </div>
 
-                                                <Typography className={classes.description}>Expansion Panel</Typography>
+                                                        </Grid>
+                                                        <Grid item xs={8}>
 
-                                            </Grid>
-                                            <Grid className="some" item xs={2} >
-                                                <div className="some">
+                                                            <Typography className={classes.description}>{item.title}</Typography>
 
-                                                    {/* To show a manu on click on manu icon at right side of a ToDo */}
-                                                    <Manu className="some" />
-                                                </div>
-                                            </Grid>
-                                        </Grid>
+                                                        </Grid>
+                                                        {/* className={classes.manus} */}
+                                                        <Grid className="some" item xs={2} >
+                                                            <div className="some">
+                                                                <Manu className="some" keys={index} row={item} />
+                                                            </div>
+                                                        </Grid>
+                                                    </Grid>
 
-                                    </ExpansionPanelSummary>
-                                    <Divider />
-                                    <ExpansionPanelDetails>
-                                        <Grid container>
-                                            <Grid item xs={12}>
+                                                </ExpansionPanelSummary>
+                                                <Divider />
+                                                <ExpansionPanelDetails>
+                                                    <Grid container>
+                                                        <Grid item xs={12}>
 
-                                                {/* Show the Description of ToDo */}
-                                                <Typography variant="caption" className={classes.description}>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                                    sit amet blandit leo lobortis eget.
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={10} md={11}>
+                                                            <Typography variant="caption" className={classes.description}>
+                                                                {item.desc}
+                                                            </Typography>
+                                                        </Grid>
+                                                        <Grid item xs={10} md={11}>
 
-                                                <Typography variant="caption" align="right">
-                                                    June 20, 2020
-                                                    </Typography>
-                                            </Grid>
-                                        </Grid>
-                                    </ExpansionPanelDetails>
-                                </ExpansionPanel>
+                                                            <Typography variant="caption" align="right">
+                                                                {item.createAt}
+                                                            </Typography>
+                                                        </Grid>
+                                                    </Grid>
+                                                </ExpansionPanelDetails>
+                                            </ExpansionPanel>
+
+                                        )
+                                    })
+                                    : <div><center><hr /><h2 style={{ color: 'lightgray' }}>Empty task list</h2></center></div>
+                                }
 
                             </Grid>
                             <Grid item xs={12} >
@@ -154,4 +179,12 @@ Todolist.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Todolist);
+function mapStateToProps(data) {
+    return {
+        data: data.TodoApp.todoList
+    }
+}
+
+export default connect(mapStateToProps,  { updateToDo })(withStyles(styles)(Todolist));
+
+// export default withStyles(styles)(Todolist);

@@ -58,6 +58,7 @@
 .addBtn{
     margin-top: 15px;
     padding: 12px 18px;
+    /* background: none; */
     background-Color: #ff3366;
     color: #ffffff;
     border-radius: 21px;

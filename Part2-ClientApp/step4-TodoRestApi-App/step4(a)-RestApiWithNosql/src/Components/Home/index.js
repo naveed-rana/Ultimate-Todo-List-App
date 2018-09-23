@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { styles } from "./style";
 import PropTypes from 'prop-types';
@@ -9,12 +9,9 @@ import Mobilelogo from './icons/mobile/main-logo.png';
 import DesktopLogo from './icons/desktop/main-logo.png';
 import Fbicon from './icons/desktop/facebook.png';
 import Mailicon from './icons/desktop/mail.png';
+import ArrowIcon from './icons/right-arrow.png';
 import { Link } from 'react-router-dom';
 import "./style.css";
-
-
-
-//this component will show a first Welcome page both on mobile and desktop
 
 function Home(props) {
     const { classes } = props;
@@ -33,28 +30,21 @@ function Home(props) {
                         <Grid item xs={12}>
                             <p className="welcome-text">Create an account to save your tasks and access them anywhere. Its FREE Forever </p>
                         </Grid>
+                        
+                        {/* Continue  */}
                         <Grid item xs={12}>
-                            {/* Continue with facebook button */}
+                            <Link to="/todoList" style={{textDecoration: 'none'}}>
                                 <Button variant="extendedFab" aria-label="Delete" className="Facebook-btn">
-                                    <img src={Fbicon} alt="Facebook Icon" />
-                                    <span className="Facebook-text">Continue With facebook</span>
-                                </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            {/* Continue With Email Button */}
-                            <Link to="/login" style={{textDecoration: 'none'}}>
-                                <Button variant="extendedFab" aria-label="Delete" className="mail-btn">
-                                    <img src={Mailicon} alt="Facebook Icon" />
-                                    <span className="email-text">Continue With Email</span>
+                                    <span className="Facebook-text">Continue</span>
+                                    <img src={ArrowIcon} alt="Arrow Icon" style={{marginLeft:'12px'}}/>
                                 </Button>
                             </Link>
                         </Grid>
+                       
                     </Grid>
                 </div>
             </Hidden>
             {/* Desktop Design Ends */}
-
-
             {/* Mobile & Tablet View Starts */}
             <Hidden only={['md', 'lg', 'xl']}>
                 <div className={classes.root}>
@@ -68,19 +58,25 @@ function Home(props) {
                         <Grid item xs={12}>
                             <p className={classes.welcomeMsg}>Create an account to save your tasks <br /> and access them any where. Its FREE <br /> forever </p>
                         </Grid>
-                        <Grid item xs={12}>
-                            {/* Continue with facebook button */}
-                                <Button variant="extendedFab" aria-label="Delete" className="Facebook-btn">
-                                    <img src={Fbicon} alt="Facebook Icon" />
-                                    <span className="Facebook-text">Continue With facebook</span>
-                                </Button>
+                        {/* <Grid item xs={12}>
+                            <Button variant="extendedFab" aria-label="Delete" className="Facebook-btn">
+                                <img src={Fbicon} alt="Facebook Icon" />
+                                <span className="Facebook-text">Continue With facebook</span>
+                            </Button>
                         </Grid>
                         <Grid item xs={12}>
-                            {/* Continue With Email Button */}
-                            <Link to="/login" style={{textDecoration: 'none'}}>
+                            <Link to="/login" style={{ textDecoration: 'none' }}>
                                 <Button variant="extendedFab" aria-label="Delete" className="mail-btn">
                                     <img src={Mailicon} alt="Facebook Icon" />
                                     <span className="email-text">Continue With Email</span>
+                                </Button>
+                            </Link>
+                        </Grid> */}
+                        <Grid item xs={12}>
+                            <Link to="/todoList" style={{textDecoration: 'none'}}>
+                                <Button variant="extendedFab" aria-label="Delete" className="Facebook-btn">
+                                    <span className="Facebook-text">Continue</span>
+                                    <img src={ArrowIcon} alt="Arrow Icon" style={{marginLeft:'12px'}}/>
                                 </Button>
                             </Link>
                         </Grid>
@@ -92,11 +88,7 @@ function Home(props) {
 
     );
 }
-
-
 Home.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-
-
 export default withStyles(styles)(Home);

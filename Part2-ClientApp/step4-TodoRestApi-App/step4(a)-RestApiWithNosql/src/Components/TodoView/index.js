@@ -1,5 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { updateToDo } from '../Redux/actions/UpdateToDoActions';
+
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -13,28 +17,32 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
-import { removeToDo } from '../Redux/actions/DeleteToDoActions'
 
-// This component show all the ToDos on desktop view
+function searchingFor(searchText) {
+    return function (x) {
+        return x.title.toLowerCase().includes(searchText.toLowerCase()) || !searchText;
+    }
+}
+
 class Todoview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            delID: '',
+            done: false,
+            searchText: '',
         }
-        console.log('Store data is : ', this.props.data)
+        // console.log('moment date is: ', moment().format('ll'))
+        // console.log('Store data is : ', this .props.data)
+        this.searchHandler = this.searchHandler.bind(this);
     }
 
-    assignDel_ID = (id) => {
-        // console.log('Delete id is: ', id);
-        // this.setState({ delID: id });
-
-        this.props.removeToDo(id);
+    
+    searchHandler(event) {
+        // console.log('search called');
+        // console.log('search text is : ', event.target.value);
+        this.setState({ searchText: event.target.value });
     }
 
-    updateTodo = (id) => {
-
-    }
 
     handleChangeexpand = id => (event, expanded) => {
         console.log(event.target)
@@ -50,10 +58,24 @@ class Todoview extends Component {
         }
     }
 
+    toggleCheck = (id, title, desc,done,time) => {
+    
+        const record = {
+            id: id,
+            title: title,
+            desc: desc,
+            done: !done,
+            createAt:time
+        }
+
+        //Call Update-ToDo action
+        this.props.updateToDo(record);
+    }
+
     render() {
         const { classes } = this.props;
         const { expanded } = this.state;
-
+        const todos = this.props.data;
         return (
             <Fragment>
                 {/* Desktop Design Image */}
@@ -61,7 +83,7 @@ class Todoview extends Component {
                     <div className={classes.root}>
                         <Grid container>
                             <Grid item sm={3}>
-                                <SideBar />
+                                <SideBar searchHandler={this.searchHandler} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} >
                                 <Grid item xs={12} sm={12} md={12} >
@@ -69,58 +91,70 @@ class Todoview extends Component {
                                         <Typography variant="display3" gutterBottom className="title">My Day</Typography>
                                     </div>
                                 </Grid>
+
                                 <Grid item xs={12}>
+                                    {todos.length > 0 ?
+                                        todos.filter(searchingFor(this.state.searchText)).map((item, index) => {
+                                            return (
 
-                                    <ExpansionPanel expanded={expanded === 1}
-                                        onChange={this.handleChangeexpand(1)}
-                                        className={classes.todoItem}>
-                                        <ExpansionPanelSummary className={classes.expansionSummary}>
+                                                <ExpansionPanel expanded={expanded === index}
+                                                    onChange={this.handleChangeexpand(index)}
+                                                    className={classes.todoItem} key={index}>
+                                                    <ExpansionPanelSummary className={classes.expansionSummary}>
 
-                                            <Grid container className={classes.todoPanel}>
-                                                <Grid item md={1} className={classes.checkboxGrid}>
-                                                    <div class="round">
-                                                        <input type="checkbox" id="checkbox" />
-                                                        <label for="checkbox"></label>
-                                                    </div>
+                                                        <Grid container className={classes.todoPanel}>
+                                                            <Grid item md={1} className={classes.checkboxGrid}>
+                                                                <div className="round">
+                                                                    <input type="checkbox" id={item.id} checked={item.done} onChange={() =>  this.toggleCheck(item.id, item.title, item.desc,item.done,item.createAt) } />
+                                                                    <label htmlFor={item.id}></label>
+                                                                </div>
 
-                                                </Grid>
-                                                <Grid item md={10} align="left">
+                                                            </Grid>
+                                                            <Grid item md={10} align="left">
 
-                                                    <Typography className={classes.description}>Expansion Panel</Typography>
+                                                                <Typography className={classes.description}>{item.title}</Typography>
 
-                                                </Grid>
-                                                <Grid className="some" item md={1} >
-                                                    <div className="some">
-                                                        <Manu className="some" />
-                                                    </div>
-                                                </Grid>
-                                            </Grid>
+                                                            </Grid>
+                                                            {/* className={classes.manus} */}
+                                                            <Grid className="some" item md={1} >
+                                                                <div className="some">
+                                                                    <Manu className="some" keys={index} row={item} />
+                                                                </div>
+                                                            </Grid>
+                                                        </Grid>
 
-                                        </ExpansionPanelSummary>
-                                        <Divider />
-                                        <ExpansionPanelDetails>
-                                            <Grid container>
-                                                <Grid item xs={12}>
-                                                    <Typography variant="caption" className={classes.description}>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                                        sit amet blandit leo lobortis eget.
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item xs={10} md={11}>
-                                                    <Typography variant="caption" align="right">
-                                                        June 20, 2020
-                                                    </Typography>
-                                                </Grid>
-                                            </Grid>
-                                        </ExpansionPanelDetails>
-                                    </ExpansionPanel>
+                                                    </ExpansionPanelSummary>
+                                                    <Divider />
+                                                    <ExpansionPanelDetails>
+                                                        <Grid container>
+                                                            <Grid item xs={12}>
+
+                                                                <Typography variant="caption" className={classes.description}>
+                                                                    {item.desc}
+                                                                </Typography>
+                                                            </Grid>
+                                                            <Grid item xs={10} md={11}>
+
+                                                                <Typography variant="caption" align="right">
+                                                                    {item.createAt}
+                                                                </Typography>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </ExpansionPanelDetails>
+                                                </ExpansionPanel>
+
+                                            )
+                                        })
+                                        : <div><center><h2 style={{ color: 'lightgray' }}>Empty task list</h2></center></div>
+                                    }
 
                                 </Grid>
 
-
                             </Grid>
                         </Grid>
+
                     </div>
+
                 </Hidden>
             </Fragment>
         );
@@ -132,18 +166,11 @@ Todoview.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-
 function mapStateToProps(data) {
     return {
-        data: data.AddTodo.todoList
+        data: data.TodoApp.todoList
     }
 }
 
 
-//////////
-// export this component with the style.js file
-//////////
-
-export default connect(mapStateToProps, { removeToDo })(withStyles(styles)(Todoview));
-
-// export default withStyles(styles)(Todoview);
+export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(Todoview));

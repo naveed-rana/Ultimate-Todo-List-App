@@ -27,7 +27,9 @@ export const styles = theme => ({
     extendedIcon: {
         marginRight: theme.spacing.unit,
     },
-   
+    btmGrid: {
+        // paddingBottom: "11% !important"
+    },
     logo: {
         paddingTop: "20%"
     },
