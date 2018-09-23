@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const REMOVE_TODO = 'REMOVE_TODO';
 
-//Remove data from indexedDB
+//Remove data from Mongoose
 export function removeToDo(id) {
     
     console.log(id);

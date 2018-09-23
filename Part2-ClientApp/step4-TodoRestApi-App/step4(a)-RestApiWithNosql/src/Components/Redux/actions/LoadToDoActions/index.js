@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export const LOAD_TODO = 'LOAD_TODO';
-
+//Load data from monoose
 export function loadTodo() {
     return (dispatch) => {
       axios.get(window.baseURL + "/todo/api/v1.0/tasks")
