@@ -1,0 +1,84 @@
+.main-container{
+    text-align: center;
+    width: 100%;
+    background: url('./icons/desktop/bgimage.png');
+    height: auto;
+    /* padding: 74.4px 0px; */
+    padding-top: 4.17%;
+    min-height: 501px;
+    height: 91.3vh;
+    overflow: hidden !important;
+}
+.welcome-heading {
+    font-family: 'Raleway', sans-serif;
+    font-size: 45px;
+    color: #fff;
+}
+.welcome-text{
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    text-align: center;
+    width: 302px;
+    margin: auto;
+    line-height: 22px;
+}
+.Facebook-btn{
+    background-color: white !important;
+    width: 340px !important;
+    height: auto !important;
+    padding: 11px 26px !important;
+    min-width: 48px !important;
+    border-radius: 30px !important;
+    margin-top: 50px !important;
+}
+.Facebook-text{
+    color:#ff3366;
+    /* margin-left: 60px; */
+    font-family: 'Raleway', sans-serif;
+    /* text-align: right; */
+}
+.mail-btn{
+    width: 340px !important;
+    background-color: white !important;
+    width: auto;
+    height: auto !important;
+    padding: 11px 26px !important;
+    min-width: 48px !important;
+    border-radius: 30px !important;
+    margin-top: 20px !important;
+}
+.email-text{
+    color:#ff3366;
+    margin-left: 88px;
+    font-family: 'Raleway', sans-serif;
+    text-align: right;
+}
+/*Most mobile phones portrait*/
+@media (min-width: 320px) and (max-width: 480px) {
+    .Facebook-btn {
+        width: 275px !important;
+        margin-top: 100px !important;
+    }
+    .Facebook-text {
+        margin-left: 37px;
+        font-size: 11px;
+    }
+    .mail-btn{
+        width: 275px !important;
+    }
+    .email-text{
+        margin-left: 37px;
+        font-size: 11px;
+    }
+}
+/*Low resulation mobile landscapes*/
+/* @media (min-width: 481px) and (max-width: 767px) {
+    .mail-btn{
+        width: 275px !important;
+        margin-top: 100px !important;
+    }
+    .email-text{
+        margin-left: 37px;
+        font-size: 11px;
+    }
+} */

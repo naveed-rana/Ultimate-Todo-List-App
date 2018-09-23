@@ -1,30 +1,23 @@
+import { toast } from 'react-toastify';
 import axios from 'axios';
-import {toast} from 'react-toastify';
-export const ADDTODO = 'ADDTODO';
 
-//Call Reducer
+export const ADD_TODO = 'ADD_TODO';
 
-function addToDo(data) {
-    return{
-        type:ADDTODO,
-        data
-    }
-}
 
-//Api Call
-
-export function startAddToDo(message) {
-    
+export function addToDo(data) {
     return (dispatch) => {
-
-        axios.post(window.baseURL+'/message/sendmessage',message).then((response=>{
-            toast.success(response.data);
-            dispatch(addToDo(response.data));
-        })).catch(err=>{
-            toast.error("Error occoured! while processing");
-            dispatch(addToDo(err));
-        });
+        axios.post(window.baseURL + "/todo/api/v1.0/tasks", data)
+        .then(() => {
+                // console.log(id)
+                // console.log(data)
+            toast.success("Successfully Added!");
+                dispatch({
+                    //Call Reducer
+                    type: ADD_TODO,
+                    payload: data
+                });
+            }).catch(() =>{
+                toast.error("Error Occored! Please Try Again Later");
+            })
     }
-
-
 }
