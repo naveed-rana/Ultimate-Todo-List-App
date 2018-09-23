@@ -45,7 +45,7 @@ class OptionsMenu extends React.Component {
   _DeleteHandler = () => {
     // console.log('delete id Is: ', id);
     this.props.removeToDo(this.props.row.id);
-    this.setState({ anchorEl: null });
+    this.setState({ open: false });
   }
 
 

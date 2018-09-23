@@ -4,12 +4,14 @@ import { UPDATE_TODO } from '../../actions/UpdateToDoActions';
 import { LOAD_TODO } from '../../actions/LoadToDoActions';
 
 const INITIAL_STATE = {
-    todoList: [],
-    // copyDta: []
+    todoList: []
 };
 
 function AddReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
+
+        // update the state by loading data from indexedDB, whenever render App Component
+        case LOAD_TODO: return { todoList: action.payload };
 
         case ADD_TODO:
             {
@@ -34,7 +36,7 @@ function AddReducer(state = INITIAL_STATE, action) {
                 // Take an id in the form of payload
                 ////////
                 let id = action.payload;
-                let newList = list.filter((item) => item.id !== id);
+                let newList = list.filter((item) => item.id != id);
                 return ({
                     ...state,
                     todoList: newList
@@ -49,24 +51,16 @@ function AddReducer(state = INITIAL_STATE, action) {
                 var index = updateState.findIndex((x) => x.id == id);
 
                 if (index > -1) {
-                    // "action.payload" object is coming from the update action 
+                    //////////
+                    // "action.payload" object is coming from the update todo action 
+                    //////////
+
                     updateState[index] = action.payload;
                 }
-
                 return ({
                     ...state,
                     todoList: updateState
                 });
-            }
-
-        case LOAD_TODO:
-            {
-                // console.log('fetch data from dexie is : ', action.data)
-                let loadData = action.payload;
-                return {
-                    ...state,
-                    todoList: loadData
-                }
             }
 
         // case SEARCH_TODO:

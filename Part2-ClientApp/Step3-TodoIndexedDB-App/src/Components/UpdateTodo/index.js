@@ -23,7 +23,7 @@ class Update extends Component {
 
         }
         // console.log('update id Is: ', this.props.match.params.id);
-        console.log('store dATA' , this.props.data);
+        // console.log('store dATA' , this.props.data);
     }
 
     updateTodo = (e,data) => {

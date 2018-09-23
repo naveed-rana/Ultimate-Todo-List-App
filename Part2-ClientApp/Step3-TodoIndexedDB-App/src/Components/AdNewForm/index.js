@@ -51,14 +51,14 @@ class AdNewTodo extends Component {
         // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
        
         const record = {
-            id: Math.random() + 1,
+            // id: Math.random() + 1,
             title: this.state.title,
             desc: this.state.desc,
             done: this.state.done,
             // format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        console.log('Add Todo Record is: ', record);
+        // console.log('Add new form Record is: ', record);
 
         //Call AddToDo action
         this.props.addToDo(record);

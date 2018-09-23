@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-import moment from 'moment';
-
+// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -35,19 +33,15 @@ class Todoview extends Component {
         // console.log('Store data is : ', this .props.data)
         this.searchHandler = this.searchHandler.bind(this);
     }
-
     
     searchHandler(event) {
-        // console.log('search called');
-        // console.log('search text is : ', event.target.value);
         this.setState({ searchText: event.target.value });
     }
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+        // console.log(event.target)
         if (event.target.classList.contains("some")) {
-
             return null
         } else {
 
@@ -58,14 +52,16 @@ class Todoview extends Component {
         }
     }
 
-    toggleCheck = (id, title, desc,done,time) => {
-    
+    toggleCheck = (item) => {
+        // const { done } = this.state;
+        // this.setState({ done: !done });
+
         const record = {
-            id: id,
-            title: title,
-            desc: desc,
-            done: !done,
-            createAt:time
+            id: item.id,
+            title: item.title,
+            desc: item.desc,
+            done: !item.done,
+            createAt: item.createAt
         }
 
         //Call Update-ToDo action
@@ -105,7 +101,7 @@ class Todoview extends Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item md={1} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id={item.id} checked={item.done} onChange={() =>  this.toggleCheck(item.id, item.title, item.desc,item.done,item.createAt) } />
+                                                                    <input type="checkbox" id={item.id} defaultChecked={item.done} onClick={() => { this.toggleCheck(item) }} />
                                                                     <label htmlFor={item.id}></label>
                                                                 </div>
 
