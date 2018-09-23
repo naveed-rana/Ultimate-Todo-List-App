@@ -8,7 +8,7 @@ export function updateToDo(data,uid) {
     return (dispatch) => {
         db.collection("todos").doc(`${uid}`).set(data)
         .then(function() {
-            toast.success("Todo Successfully Updated!");
+
             dispatch({ 
                 type: UPDATE_TODO,
                 payload: data})

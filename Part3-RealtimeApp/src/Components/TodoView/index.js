@@ -28,7 +28,6 @@ class Todoview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            done: false,
             searchText: '',
         }
         
@@ -77,6 +76,8 @@ class Todoview extends Component {
         const { classes } = this.props;
         const { expanded } = this.state;
         const todos = this.props.data;
+// console.log(todos)
+
         return (
             <Fragment>
                 {/* Desktop Design Image */}
@@ -96,6 +97,7 @@ class Todoview extends Component {
                                 <Grid item xs={12}>
                                     {todos.length > 0 ?
                                         todos.filter(searchingFor(this.state.searchText)).map((item, index) => {
+                                            console.log(item)
                                             return (
 
                                                 <ExpansionPanel expanded={expanded === index}

@@ -79,7 +79,6 @@ class OptionsMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
           className="some"
-
         >
 
           <MoreVertIcon className="some" />
