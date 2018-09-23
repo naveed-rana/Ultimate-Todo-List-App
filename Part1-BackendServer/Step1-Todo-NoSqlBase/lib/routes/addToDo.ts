@@ -16,6 +16,7 @@ router.post('/tasks',(req,res)=>{
             res.status(500).json("error has been occored!");
         }
         else{
+            
             res.status(200).json(todo);
         }
     });
@@ -29,6 +30,8 @@ router.get('/tasks',(req,res)=>{
             res.status(401).json(err);
         }
         else{
+            console.log(data);
+
             res.status(200).json(data);
         }
     });
@@ -39,7 +42,7 @@ router.get('/tasks',(req,res)=>{
 //get one request restfull api
 router.get('/tasks:id',(req,res)=>{
     
-    todoModels.findOne({_id:req.params.id},(err,data)=>{
+    todoModels.findOne({id:req.params.id},(err,data)=>{
         if(err){
         res.status(401).json(err);
         }
@@ -51,13 +54,14 @@ router.get('/tasks:id',(req,res)=>{
 
 
 //put request restfull api
-router.put('/tasks:id',(req,res)=>{
+router.put('/tasks/:id',(req,res)=>{
+    console.log(req.params.id);
 
-    todoModels.findOneAndUpdate({_id: req.params.id},
+    todoModels.findOneAndUpdate({id: req.params.id},
          {$set:{
-             title:req.body.title,
-             discription:req.body.discription,
-             done:req.body.done
+             title: req.body.title,
+             desc: req.body.desc,
+             done: req.body.done
         }},
          (err,data)=>{
         if(err){
@@ -71,9 +75,9 @@ router.put('/tasks:id',(req,res)=>{
 
 
 //delete request restfull api
-router.delete('/tasks:id',(req,res)=>{
-
-    todoModels.findOneAndDelete({_id:req.params.id},(err)=>{
+router.delete('/tasks/:id',(req,res)=>{
+     console.log(req.params.id);
+    todoModels.findOneAndDelete({id:req.params.id},(err)=>{
         if(err){
             res.status(500).json("error has been occored!");
         }

@@ -5,13 +5,14 @@ import App from './Components/App';
 import { Provider } from 'react-redux';
 import store from './Components/Redux/store';
 import registerServiceWorker from './registerServiceWorker';
+import "./index.js"
 
 
 window.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:8080' : '';
 
 ReactDOM.render(
     <Provider store={store}>
-    <App />
+     <App />
     </Provider>
     , document.getElementById('root'));
 registerServiceWorker();

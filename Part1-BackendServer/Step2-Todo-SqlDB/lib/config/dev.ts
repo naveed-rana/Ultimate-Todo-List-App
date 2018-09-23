@@ -1,1 +1,1 @@
-module.exports = 'postgresql://naveed:1@localhost:5432/todo';
+module.exports = 'postgresql://NaveedRana:RANAlove1214@localhost:5432/addtodo';

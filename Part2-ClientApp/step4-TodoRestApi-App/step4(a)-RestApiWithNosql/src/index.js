@@ -12,7 +12,7 @@ window.baseURL = window.location.hostname === 'localhost' ? 'http://localhost:80
 
 ReactDOM.render(
     <Provider store={store}>
-    <App />
+     <App />
     </Provider>
     , document.getElementById('root'));
 registerServiceWorker();

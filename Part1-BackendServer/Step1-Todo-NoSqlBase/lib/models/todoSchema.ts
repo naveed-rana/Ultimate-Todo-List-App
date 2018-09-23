@@ -1,9 +1,11 @@
 import * as mongoose from 'mongoose';
 
 var todoSchema = mongoose.Schema({
+    id: String,
     title: String,
-    discription: String,
-    done: Boolean
+    desc: String,
+    done: Boolean,
+    createAt: String,
 });
 
 var todoModels = mongoose.model('todo', todoSchema);
