@@ -29,12 +29,12 @@ function AddReducer(state = INITIAL_STATE, action) {
             {
                 var list = state.todoList;
                 // console.log('Delete Todo Reducer', list);
-                
+
                 ////////
                 // Take an id in the form of payload
                 ////////
                 let id = action.payload;
-                let newList = list.filter((item) => item.id !== id);
+                let newList = list.filter((item) => item.id != id);
                 return ({
                     ...state,
                     todoList: newList
@@ -48,36 +48,41 @@ function AddReducer(state = INITIAL_STATE, action) {
 
                 var index = updateState.findIndex((x) => x.id == id);
 
-                if (index > -1 ) {
+                if (index > -1) {
                     // "action.payload" object is coming from the update action 
                     updateState[index] = action.payload;
-                }
 
-                return ({
-                    ...state,
-                    todoList: updateState
-                });
+                    return ({
+                        ...state,
+                        todoList: updateState
+                    });
+                }
+                else {
+                    return ({
+                        ...state
+                    });
+                }
             }
 
-            // case SEARCH_TODO:
-            // {
-            //     var prevData = state.todoList;
+        // case SEARCH_TODO:
+        // {
+        //     var prevData = state.todoList;
 
-            //     var text = action.payload;
-              
+        //     var text = action.payload;
 
-            //     if(true){
-            //         return ({
-            //             ...state,
-            //             copyData: foundData
-            //         });
-            //     }else{
-            //         return ({
-            //             ...state,
-            //             copyData: prevData
-            //         });
-            //     }
-            // }
+
+        //     if(true){
+        //         return ({
+        //             ...state,
+        //             copyData: foundData
+        //         });
+        //     }else{
+        //         return ({
+        //             ...state,
+        //             copyData: prevData
+        //         });
+        //     }
+        // }
 
         default:
             return state;

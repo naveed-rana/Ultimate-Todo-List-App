@@ -1,17 +1,20 @@
-import db from '../../../config/db';
-
+import db from '../../../congif/db';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
-//Remove data from indexedDB
+// Delete data from indexedDB
 export function removeToDo(id) {
     return (dispatch) => {
         db.table('todos')
             .delete(id)
             .then(() => {
+                //////////
+                // When Delete record against given id, then call reducer
+                //////////
+
+                //Call Reducer
                 dispatch({
-                    //Call Reducer
                     type: REMOVE_TODO,
-                    payload: id
+                    payload: id,
                 });
             });
     };

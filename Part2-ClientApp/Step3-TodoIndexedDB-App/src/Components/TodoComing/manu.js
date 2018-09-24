@@ -29,10 +29,10 @@ class OptionsMenu extends React.Component {
       anchorEl: null,
       open: false,
     }
-    console.log("props at options file", this.props.row);
+    // console.log("props at options file", this.props.row);
   }
 
-  handleClick = event => {
+  handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -44,6 +44,7 @@ class OptionsMenu extends React.Component {
 
   _DeleteHandler = () => {
     // console.log('delete id Is: ', id);
+    // this.setState({ open: false });
     this.props.removeToDo(this.props.row.id);
   }
 
@@ -85,7 +86,7 @@ class OptionsMenu extends React.Component {
         </IconButton>
         <Menu className="some" id="render-props-menu" anchorEl={anchorEl} open={open} onClose={this.handleClose}>
           <Link to={`/update/${row.id}`}><MenuItem className="some">Edit</MenuItem></Link>
-          <MenuItem className="some" onClick={ this.handleClickOpen}>Delete</MenuItem>
+          <MenuItem className="some" onClick={this.handleClickOpen}>Delete</MenuItem>
         </Menu>
 
         {/* pop up */}

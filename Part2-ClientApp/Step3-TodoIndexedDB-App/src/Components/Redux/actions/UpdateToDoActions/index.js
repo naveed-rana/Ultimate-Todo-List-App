@@ -1,31 +1,31 @@
-import db from '../../../config/db';
-
+import db from '../../../congif/db';
 export const UPDATE_TODO = 'UPDATE_TODO';
 
-// export function updateToDo(data) {
-//     // alert("alert from UPDATE action");
-//     // console.log('Update actiton data: ', data)
-//     return {
-//         type: UPDATE_TODO,
-//         payload: data
-//     }
-// }
-
-
+// Update the record against given id
 export function updateToDo(data) {
-    // alert('Update Action func', data);
-    console.log('Check Dexie id is: ', data.id);
-    console.log('Check Dexie data: ', data);
-
+    // var id = Number(data.id);
     return (dispatch) => {
-        db.table('todos')
-            .update(data.id, data)
-            .then(() => {
-                console.log('after update', data)
-                  dispatch({
-                    type: UPDATE_TODO,
-                    payload: data
-                });
+
+        db.todos
+            .update(data.id, { title: data.title, desc: data.desc, done: data.done, createAt: data.createAt })
+            .then(function (updated) {
+                if (updated) {
+                    console.log('update successfully', updated);
+                    console.log('check updated data at action : ', data);
+
+                    //////////
+                    // "update" function of dexie take 2 parameters, 1st for id 2nd for data which we want to update
+                    //////////
+
+                    //Call Reducer
+                    dispatch({
+                        type: UPDATE_TODO,
+                        payload: data,
+                    });
+                }
+                else
+                    console.log('failed to update');
             });
+
     };
 }

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import moment from 'moment';
 
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -14,6 +15,7 @@ import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
 
+import uuidv1 from 'uuid/v1';
 import { addToDo } from '../Redux/actions/AddToDoActions'
 
 class addTodo extends Component {
@@ -25,6 +27,7 @@ class addTodo extends Component {
             done: false,
         }
 
+        // console.log('generate id:', uuidv1())
 
     }
 
@@ -41,33 +44,25 @@ class addTodo extends Component {
     saveTodo = (e) => {
         e.preventDefault();
 
-        // // Get currunt date 
-        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        // var today = new Date();
-        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
-       
         const record = {
-            id: Math.random() + 1,
+            id: uuidv1(),
             title: this.state.title,
             desc: this.state.desc,
             done: this.state.done,
             // format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        console.log('Add Todo Record is: ', record);
+        // console.log('Add Todo Record is: ', record);
 
         //Call AddToDo action
         this.props.addToDo(record);
-
-        // Reset input fields of form
-        // this.addToDoForm.reset();
 
         // redirect the path 
         this.props.history.push("/todoList");
     }
 
     render() {
-        {/* Desktop Design Starts */}
+        {/* Desktop Design Starts */ }
         const { classes } = this.props;
         return (
             <div className={classes.root}>
@@ -86,7 +81,7 @@ class addTodo extends Component {
                         <form onSubmit={this.saveTodo} ref={(el) => this.addToDoForm = el} className={classes.container} noValidate autoComplete="off">
                             <div className="headDiv-fields">
                                 <strong>Title:</strong>
-                                <Grid item xs={11} sm={10}><input type="text" name="title" onChange={this.onChangeHandler} className="myInput-field" /></Grid>
+                                <Grid item xs={11} sm={10}><input type="text" name="title" autoFocus onChange={this.onChangeHandler} className="myInput-field" /></Grid>
                                 <br />
                                 <strong>Description:</strong>
                                 <Grid item xs={11} sm={10}><textarea name="desc" onChange={this.onChangeHandler} className="myTextarea-field" rows={8}></textarea> </Grid>

@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-import moment from 'moment';
-
+// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -18,14 +16,26 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
 
+function searchingFor(searchText) {
+    return function (x) {
+        return x.title.toLowerCase().includes(searchText.toLowerCase()) || !searchText;
+    }
+}
 
 class TodoDone extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            searchText: '',
         }
         // console.log('Store data is : ', this .props.data)
+        this.searchHandler = this.searchHandler.bind(this);
+    }
+
+    searchHandler(event) {
+        // console.log('search called');
+        // console.log('search text is : ', event.target.value);
+        this.setState({ searchText: event.target.value });
     }
 
 
@@ -44,16 +54,16 @@ class TodoDone extends Component {
     }
 
 
-    toggleCheck = (id, title, desc) => {
-        const { done } = this.state;
-        this.setState({ done: !done });
+    toggleCheck = (item) => {
+        // const { done } = this.state;
+        // this.setState({ done: !done });
 
         const record = {
-            id: id,
-            title: title,
-            desc: desc,
-            done: !done,
-            createAt: moment().format('ll')
+            id: item.id,
+            title: item.title,
+            desc: item.desc,
+            done: !item.done,
+            createAt: item.createAt
         }
 
         //Call Update-ToDo action
@@ -71,7 +81,7 @@ class TodoDone extends Component {
                     <div className={classes.root}>
                         <Grid container>
                             <Grid item sm={3}>
-                                <SideBar />
+                                <SideBar searchHandler={this.searchHandler} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} >
                                 <Grid item xs={12} sm={12} md={12} >
@@ -82,7 +92,7 @@ class TodoDone extends Component {
 
                                 <Grid item xs={12}>
                                     {todos.length > 0 ?
-                                        todos.map((item, index) => {
+                                        todos.filter(searchingFor(this.state.searchText)).map((item, index) => {
                                             if (item.done == true) {
 
                                                 return (
@@ -95,7 +105,7 @@ class TodoDone extends Component {
                                                             <Grid container className={classes.todoPanel}>
                                                                 <Grid item md={1} className={classes.checkboxGrid}>
                                                                     <div className="round">
-                                                                        <input type="checkbox" id={item.id} checked="true" onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                        <input type="checkbox" id={item.id} defaultChecked="true" onClick={() => { this.toggleCheck(item) }} />
                                                                         <label htmlFor={item.id}></label>
                                                                     </div>
 

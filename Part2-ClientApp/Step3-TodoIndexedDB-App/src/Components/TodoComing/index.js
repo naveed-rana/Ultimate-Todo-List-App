@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-import moment from 'moment';
-
+// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -18,22 +16,24 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
 
+
 function searchingFor(searchText) {
     return function (x) {
         return x.title.toLowerCase().includes(searchText.toLowerCase()) || !searchText;
     }
 }
 
-class TodoDone extends Component {
+class TodoComing extends Component {
     constructor(props) {
         super(props);
         this.state = {
             searchText: '',
         }
         // console.log('Store data is : ', this .props.data)
+        this.searchHandler = this.searchHandler.bind(this);
     }
 
-      
+
     searchHandler(event) {
         // console.log('search called');
         // console.log('search text is : ', event.target.value);
@@ -55,22 +55,16 @@ class TodoDone extends Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
+    toggleCheck = (item) => {
         const { done } = this.state;
         this.setState({ done: !done });
 
-        //  // Get currunt date 
-        //  var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        //  var today = new Date();
-        //  var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
-       
-         
         const record = {
-            id: id,
-            title: title,
-            desc: desc,
-            done: !done,
-            createAt: moment().format('ll')
+            id: item.id,
+            title: item.title,
+            desc: item.desc,
+            done: !item.done,
+            createAt: item.createAt
         }
 
         //Call Update-ToDo action
@@ -88,7 +82,7 @@ class TodoDone extends Component {
                     <div className={classes.root}>
                         <Grid container>
                             <Grid item sm={3}>
-                            <SideBar searchHandler={this.searchHandler} />
+                                <SideBar searchHandler={this.searchHandler} />
                             </Grid>
                             <Grid item xs={12} sm={12} md={9} >
                                 <Grid item xs={12} sm={12} md={12} >
@@ -112,7 +106,7 @@ class TodoDone extends Component {
                                                             <Grid container className={classes.todoPanel}>
                                                                 <Grid item md={1} className={classes.checkboxGrid}>
                                                                     <div className="round">
-                                                                        <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                        <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item) }} />
                                                                         <label htmlFor={item.id}></label>
                                                                     </div>
 
@@ -168,7 +162,7 @@ class TodoDone extends Component {
 
 }
 
-TodoDone.propTypes = {
+TodoComing.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
@@ -179,4 +173,4 @@ function mapStateToProps(data) {
 }
 
 
-export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(TodoDone));
+export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(TodoComing));

@@ -29,7 +29,7 @@ class OptionsMenu extends React.Component {
       anchorEl: null,
       open: false,
     }
-    console.log("props at options file", this.props.row);
+    console.log("props at options file (todo list) ", this.props.row);
   }
 
   handleClick = event => {
@@ -45,7 +45,7 @@ class OptionsMenu extends React.Component {
   _DeleteHandler = () => {
     // console.log('delete id Is: ', id);
     this.props.removeToDo(this.props.row.id);
-    this.setState({ anchorEl: null });
+    this.setState({ open: false });
   }
 
 

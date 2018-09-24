@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-import moment from 'moment';
-
+// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -41,7 +39,7 @@ class Todolist extends React.Component {
     };
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+        // console.log(event.target)
         if (event.target.classList.contains("some")) {
 
             return null
@@ -54,16 +52,16 @@ class Todolist extends React.Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
+    toggleCheck = (item) => {
         const { done } = this.state;
         this.setState({ done: !done });
 
         const record = {
-            id: id,
-            title: title,
-            desc: desc,
+            id: item.id,
+            title: item.title,
+            desc: item.desc,
             done: !done,
-            createAt: moment().format('ll')
+            createAt: item.createAt
         }
 
         //Call Update-ToDo action
@@ -102,15 +100,15 @@ class Todolist extends React.Component {
                                     todos.map((item, index) => {
                                         return (
 
-                                            <ExpansionPanel expanded={expanded === 1}
-                                                onChange={this.handleChangeexpand(1)}
+                                            <ExpansionPanel expanded={expanded === index}
+                                                onChange={this.handleChangeexpand(index)}
                                                 className={classes.todoItem} key={index}>
                                                 <ExpansionPanelSummary className={classes.expansionSummary}>
 
                                                     <Grid container className={classes.todoPanel}>
                                                         <Grid item xs={2} className={classes.checkboxGrid}>
                                                             <div className="round">
-                                                                <input type="checkbox" id={item.id} checked={item.done} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                <input type="checkbox" id={item.id} defaultChecked={item.done} onClick={() => { this.toggleCheck(item) }} />
                                                                 <label htmlFor={item.id}></label>
                                                             </div>
 
