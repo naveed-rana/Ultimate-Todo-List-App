@@ -20,7 +20,7 @@ class Update extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            
         }
         // console.log('update id Is: ', this.props.match.params.id);
         // console.log('store dATA' , this.props.data);
@@ -41,7 +41,7 @@ class Update extends Component {
         this.props.updateToDo(record);
 
         // Reset input fields of form
-        this.updateToDoForm.reset();
+        // this.updateToDoForm.reset();
 
         // redirect the path 
         this.props.history.push("/todoList");

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import moment from 'moment';
 
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -14,6 +15,7 @@ import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
 
+import uuidv1 from 'uuid/v1';
 import { addToDo } from '../Redux/actions/AddToDoActions'
 
 class addTodo extends Component {
@@ -24,6 +26,8 @@ class addTodo extends Component {
             desc: '',
             done: false,
         }
+
+        // console.log('generate id:', uuidv1())
 
     }
 
@@ -41,7 +45,7 @@ class addTodo extends Component {
         e.preventDefault();
 
         const record = {
-            // id: Math.random() + 1,
+            id: uuidv1(),
             title: this.state.title,
             desc: this.state.desc,
             done: this.state.done,
@@ -58,7 +62,7 @@ class addTodo extends Component {
     }
 
     render() {
-        {/* Desktop Design Starts */}
+        {/* Desktop Design Starts */ }
         const { classes } = this.props;
         return (
             <div className={classes.root}>

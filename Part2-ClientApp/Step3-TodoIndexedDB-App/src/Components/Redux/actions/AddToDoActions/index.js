@@ -16,7 +16,7 @@ export function addToDo(data) {
                 //Call Reducer
                 dispatch({
                     type: ADD_TODO,
-                    payload: Object.assign({}, {id: id} , data)
+                    payload: data //Object.assign({}, {id: id} , data)
                 });
             });
     }

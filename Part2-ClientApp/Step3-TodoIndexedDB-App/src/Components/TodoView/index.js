@@ -30,7 +30,7 @@ class Todoview extends Component {
             searchText: '',
         }
         // console.log('moment date is: ', moment().format('ll'))
-        // console.log('Store data is : ', this .props.data)
+        console.log('Store data at todo view is : ', this .props.data)
         this.searchHandler = this.searchHandler.bind(this);
     }
     
@@ -71,7 +71,7 @@ class Todoview extends Component {
     render() {
         const { classes } = this.props;
         const { expanded } = this.state;
-        const todos = this.props.data;
+        var todos = this.props.data;
         return (
             <Fragment>
                 {/* Desktop Design Image */}
@@ -162,7 +162,7 @@ Todoview.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-function mapStateToProps(data) {
+const mapStateToProps = (data) => {
     return {
         data: data.TodoApp.todoList
     }

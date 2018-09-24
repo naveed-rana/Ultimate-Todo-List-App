@@ -56,8 +56,8 @@ class TodoComing extends Component {
     }
 
     toggleCheck = (item) => {
-        // const { done } = this.state;
-        // this.setState({ done: !done });
+        const { done } = this.state;
+        this.setState({ done: !done });
 
         const record = {
             id: item.id,
