@@ -26,10 +26,32 @@ test("test for adding a todo", () => {
 });
 
 
-
+//remove
 test("test for remove todo", () => {
   client.RemoveTodo(
     {id:'ksjdaf234'},
+    (error, response) => {
+      if (!error) {
+        expect(response).not.toBeNull();
+      } else {
+        console.log("Error:", error.message);
+      }
+    }
+  );
+});
+
+
+
+//update
+test("test for remove todo", () => {
+  client.UpdateTodo(
+    {todo:{
+      _id: "ksjdaf234",
+      title: "test",
+      desc:"somede",
+      done: false,
+      createdAt:'23 june'
+    }},
     (error, response) => {
       if (!error) {
         expect(response).not.toBeNull();

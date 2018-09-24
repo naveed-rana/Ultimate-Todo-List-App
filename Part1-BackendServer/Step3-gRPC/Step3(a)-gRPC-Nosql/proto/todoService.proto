@@ -12,11 +12,11 @@ message Todo {
 
 //client services
 service TodoService {
-  rpc AllTodos (Empty) returns (TodoList);
+  rpc AllTodos (Empty) returns (stream TodoList);
   rpc InsertTodo (InsertTodoReq) returns (Success);
   rpc GetTodo (TodoID) returns (TodoList);
   rpc RemoveTodo (TodoID) returns (Success);
-  rpc UpdateTodo (TodoID) returns (Success);
+  rpc UpdateTodo (InsertTodoReq) returns (Success);
 }
 
 
@@ -26,7 +26,7 @@ message Empty {}
 
 //get all  todos 
 message TodoList {
-  repeated Todo todo = 1;
+   Todo todo = 1;
 }
 
 //insert todo 

@@ -49,7 +49,54 @@ server.addService(serviceDefinition.TodoService, {
    
   },
   //update todo service
-  
+  UpdateTodo(call, callback){
+		let id = call.request.todo.id;
+    todoModels.findOneAndUpdate({id: id},
+      {$set:{
+          title: call.request.todo.title,
+          desc: call.request.todo.desc,
+          done: call.request.todo.done
+     }},
+      (err,data)=>{
+     if(err){
+      callback(err, null);
+    }
+     else{
+      callback(null, { success: true });
+     }    
+ });   
+
+  },
+
+  //get All todos todo service
+  AllTodos(call, callback){
+    todoModels.find({},(err,data)=>{
+      if(err){
+        callback(err, null);
+      }
+      else{
+        data.foreach((todo)=>{
+          call.write({todo:todo});
+        })
+        call.end();
+      }
+  });
+
+  },
+
+  //get single todo service
+  GetTodo(call, callback){
+    let id = call.request.id;
+    todoModels.find({_id:id},(err,data)=>{
+      if(err){
+          callback(err, null);
+      }
+      else{
+          callback(err,{todo:data})
+      }
+  });
+  },
+
 });
 
 //bind server
