@@ -24,3 +24,18 @@ test("test for adding a todo", () => {
     }
   );
 });
+
+
+
+test("test for remove todo", () => {
+  client.RemoveTodo(
+    {id:'ksjdaf234'},
+    (error, response) => {
+      if (!error) {
+        expect(response).not.toBeNull();
+      } else {
+        console.log("Error:", error.message);
+      }
+    }
+  );
+});

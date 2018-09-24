@@ -34,11 +34,22 @@ server.addService(serviceDefinition.TodoService, {
        else{
         callback(null, { success: true });
        }
-
      });
+  },
+  // Remove todo service
+  RemoveTodo(call, callback){
+		let id = call.request.id;
+    todoModels.findOneAndDelete({_id:id},(err)=>{
+      if(err){
+        callback(err, null);
+      }
+      else{
+         callback(null, { success: true });
+      }});
    
-	},
-
+  },
+  //update todo service
+  
 });
 
 //bind server
