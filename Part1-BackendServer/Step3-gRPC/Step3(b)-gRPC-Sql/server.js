@@ -56,7 +56,40 @@ server.addService(serviceDefinition.TodoService, {
     });
   },
 
+  //get All todos todo service
+  AllTodos(call, callback){
+    
+    db.any('SELECT * FROM todo')
+    .then(function(data) {
+        // success;
+        data.foreach((todo)=>{
+        call.write({todo:todo});
+        })
+        call.end();
+    })
+    .catch(function(err) {
+        // error;
+        callback(err, null);
+    })
 
+  },
+
+  //get single todo service
+  GetTodo(call, callback){
+    let id = call.request.id;
+   
+  db.any('SELECT * FROM todo WHERE id = $1', [id])
+    .then(function(data) {
+      callback(err,{todo:data})
+    })
+    .catch(function(err) {
+        // error;
+        callback(err, null);
+    });
+
+  },
+
+  
 
 });
 
