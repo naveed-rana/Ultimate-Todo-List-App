@@ -6,7 +6,7 @@ Part I: Server REST API’s
 Step 2: Todo RESTful API - A TDD Approach to Building an API using SQL Database
 -------------------------------------------------------------------------------
 
-            TYPESCRIP EXPRESS SERVER
+            TYPESCRIPT EXPRESS SERVER
             WITH
             PostgresDB
 
@@ -35,12 +35,12 @@ Code Structure:
 --------------
 
   a) _Save data to Sql database_<br />
-      1) To save data to database, we made a "POST" request to server through axios. The server collects data save to PostgresDB table
+      1) To save data to database, we made a *"POST"* request to server through axios. The server collects data save to PostgresDB table
 
 
 
   b) _Get data from Sql database_<br />
-      1) To get data from Sql database we send a "GET" request through axios to server. The server finds all the toDos and responed back.
+      1) To get data from Sql database we send a *"GET"* request through axios to server. The server finds all the toDos and responed back.
 
 
   c) _Update Data on Sql database_<br />
@@ -49,7 +49,7 @@ Code Structure:
 
 
   d) _Delete a todo_<br />
-      1) To delete a ToDo, we made a "DELETE" request through axios along with id of ToDo<br />
+      1) To delete a ToDo, we made a *"DELETE"* request through axios along with id of ToDo<br />
       2) Then server finds the ToDo with same id and delete it.
 
 
