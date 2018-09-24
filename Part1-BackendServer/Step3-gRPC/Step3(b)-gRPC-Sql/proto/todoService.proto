@@ -1,0 +1,45 @@
+// tell the compiler that we are using protobuffers version 3
+syntax = "proto3";
+
+// define todo type message
+message Todo {
+  string _id = 1;
+  string title = 2;
+  string desc = 3;
+  bool done = 4;
+  string createdAt = 5;
+}
+
+//client services
+service TodoService {
+  rpc AllTodos (Empty) returns (stream TodoList);
+  rpc InsertTodo (InsertTodoReq) returns (Success);
+  rpc GetTodo (TodoID) returns (TodoList);
+  rpc RemoveTodo (TodoID) returns (Success);
+  rpc UpdateTodo (InsertTodoReq) returns (Success);
+}
+
+
+//empty req or res
+message Empty {}
+
+
+//get all  todos 
+message TodoList {
+   Todo todo = 1;
+}
+
+//insert todo 
+message InsertTodoReq {
+   Todo todo = 1;
+}
+
+//Success
+message Success {
+  bool success = 1;
+}
+
+//get user id
+message TodoID {
+  string id = 1;
+}
