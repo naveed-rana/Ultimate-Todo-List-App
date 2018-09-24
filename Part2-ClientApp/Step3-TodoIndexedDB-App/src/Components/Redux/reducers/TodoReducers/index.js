@@ -46,23 +46,34 @@ function AddReducer(state = INITIAL_STATE, action) {
 
         case UPDATE_TODO:
             {
-                var list = state.todoList;
-                const id = action.payload.id;
 
-                var index = list.findIndex((x) => x.id == id);
+                var updateState = state.todoList;
+                let id = action.payload.id;
+                let newList = updateState.filter((item) => item.id != id);
+                newList.unshift(action.payload);
 
-                if (index > -1) {
-                    //////////
-                    // "action.payload" object is coming from the update todo action 
-                    //////////
-
-                    list[index] = action.payload;
-                }
-                var newList = list;
                 return ({
                     ...state,
                     todoList: newList
                 });
+
+                // var list = state.todoList;
+                // const id = action.payload.id;
+
+                // var index = list.findIndex((x) => x.id == id);
+
+                // if (index > -1) {
+                //     //////////
+                //     // "action.payload" object is coming from the update todo action 
+                //     //////////
+
+                //     list[index] = action.payload;
+                // }
+                // var newList = list;
+                // return ({
+                //     ...state,
+                //     todoList: newList
+                // });
             }
 
         default:
