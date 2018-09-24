@@ -11,7 +11,24 @@ const server = new grpc.Server();
 
 server.addService(serviceDefinition.TodoService, {
 //insert todo using grpc
-
+	InsertTodo(call, callback){
+		let getTodo = call.request.todo;
+    let payload = {
+    _id: getTodo.id,
+    title: getTodo.title,
+    desc: getTodo.desc,
+    done: getTodo.done,
+    createdAt:getTodo.createdAt
+     };
+     db.one('INSERT INTO todo(title, description ,createat,done,id) VALUES($1, $2, $3, $4,$5) RETURNING id', [payload.title, payload.desc, payload.createAt,payload.done,payload._id])
+     .then(() => {
+      callback(null, { success: true });
+     })
+     .catch((err) => {
+      callback(err, null);
+     });
+  },
+ 
 
 });
 

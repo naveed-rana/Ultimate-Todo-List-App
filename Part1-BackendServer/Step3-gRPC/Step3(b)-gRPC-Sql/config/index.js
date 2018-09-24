@@ -1,5 +1,5 @@
 const pgp =  require('pg-promise');
-var dbURI = 'postgresql://NaveedRana:RANAlove1214@localhost:5432/addtodo';
+var dbURI = 'postgresql://naveed:1@localhost:5432/todo';
   
 const initOptions = {
     // global event notification;
