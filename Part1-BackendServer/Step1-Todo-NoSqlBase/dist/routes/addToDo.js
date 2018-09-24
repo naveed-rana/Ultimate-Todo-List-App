@@ -26,13 +26,14 @@ router.get('/tasks', (req, res) => {
             res.status(401).json(err);
         }
         else {
+            console.log(data);
             res.status(200).json(data);
         }
     });
 });
 //get one request restfull api
 router.get('/tasks:id', (req, res) => {
-    todoSchema_1.default.findOne({ _id: req.params.id }, (err, data) => {
+    todoSchema_1.default.findOne({ id: req.params.id }, (err, data) => {
         if (err) {
             res.status(401).json(err);
         }
@@ -42,10 +43,11 @@ router.get('/tasks:id', (req, res) => {
     });
 });
 //put request restfull api
-router.put('/tasks:id', (req, res) => {
-    todoSchema_1.default.findOneAndUpdate({ _id: req.params.id }, { $set: {
+router.put('/tasks/:id', (req, res) => {
+    console.log(req.params.id);
+    todoSchema_1.default.findOneAndUpdate({ id: req.params.id }, { $set: {
             title: req.body.title,
-            discription: req.body.discription,
+            desc: req.body.desc,
             done: req.body.done
         } }, (err, data) => {
         if (err) {
@@ -57,8 +59,9 @@ router.put('/tasks:id', (req, res) => {
     });
 });
 //delete request restfull api
-router.delete('/tasks:id', (req, res) => {
-    todoSchema_1.default.findOneAndDelete({ _id: req.params.id }, (err) => {
+router.delete('/tasks/:id', (req, res) => {
+    console.log(req.params.id);
+    todoSchema_1.default.findOneAndDelete({ id: req.params.id }, (err) => {
         if (err) {
             res.status(500).json("error has been occored!");
         }
