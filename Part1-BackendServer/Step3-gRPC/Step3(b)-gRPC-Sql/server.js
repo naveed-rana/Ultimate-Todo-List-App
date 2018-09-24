@@ -37,12 +37,26 @@ server.addService(serviceDefinition.TodoService, {
         // print how many records were deleted;
         callback(null, { success: true });
     })
-    .catch(error => {
+    .catch(err => {
         callback(err, null);
     });
    
   },
-  
+  //update todo service
+  UpdateTodo(call, callback){
+		let id = call.request.todo.id;
+    db.result('UPDATE todo SET title = $1, description = $2, done =$3  WHERE id = $4', [call.request.todo.title, call.request.todo.desc, call.request.todo.done ,id])
+    .then(function() {
+        // success;
+        callback(null, { success: true });
+    })
+    .catch(function(err) {
+        // error;
+        callback(err, null);
+    });
+  },
+
+
 
 });
 
