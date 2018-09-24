@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
 import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -25,12 +23,12 @@ class TodoDone extends Component {
         this.state = {
 
         }
-        // console.log('Store data is : ', this .props.data)
+        
     }
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null

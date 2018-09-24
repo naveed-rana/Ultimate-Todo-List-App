@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-// import { searchToDo } from '../Redux/actions/SearchToDoActions';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -29,11 +27,6 @@ class SideBar extends Component {
 
 
     }
-
-
-    // searchText = (e) => {
-    //     this.props.searchToDo(e.target.value);
-    // }
 
     handleListItemClick = (event, index) => {
         this.setState({ selectedIndex: index });
@@ -130,6 +123,5 @@ SideBar.propTypes = {
 // Export this component with the style.js file
 //////////
 
-// export default connect(NULL, { searchToDo })(withStyles(styles)(SideBar));
 
 export default withStyles(styles)(SideBar);

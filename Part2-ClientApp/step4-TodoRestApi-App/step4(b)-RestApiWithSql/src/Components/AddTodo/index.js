@@ -40,11 +40,6 @@ class addTodo extends Component {
     //////////
     saveTodo = (e) => {
         e.preventDefault();
-
-        // // Get currunt date 
-        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        // var today = new Date();
-        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
        
         const record = {
             id: Math.random() + 1,
@@ -54,13 +49,11 @@ class addTodo extends Component {
             // format (sep 22, 2018)
             createat: moment().format('ll')
         }
-        console.log('Add Todo Record is: ', record);
+         
 
         //Call AddToDo action
         this.props.addToDo(record);
 
-        // Reset input fields of form
-        // this.addToDoForm.reset();
 
         // redirect the path 
         this.props.history.push("/todoList");
@@ -112,8 +105,5 @@ addTodo.propTypes = {
 // Export this component with the style.js file
 //////////
 
-// export default withStyles(styles)(addTodo);
-
-// export default connect(null, { addToDo })(withStyles(styles)(addTodo));
 
 export default withRouter(connect(null, { addToDo })(withStyles(styles)(addTodo)));

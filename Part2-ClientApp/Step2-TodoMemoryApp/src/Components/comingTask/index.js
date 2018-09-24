@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -33,7 +30,6 @@ class ComingTask extends React.Component {
             type: "hidden",
 
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
 
@@ -42,12 +38,9 @@ class ComingTask extends React.Component {
     };
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
         if (event.target.classList.contains("some")) {
-
             return null
         } else {
-
             this.setState({
                 expanded: expanded ? id
                     : false
@@ -55,16 +48,13 @@ class ComingTask extends React.Component {
         }
     }
 
-    toggleCheck = (id, title, desc) => {
-        const { done } = this.state;
-        this.setState({ done: !done });
-
+    toggleCheck = (item) => {
         const record = {
-            id: id,
-            title: title,
-            desc: desc,
-            done: !done,
-            createAt: moment().format('ll')
+            id: item.id,
+            title: item.title,
+            desc: item.desc,
+            done: !item.done,
+            createAt: item.createAt
         }
 
         //Call Update-ToDo action
@@ -112,7 +102,7 @@ class ComingTask extends React.Component {
                                                         <Grid container className={classes.todoPanel}>
                                                             <Grid item xs={2} className={classes.checkboxGrid}>
                                                                 <div className="round">
-                                                                    <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item.id, item.title, item.desc) }} />
+                                                                    <input type="checkbox" id={item.id} onClick={() => { this.toggleCheck(item) }} />
                                                                     <label htmlFor={item.id}></label>
                                                                 </div>
 
@@ -188,5 +178,3 @@ function mapStateToProps(data) {
 }
 
 export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));
-
-// export default withStyles(styles)(Todolist);

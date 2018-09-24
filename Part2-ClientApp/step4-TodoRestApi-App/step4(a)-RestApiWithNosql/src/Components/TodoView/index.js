@@ -32,7 +32,7 @@ class Todoview extends Component {
             searchText: '',
         }
         // console.log('moment date is: ', moment().format('ll'))
-        // console.log('Store data is : ', this .props.data)
+        
         this.searchHandler = this.searchHandler.bind(this);
     }
 
@@ -45,7 +45,7 @@ class Todoview extends Component {
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null

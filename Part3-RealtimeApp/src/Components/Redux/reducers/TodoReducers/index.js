@@ -14,11 +14,7 @@ function AddReducer(state = INITIAL_STATE, action) {
         case ADD_TODO:
             {
                 var list = state.todoList;
-                // console.log('Add Todo Reducer', list);
-
                 var newList = list.concat([action.payload]);
-                // console.log('Add Todo Reducer, After Push', newList);
-
                 return {
                     ...state,
                     todoList: newList
@@ -28,7 +24,6 @@ function AddReducer(state = INITIAL_STATE, action) {
         case REMOVE_TODO:
             {
                 var list = state.todoList;
-                // console.log('Delete Todo Reducer', list);
 
                 ////////
                 // Take an id in the form of payload
@@ -57,33 +52,12 @@ function AddReducer(state = INITIAL_STATE, action) {
 
         case LOAD_TODO:
             {
-                // console.log('fetch data from dexie is : ', action.data)
                 let loadData = action.payload;
                 return {
                     ...state,
                     todoList: loadData
                 }
             }
-
-        // case SEARCH_TODO:
-        // {
-        //     var prevData = state.todoList;
-
-        //     var text = action.payload;
-
-
-        //     if(true){
-        //         return ({
-        //             ...state,
-        //             copyData: foundData
-        //         });
-        //     }else{
-        //         return ({
-        //             ...state,
-        //             copyData: prevData
-        //         });
-        //     }
-        // }
 
         default:
             return state;

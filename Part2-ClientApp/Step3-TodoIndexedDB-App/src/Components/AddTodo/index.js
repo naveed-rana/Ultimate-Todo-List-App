@@ -46,7 +46,7 @@ class addTodo extends Component {
             // Date format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        // console.log('Add Todo Record is: ', record);
+        //  
 
         //Call AddToDo action
         this.props.addToDo(record);

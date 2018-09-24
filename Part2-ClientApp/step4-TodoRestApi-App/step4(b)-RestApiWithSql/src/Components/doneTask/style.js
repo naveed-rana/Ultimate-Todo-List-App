@@ -1,4 +1,3 @@
-// import searchIcon from './icon/search-12-64.png';
 export const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -50,7 +49,7 @@ export const styles = theme => ({
     absolute: {
         position: 'fixed',
         bottom: theme.spacing.unit * 2,
-        // right: theme.spacing.unit * 3,
+        // //right: theme.spacing.unit * 3,
         backgroundColor: "white",
         marginBottom: "5% !important",
         margin: "auto",

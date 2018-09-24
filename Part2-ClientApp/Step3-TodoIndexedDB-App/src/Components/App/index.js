@@ -5,8 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux';
 import UltimateToDoApp from '../navigation'
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from "./style";
 
 import { loadTodos } from '../Redux/actions/LoadToDoActions'
 
@@ -49,4 +47,4 @@ App.propTypes = {
 // And Export this component with the style.js file
 //////////
 
-export default connect(null, { loadTodos })(withStyles(styles)(App));
+export default connect(null, { loadTodos })(App);

@@ -1,16 +1,6 @@
 
 export const styles = theme => ({
-    // root: {
-    //     flexGrow: 1,
-    //     textAlign: "center",
-    //     width: '100%',
-    //     backgroundColor: "#ff3366",
-    //     height: '100vh',
-    //     justifyContent: 'center',
-    //     flexWrap: 'wrap',
-    //     overFlow: "scrol"
 
-    // },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -51,7 +41,7 @@ export const styles = theme => ({
     absolute: {
         position: 'fixed',
         bottom: theme.spacing.unit * 2,
-        right: theme.spacing.unit * 3,
+        //right: theme.spacing.unit * 3,
         backgroundColor: "white",
         marginBottom: "5% !important",
         margin: "auto",

@@ -33,7 +33,6 @@ class ComingTask extends React.Component {
             type: "hidden",
 
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
 
@@ -42,7 +41,7 @@ class ComingTask extends React.Component {
     };
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null
@@ -188,5 +187,3 @@ function mapStateToProps(data) {
 }
 
 export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));
-
-// export default withStyles(styles)(Todolist);

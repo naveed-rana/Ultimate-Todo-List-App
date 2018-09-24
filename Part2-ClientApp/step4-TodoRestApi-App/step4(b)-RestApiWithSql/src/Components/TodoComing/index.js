@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
 import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -30,19 +28,17 @@ class TodoDone extends Component {
         this.state = {
             searchText: '',
         }
-        // console.log('Store data is : ', this .props.data)
+        
     }
 
       
     searchHandler(event) {
-        // console.log('search called');
-        // console.log('search text is : ', event.target.value);
         this.setState({ searchText: event.target.value });
     }
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null
@@ -57,13 +53,7 @@ class TodoDone extends Component {
 
     toggleCheck = (id, title, desc) => {
         const { done } = this.state;
-        this.setState({ done: !done });
-
-        //  // Get currunt date 
-        //  var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        //  var today = new Date();
-        //  var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
-       
+        this.setState({ done: !done });   
          
         const record = {
             id: id,

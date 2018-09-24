@@ -30,7 +30,7 @@ class TodoDone extends Component {
         this.state = {
             searchText: '',
         }
-        // console.log('Store data is : ', this .props.data)
+        
     }
 
       
@@ -42,7 +42,7 @@ class TodoDone extends Component {
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null

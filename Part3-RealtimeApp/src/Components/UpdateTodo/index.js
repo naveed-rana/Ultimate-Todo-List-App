@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -22,8 +19,6 @@ class Update extends Component {
         this.state = {
 
         }
-        // console.log('update id Is: ', this.props.match.params.id);
-        console.log('store dATA' , this.props.data);
     }
 
     updateTodo = (e,data) => {
@@ -36,13 +31,12 @@ class Update extends Component {
             uid:data.uid,
             createAt: data.createAt
         }
-        // console.log('Update Todo Record is: ', record);
 
         //Call Update-ToDo action
         this.props.updateToDo(record,data.uid);
 
-        // Reset input fields of form
-        this.updateToDoForm.reset();
+        
+        // this.updateToDoForm.reset();
 
         // redirect the path 
         this.props.history.push("/todoList");
@@ -114,6 +108,6 @@ function mapStateToProps(data) {
 // Export this component with the style.js file
 //////////
 
-// export default withStyles(styles)(Update);
+
 
 export default withRouter(connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update)));

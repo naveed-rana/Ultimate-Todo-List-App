@@ -25,12 +25,12 @@ class TodoDone extends Component {
         this.state = {
 
         }
-        // console.log('Store data is : ', this .props.data)
+        
     }
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null

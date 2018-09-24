@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -48,7 +46,6 @@ class addTodo extends Component {
             // format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        // console.log('Add Todo Record is: ', record);
 
         //Call AddToDo action
         this.props.addToDo(record);
@@ -102,9 +99,5 @@ addTodo.propTypes = {
 //////////
 // Export this component with the style.js file
 //////////
-
-// export default withStyles(styles)(addTodo);
-
-// export default connect(null, { addToDo })(withStyles(styles)(addTodo));
 
 export default withRouter(connect(null, { addToDo })(withStyles(styles)(addTodo)));
