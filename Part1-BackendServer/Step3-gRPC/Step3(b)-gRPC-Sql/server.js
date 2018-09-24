@@ -24,11 +24,25 @@ server.addService(serviceDefinition.TodoService, {
      .then(() => {
       callback(null, { success: true });
      })
-     .catch((err) => {
+     .catch(err => {
       callback(err, null);
      });
   },
- 
+  // Remove todo service
+  RemoveTodo(call, callback){
+		let id = call.request.id;
+    db.result('DELETE FROM todo WHERE id = $1', id)
+    .then(() => {
+        // rowCount = number of rows affected by the query
+        // print how many records were deleted;
+        callback(null, { success: true });
+    })
+    .catch(error => {
+        callback(err, null);
+    });
+   
+  },
+  
 
 });
 
