@@ -1,0 +1,6 @@
+# don't upload certificates online
+certs
+# node modules
+node_modules
+#avoid package-lock.json
+package-lock.json
