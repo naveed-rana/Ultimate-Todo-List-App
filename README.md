@@ -4,7 +4,7 @@
 **Team Members**
 
 
-**Rana Naveed (*Group Head*)**
+**Naveed Rana (*Group Head*)**
 - Muhammad Asif Mushtaq
 - Zahid Ali
 - Abaidullah
@@ -18,7 +18,7 @@
 
 Completed By :
 
- - Rana Naveed
+ - Naveed Rana
 
 
 
@@ -27,7 +27,7 @@ Completed By :
 
 Completed By :
 
- - Rana Naveed
+ - Naveed Rana
 
 
 ### Step 3: Todo gRPC API Project: A TDD Approach to Building anAPI using SQL and NoSQL Databases
@@ -36,7 +36,7 @@ NO SQL
 
 Completed By :
 
-  - Rana Naveed
+  - Naveed Rana
 
  ----
 
@@ -73,7 +73,7 @@ Completed By :
  ---
 ### Step 5: Build a UI Component based Todo Client App using the TDD Approach.
 
-  - Abaidullah
+  - Muhammad Asif Mushtaq
 
  ---
 # Part III: Realtime App
@@ -81,6 +81,6 @@ Completed By :
 
 
 Completed By :
- - Rana Naveed
+ - Naveed Rana
 
  ---
