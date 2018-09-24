@@ -1,12 +1,22 @@
-import db from '../../../congif/db';
+import db from '../../../config/db';
 export const ADD_TODO = 'ADD_TODO';
+
+
+//Call Reducer
+
+export function addTodoAction(data) {
+    return {
+        type: ADD_TODO,
+        payload: data
+    }
+}
 
 
 // Save data into indexedDB
 export function addToDo(data) {
     return (dispatch) => {
         db.table('todos')
-            .add(data) //{ title: data.title, desc: data.desc, done: data.done, createAt: data.createAt}
+            .add(data)
             .then((id) => {
                 //////////
                 // "id" in then param is the id of inserted record
@@ -14,10 +24,7 @@ export function addToDo(data) {
                 //////////
 
                 //Call Reducer
-                dispatch({
-                    type: ADD_TODO,
-                    payload: data //Object.assign({}, {id: id} , data)
-                });
+                dispatch(addTodoAction(data));
             });
     }
 }

@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-// import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -21,7 +18,6 @@ import "./style.css"
 import Drawer from '../drawer'
 import Divider from '@material-ui/core/Divider'
 import { Hidden } from '@material-ui/core';
-// import ToDoListDeskTop from '../TodoView';
 import TodoDone from '../TodoDone'
 
 class ComingTask extends React.Component {
@@ -32,9 +28,7 @@ class ComingTask extends React.Component {
             checkedB: false,
             expanded: null,
             type: "hidden",
-
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
 
@@ -57,8 +51,6 @@ class ComingTask extends React.Component {
     }
 
     toggleCheck = (item) => {
-        // const { done } = this.state;
-        // this.setState({ done: !done });
 
         const record = {
             id: item.id,
@@ -188,6 +180,9 @@ function mapStateToProps(data) {
     }
 }
 
-export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));
+//////////
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
+//////////
 
-// export default withStyles(styles)(Todolist);
+export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));

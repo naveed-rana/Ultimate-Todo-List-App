@@ -31,7 +31,6 @@ class Todolist extends React.Component {
             type: "hidden",
 
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
     handleChange = name => event => {
@@ -39,12 +38,9 @@ class Todolist extends React.Component {
     };
 
     handleChangeexpand = id => (event, expanded) => {
-        // console.log(event.target)
         if (event.target.classList.contains("some")) {
-
             return null
         } else {
-
             this.setState({
                 expanded: expanded ? id
                     : false
@@ -53,9 +49,7 @@ class Todolist extends React.Component {
     }
 
     toggleCheck = (item) => {
-        // const { done } = this.state;
-        // this.setState({ done: !done });
-
+        
         const record = {
             id: item.id,
             title: item.title,
@@ -182,6 +176,9 @@ function mapStateToProps(data) {
     }
 }
 
-export default connect(mapStateToProps,  { updateToDo })(withStyles(styles)(Todolist));
+//////////
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
+//////////
 
-// export default withStyles(styles)(Todolist);
+export default connect(mapStateToProps,  { updateToDo })(withStyles(styles)(Todolist));

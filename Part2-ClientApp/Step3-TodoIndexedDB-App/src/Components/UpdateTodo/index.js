@@ -20,13 +20,12 @@ class Update extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         }
-        // console.log('update id Is: ', this.props.match.params.id);
-        // console.log('store dATA' , this.props.data);
+
     }
 
-    updateTodo = (e,data) => {
+    updateTodo = (e, data) => {
         e.preventDefault();
         const record = {
             id: this.props.match.params.id,
@@ -35,13 +34,9 @@ class Update extends Component {
             done: data.done,
             createAt: data.createAt
         }
-        // console.log('Update Todo Record is: ', record);
 
         //Call Update-ToDo action
         this.props.updateToDo(record);
-
-        // Reset input fields of form
-        // this.updateToDoForm.reset();
 
         // redirect the path 
         this.props.history.push("/todoList");
@@ -70,7 +65,7 @@ class Update extends Component {
                         {todos.map((item, index) => {
                             if (item.id == editID) {
                                 return (
-                                    <form onSubmit={(e)=>this.updateTodo(e,item)} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
+                                    <form onSubmit={(e) => this.updateTodo(e, item)} ref={(el) => this.updateToDoForm = el} key={index} className={classes.container} noValidate autoComplete="off">
                                         <div className="headDiv-fields">
                                             <strong>Title:</strong>
                                             <Grid item xs={11} sm={10}><input type="text" name="title" defaultValue={item.title} className="myInput-field" /></Grid>
@@ -108,11 +103,9 @@ function mapStateToProps(data) {
 }
 
 
-
 //////////
-// Export this component with the style.js file
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
 //////////
-
-// export default withStyles(styles)(Update);
 
 export default withRouter(connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update)));

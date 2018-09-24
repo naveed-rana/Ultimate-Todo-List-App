@@ -1,11 +1,8 @@
-
 const drawerWidth = 200;
 export const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: '100%',
-    // backgroundColor: "#ff3366",
-   
+    width: '100%',   
   },
   appFrame: {
     height: '100vh',

@@ -19,9 +19,6 @@ import { styles } from './style'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-
-// const ITEM_HEIGHT = 60;
-
 class OptionsMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +26,6 @@ class OptionsMenu extends React.Component {
       anchorEl: null,
       open: false,
     }
-    console.log("props at options file (todo list) ", this.props.row);
   }
 
   handleClick = event => {
@@ -43,7 +39,6 @@ class OptionsMenu extends React.Component {
 
 
   _DeleteHandler = () => {
-    // console.log('delete id Is: ', id);
     this.props.removeToDo(this.props.row.id);
     this.setState({ open: false });
   }
@@ -54,11 +49,6 @@ class OptionsMenu extends React.Component {
     this.setState({ open: true });
   };
 
-  // handleClose = () => {
-  //   this.props.startUserAdDelete({ id: this.props.ad._id });
-  //   this.setState({ open: false });
-  // };
-
   close = () => {
     this.setState({ open: false });
   }
@@ -68,7 +58,6 @@ class OptionsMenu extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    // const { classes } = this.props;
     const row = this.props.row;
 
     return (
@@ -79,7 +68,6 @@ class OptionsMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
           className="some"
-
         >
 
           <MoreVertIcon className="some" />
@@ -106,10 +94,10 @@ class OptionsMenu extends React.Component {
           <DialogActions>
             <Button onClick={this.close} color="primary">
               Cancel
-                          </Button>
+            </Button>
             <Button onClick={this._DeleteHandler} color="primary">
               Delete
-                             </Button>
+            </Button>
           </DialogActions>
         </Dialog>
 
@@ -123,6 +111,9 @@ OptionsMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// export default withStyles(styles)(OptionsMenu);
+//////////
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
+//////////
 
 export default connect(null, { removeToDo })(withStyles(styles)(OptionsMenu));

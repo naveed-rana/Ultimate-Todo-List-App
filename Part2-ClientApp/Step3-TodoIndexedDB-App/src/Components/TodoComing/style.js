@@ -1,16 +1,5 @@
 
 export const styles = theme => ({
-    // root: {
-    //     flexGrow: 1,
-    //     textAlign: "center",
-    //     width: '100%',
-    //     backgroundColor: "#ff3366",
-    //     height: '100vh',
-    //     justifyContent: 'center',
-    //     flexWrap: 'wrap',
-    //     overFlow: "scrol"
-
-    // },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -23,15 +12,14 @@ export const styles = theme => ({
     todoItem: {
         width: "85%",
         borderRadius: "40px !important",
-        // padding: "5px",
         backgroundColor: "white",
         marginTop: "10px",
         marginBottom: "10px !important",
-        marginLeft:"10px"
+        marginLeft: "10px"
     },
     manus: {
         textAlign: "right",
-       
+
     },
     listHeading: {
         color: "white",
@@ -42,11 +30,11 @@ export const styles = theme => ({
         borderRadius: "100%",
         textAlign: "left"
     },
-   
+
     checkboxGrid: {
         textAlign: "left",
         maxWidth: "6% !important"
-      
+
     },
     absolute: {
         position: 'fixed',
@@ -60,45 +48,45 @@ export const styles = theme => ({
         right: "0% !important",
         marginRight: "39%",
     },
-  
+
     description: {
         textAlign: "left",
         fontFamily: "Raleway",
         marginTop: "5px"
     },
-   
+
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
-      },
+    },
 
-      expansionSummary: {
-          margin: "0px !important",
-          padding: "0px",
-          height: "30px"
-      },
-      manuBtn:{
+    expansionSummary: {
+        margin: "0px !important",
+        padding: "0px",
+        height: "30px"
+    },
+    manuBtn: {
         padding: "0px !important"
-      },
-      todoPanel: {
-          paddingRight: "8px !important",
-          paddingLeft: "8px !important",
-          height: "30px !important"
+    },
+    todoPanel: {
+        paddingRight: "8px !important",
+        paddingLeft: "8px !important",
+        height: "30px !important"
 
-      },
-      searchIcon: {
-          width: "20px"
-      },
-      searchBar: {
-          width: "5%"
-      },
-      DrawerGrid: {
-          position: "absolute"
-      },
-      manuList: {
-          padding: "0px !important"
-      },
-      primary: {
-          paddingLeft: "10px !important"
-      }
+    },
+    searchIcon: {
+        width: "20px"
+    },
+    searchBar: {
+        width: "5%"
+    },
+    DrawerGrid: {
+        position: "absolute"
+    },
+    manuList: {
+        padding: "0px !important"
+    },
+    primary: {
+        paddingLeft: "10px !important"
+    }
 });

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import moment from 'moment';
-
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -26,9 +23,6 @@ class addTodo extends Component {
             desc: '',
             done: false,
         }
-
-        // console.log('generate id:', uuidv1())
-
     }
 
     onChangeHandler = (e) => {
@@ -49,7 +43,7 @@ class addTodo extends Component {
             title: this.state.title,
             desc: this.state.desc,
             done: this.state.done,
-            // format (sep 22, 2018)
+            // Date format (sep 22, 2018)
             createAt: moment().format('ll')
         }
         // console.log('Add Todo Record is: ', record);
@@ -104,11 +98,8 @@ addTodo.propTypes = {
 };
 
 //////////
-// Export this component with the style.js file
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
 //////////
-
-// export default withStyles(styles)(addTodo);
-
-// export default connect(null, { addToDo })(withStyles(styles)(addTodo));
 
 export default withRouter(connect(null, { addToDo })(withStyles(styles)(addTodo)));

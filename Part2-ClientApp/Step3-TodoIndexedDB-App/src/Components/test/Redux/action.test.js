@@ -1,12 +1,12 @@
-import { addToDo, ADD_TODO } from "./AddToDoActions";
-import { removeToDo, REMOVE_TODO } from "./DeleteToDoActions";
-import { updateToDo, UPDATE_TODO } from "./UpdateToDoActions";
+import { addTodoAction, ADD_TODO } from "../../Redux/actions/AddToDoActions";
+import { removeTodoAction, REMOVE_TODO } from "../../Redux/actions/DeleteToDoActions";
+import { updateTodoAction, UPDATE_TODO } from "../../Redux/actions/UpdateToDoActions";
 
 describe("Todos Actions", () => {
 
     it("Adds a new TODO", () => {
 
-        const result = addToDo({
+        const result = addTodoAction({
             id: "123",
             title: "Title",
             desc: "description",
@@ -27,7 +27,7 @@ describe("Todos Actions", () => {
 
 
     it("Deletes TODO", () => {
-        const result = removeToDo("115");
+        const result = removeTodoAction("115");
         expect(result).toEqual({
             type: REMOVE_TODO,
             payload: "115"
@@ -35,7 +35,7 @@ describe("Todos Actions", () => {
     });
 
     it("Update value of todo", () => {
-        const result = updateToDo({
+        const result = updateTodoAction({
             id: "115",
             title: "Title",
             desc: "description",

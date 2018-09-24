@@ -1,8 +1,8 @@
-import { ADD_TODO } from '../actions/AddToDoActions';
-import { REMOVE_TODO } from '../actions/DeleteToDoActions';
-import { UPDATE_TODO } from '../actions/UpdateToDoActions';
+import { ADD_TODO } from '../../Redux/actions/AddToDoActions';
+import { REMOVE_TODO } from '../../Redux/actions/DeleteToDoActions';
+import { UPDATE_TODO } from '../../Redux/actions/UpdateToDoActions';
 
-import todosReducer from './TodoReducers';
+import todosReducer from '../../Redux/reducers/TodoReducers';
 import fakeTodos from "./fakeTodos";
 let state = {
     todoList: fakeTodos,

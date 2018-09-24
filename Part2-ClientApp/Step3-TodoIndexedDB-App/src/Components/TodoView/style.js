@@ -1,16 +1,5 @@
 
 export const styles = theme => ({
-    // root: {
-    //     flexGrow: 1,
-    //     textAlign: "center",
-    //     width: '100%',
-    //     backgroundColor: "#ff3366",
-    //     height: '100vh',
-    //     justifyContent: 'center',
-    //     flexWrap: 'wrap',
-    //     overFlow: "scrol"
-
-    // },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -23,7 +12,6 @@ export const styles = theme => ({
     todoItem: {
         width: "85%",
         borderRadius: "40px !important",
-        // padding: "5px",
         backgroundColor: "white",
         marginTop: "10px",
         marginBottom: "10px !important",

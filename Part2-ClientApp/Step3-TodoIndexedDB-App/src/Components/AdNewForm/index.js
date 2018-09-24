@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import moment from 'moment';
-
 import Grid from '@material-ui/core/Grid';
 import { styles } from "./style";
 import PropTypes from 'prop-types';
@@ -29,9 +27,7 @@ class AdNewTodo extends Component {
             desc: '',
             done: false,
         }
-
     }
-
 
     onChangeHandler = (e) => {
         let name = e.target.name;
@@ -45,34 +41,22 @@ class AdNewTodo extends Component {
     //////////
     saveTodo = (e) => {
         e.preventDefault();
-        
-        // Get currunt date 
-        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        // var today = new Date();
-        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
-       
+
         const record = {
             id: uuidv1(),
             title: this.state.title,
             desc: this.state.desc,
             done: this.state.done,
-            // format (sep 22, 2018)
+            // Date format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        // console.log('Add new form Record is: ', record);
 
         //Call AddToDo action
         this.props.addToDo(record);
 
-        // Reset input fields of form
-        // this.addToDoForm.reset();
-
         // redirect the path 
         this.props.history.push("/todoList");
-
     }
-
-
 
     render() {
         const { classes } = this.props;
@@ -136,23 +120,19 @@ class AdNewTodo extends Component {
                                                 input: classes.inputs,
                                                 underline: classes.underline,
                                             },
-
                                         }}
                                         InputLabelProps={{
                                             className: classes.floatingLabelFocusStyle,
                                         }}
                                         margin="normal"
-
                                     />
                                 </Grid>
                                 <Grid item xs={12} className={classes.btmGrid}>
                                     <Button type="submit" variant="extendedFab" aria-label="Delete" className={classes.button}>
                                         <AddIcon className={classes.extendedIcon} />
                                         Add Item
-                        </Button>
+                                    </Button>
                                 </Grid>
-
-
                             </form>
                         </Grid>
                     </div>
@@ -166,6 +146,9 @@ AdNewTodo.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-// export default withStyles(styles)(AdNewTodo);
+//////////
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
+//////////
 
 export default withRouter(connect(null, { addToDo })(withStyles(styles)(AdNewTodo)));

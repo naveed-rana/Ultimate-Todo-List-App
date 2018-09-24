@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Render Coming Task page Correctly 1`] = `<withRouter(Connect(WithStyles(addTodo))) />`;
+
+exports[`Should Render Coming Todos page Correctly 1`] = `<withRouter(Connect(WithStyles(addTodo))) />`;

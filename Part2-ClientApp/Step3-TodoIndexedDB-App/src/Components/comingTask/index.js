@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
-// import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -31,9 +28,7 @@ class ComingTask extends React.Component {
             checkedB: false,
             expanded: null,
             type: "hidden",
-
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
 
@@ -56,8 +51,6 @@ class ComingTask extends React.Component {
     }
 
     toggleCheck = (item) => {
-        // const { done } = this.state;
-        // this.setState({ done: !done });
 
         const record = {
             id: item.id,
@@ -77,7 +70,6 @@ class ComingTask extends React.Component {
         const todos = this.props.data;
         return (
             <div>
-
                 <Hidden only={['sm', 'xs']}>
                     <TodoComing />
                 </Hidden>
@@ -95,7 +87,6 @@ class ComingTask extends React.Component {
                             <Grid item xs={12} className={classes.back} >
                                 <h3 className={classes.listHeading}>Coming Tasks</h3>
                             </Grid>
-
 
                             <Grid item xs={12}>
 
@@ -149,7 +140,6 @@ class ComingTask extends React.Component {
                                                         </Grid>
                                                     </ExpansionPanelDetails>
                                                 </ExpansionPanel>
-
                                             )
                                         }
                                     })
@@ -167,9 +157,7 @@ class ComingTask extends React.Component {
                                 </Tooltip>
                             </Grid>
 
-
                         </Grid>
-
                     </div>
                 </Hidden>
             </div>
@@ -187,6 +175,9 @@ function mapStateToProps(data) {
     }
 }
 
-export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));
+//////////
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
+//////////
 
-// export default withStyles(styles)(Todolist);
+export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));

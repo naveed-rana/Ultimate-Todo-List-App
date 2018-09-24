@@ -1,4 +1,3 @@
-
 export const styles = theme => ({
     root: {
         flexGrow: 1,
@@ -22,13 +21,11 @@ export const styles = theme => ({
         width: "50%",
         backgroundColor: "white !important",
         marginTop: "100px !important"
-
     },
     extendedIcon: {
         marginRight: theme.spacing.unit,
     },
     btmGrid: {
-        // paddingBottom: "11% !important"
     },
     logo: {
         paddingTop: "20%"
@@ -36,11 +33,5 @@ export const styles = theme => ({
     welcomeMsg: {
         fontFamily: "'Raleway', sans-serif",
         color: "white",
-
     }
 });
-
-
-
-
-

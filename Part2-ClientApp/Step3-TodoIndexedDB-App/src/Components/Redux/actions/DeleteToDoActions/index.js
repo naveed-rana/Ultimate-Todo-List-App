@@ -1,5 +1,15 @@
-import db from '../../../congif/db';
+import db from '../../../config/db';
 export const REMOVE_TODO = 'REMOVE_TODO';
+
+//Call Reducer
+
+export function removeTodoAction(id) {
+    return {
+        type: REMOVE_TODO,
+        payload: id
+    }
+}
+
 
 // Delete data from indexedDB
 export function removeToDo(id) {
@@ -12,10 +22,7 @@ export function removeToDo(id) {
                 //////////
 
                 //Call Reducer
-                dispatch({
-                    type: REMOVE_TODO,
-                    payload: id,
-                });
+                dispatch(removeTodoAction(id));
             });
     };
 }

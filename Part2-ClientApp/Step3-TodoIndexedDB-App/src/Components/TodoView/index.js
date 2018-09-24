@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -29,22 +28,18 @@ class Todoview extends Component {
             done: false,
             searchText: '',
         }
-        // console.log('moment date is: ', moment().format('ll'))
-        console.log('Store data at todo view is : ', this .props.data)
         this.searchHandler = this.searchHandler.bind(this);
     }
-    
+
     searchHandler(event) {
         this.setState({ searchText: event.target.value });
     }
 
 
     handleChangeexpand = id => (event, expanded) => {
-        // console.log(event.target)
         if (event.target.classList.contains("some")) {
             return null
         } else {
-
             this.setState({
                 expanded: expanded ? id
                     : false
@@ -53,8 +48,6 @@ class Todoview extends Component {
     }
 
     toggleCheck = (item) => {
-        // const { done } = this.state;
-        // this.setState({ done: !done });
 
         const record = {
             id: item.id,
@@ -167,6 +160,11 @@ const mapStateToProps = (data) => {
         data: data.TodoApp.todoList
     }
 }
+
+//////////
+// "conect" function has 2 parameters first for use of State data from store and second for invoke action function in actions file
+// And Export this component with the style.js file
+//////////
 
 
 export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(Todoview));
