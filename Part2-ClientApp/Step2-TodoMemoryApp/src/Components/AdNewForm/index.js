@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import moment from 'moment';
-
 import Grid from '@material-ui/core/Grid';
 import { styles } from "./style";
 import PropTypes from 'prop-types';
@@ -28,7 +26,6 @@ class AdNewTodo extends Component {
             desc: '',
             done: false,
         }
-
     }
 
 
@@ -44,12 +41,7 @@ class AdNewTodo extends Component {
     //////////
     saveTodo = (e) => {
         e.preventDefault();
-        
-        // Get currunt date 
-        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        // var today = new Date();
-        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
-       
+         
         const record = {
             id: Math.random() + 1,
             title: this.state.title,
@@ -58,20 +50,14 @@ class AdNewTodo extends Component {
             // format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        console.log('Add Todo Record is: ', record);
+         
 
         //Call AddToDo action
         this.props.addToDo(record);
 
-        // Reset input fields of form
-        // this.addToDoForm.reset();
-
         // redirect the path 
         this.props.history.push("/todoList");
-
     }
-
-
 
     render() {
         const { classes } = this.props;
@@ -148,9 +134,8 @@ class AdNewTodo extends Component {
                                     <Button type="submit" variant="extendedFab" aria-label="Delete" className={classes.button}>
                                         <AddIcon className={classes.extendedIcon} />
                                         Add Item
-                        </Button>
+                                    </Button>
                                 </Grid>
-
 
                             </form>
                         </Grid>
@@ -165,6 +150,5 @@ AdNewTodo.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-// export default withStyles(styles)(AdNewTodo);
 
 export default withRouter(connect(null, { addToDo })(withStyles(styles)(AdNewTodo)));

@@ -36,7 +36,7 @@ class TodoDone extends Component {
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null

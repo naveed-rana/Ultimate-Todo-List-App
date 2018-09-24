@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-
 import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -21,7 +19,6 @@ import "./style.css"
 import Drawer from '../drawer'
 import Divider from '@material-ui/core/Divider'
 import { Hidden } from '@material-ui/core';
-// import ToDoListDeskTop from '../TodoView';
 import TodoDone from '../TodoDone'
 
 class ComingTask extends React.Component {
@@ -34,7 +31,6 @@ class ComingTask extends React.Component {
             type: "hidden",
 
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
 
@@ -43,7 +39,6 @@ class ComingTask extends React.Component {
     };
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
         if (event.target.classList.contains("some")) {
 
             return null
@@ -189,5 +184,3 @@ function mapStateToProps(data) {
 }
 
 export default connect(mapStateToProps, { updateToDo })(withStyles(styles)(ComingTask));
-
-// export default withStyles(styles)(Todolist);

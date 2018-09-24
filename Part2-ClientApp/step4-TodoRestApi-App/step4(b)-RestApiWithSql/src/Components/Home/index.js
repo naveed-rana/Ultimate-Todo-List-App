@@ -7,8 +7,8 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import Mobilelogo from './icons/mobile/main-logo.png';
 import DesktopLogo from './icons/desktop/main-logo.png';
-import Fbicon from './icons/desktop/facebook.png';
-import Mailicon from './icons/desktop/mail.png';
+
+
 import ArrowIcon from './icons/right-arrow.png';
 import { Link } from 'react-router-dom';
 import "./style.css";

@@ -50,7 +50,7 @@ export const styles = theme => ({
     absolute: {
         position: 'fixed',
         bottom: theme.spacing.unit * 2,
-        // right: theme.spacing.unit * 3,
+        // //right: theme.spacing.unit * 3,
         backgroundColor: "white",
         marginBottom: "5% !important",
         margin: "auto",

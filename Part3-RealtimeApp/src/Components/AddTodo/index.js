@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import moment from 'moment';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
-
 import { styles } from './style';
 import './style.css';
 import SideBar from '../SideBar';
-
 import { addToDo } from '../Redux/actions/AddToDoActions'
 
 class addTodo extends Component {
@@ -24,7 +20,6 @@ class addTodo extends Component {
             desc: '',
             done: false,
         }
-
 
     }
 
@@ -39,13 +34,7 @@ class addTodo extends Component {
     // 2: Then "record" Object pass to the add todo action to save the data into store of redux throuhg reducer
     //////////
     saveTodo = (e) => {
-        e.preventDefault();
-
-        // // Get currunt date 
-        // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        // var today = new Date();
-        // var myDate = month_names_short[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
-       
+        e.preventDefault(); 
         const record = {
             id: Math.random() + 1,
             title: this.state.title,
@@ -54,13 +43,9 @@ class addTodo extends Component {
             // format (sep 22, 2018)
             createAt: moment().format('ll')
         }
-        console.log('Add Todo Record is: ', record);
 
         //Call AddToDo action
         this.props.addToDo(record);
-
-        // Reset input fields of form
-        // this.addToDoForm.reset();
 
         // redirect the path 
         this.props.history.push("/todoList");
@@ -111,9 +96,5 @@ addTodo.propTypes = {
 //////////
 // Export this component with the style.js file
 //////////
-
-// export default withStyles(styles)(addTodo);
-
-// export default connect(null, { addToDo })(withStyles(styles)(addTodo));
 
 export default withRouter(connect(null, { addToDo })(withStyles(styles)(addTodo)));

@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   render() {
-    // const { classes } = this.props;
+    
     return (
       <div>
         <ToastContainer
@@ -49,5 +49,3 @@ App.propTypes = {
 // conect function has 2 parameters first for use of State data from store and second for invoke action function in actions file
 //
 export default connect(null, { loadTodo })(withStyles(styles)(App));
-
-// export default connect(null, null)(withStyles(styles)(App));npm

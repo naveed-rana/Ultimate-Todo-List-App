@@ -30,19 +30,16 @@ class TodoDone extends Component {
         this.state = {
             searchText: '',
         }
-        // console.log('Store data is : ', this .props.data)
     }
 
       
     searchHandler(event) {
-        // console.log('search called');
-        // console.log('search text is : ', event.target.value);
         this.setState({ searchText: event.target.value });
     }
 
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
+         
         if (event.target.classList.contains("some")) {
 
             return null
@@ -66,8 +63,7 @@ class TodoDone extends Component {
             title: title,
             desc: desc,
             done: !done,
-            uid
-            ,
+            uid,
             createAt: moment().format('ll')
         }
 

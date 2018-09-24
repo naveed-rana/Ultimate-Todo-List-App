@@ -33,7 +33,6 @@ class Todolist extends React.Component {
             type: "hidden",
 
         };
-        // console.log('Store data is : ', this.props.data)
     }
 
     handleChange = name => event => {
@@ -41,7 +40,6 @@ class Todolist extends React.Component {
     };
 
     handleChangeexpand = id => (event, expanded) => {
-        console.log(event.target)
         if (event.target.classList.contains("some")) {
 
             return null
@@ -55,7 +53,6 @@ class Todolist extends React.Component {
     }
 
     toggleCheck = (id, title, desc,uid) => {
-        alert('check')
         const { done } = this.state;
         this.setState({ done: !done });
 
@@ -187,4 +184,4 @@ function mapStateToProps(data) {
 
 export default connect(mapStateToProps,  { updateToDo })(withStyles(styles)(Todolist));
 
-// export default withStyles(styles)(Todolist);
+

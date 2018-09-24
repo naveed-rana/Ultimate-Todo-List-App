@@ -16,7 +16,7 @@ export function removeToDo(id,uid) {
                      payload: id
                      });
         }).catch((err)=>{
-            console.log(err);
+            // console.log(err);
             toast.error("Error Occored! Please Try Again Later");
         });
     };

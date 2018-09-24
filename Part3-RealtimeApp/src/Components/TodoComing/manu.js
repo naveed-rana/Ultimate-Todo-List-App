@@ -29,7 +29,7 @@ class OptionsMenu extends React.Component {
       anchorEl: null,
       open: false,
     }
-    console.log("props at options file", this.props.row);
+    
   }
 
   handleClick = event => {
@@ -43,8 +43,8 @@ class OptionsMenu extends React.Component {
 
 
   _DeleteHandler = () => {
-    // console.log('delete id Is: ', id);
     this.props.removeToDo(this.props.row.id);
+    this.setState({ open: false });
   }
 
 
@@ -52,11 +52,6 @@ class OptionsMenu extends React.Component {
   handleClickOpen = () => {
     this.setState({ open: true });
   };
-
-  // handleClose = () => {
-  //   this.props.startUserAdDelete({ id: this.props.ad._id });
-  //   this.setState({ open: false });
-  // };
 
   close = () => {
     this.setState({ open: false });
@@ -67,7 +62,7 @@ class OptionsMenu extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    // const { classes } = this.props;
+    
     const row = this.props.row;
 
     return (
@@ -122,6 +117,6 @@ OptionsMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// export default withStyles(styles)(OptionsMenu);
+
 
 export default connect(null, { removeToDo })(withStyles(styles)(OptionsMenu));

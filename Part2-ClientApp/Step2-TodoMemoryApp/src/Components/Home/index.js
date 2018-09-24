@@ -7,8 +7,6 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import Mobilelogo from './icons/mobile/main-logo.png';
 import DesktopLogo from './icons/desktop/main-logo.png';
-import Fbicon from './icons/desktop/facebook.png';
-import Mailicon from './icons/desktop/mail.png';
 import ArrowIcon from './icons/right-arrow.png';
 import { Link } from 'react-router-dom';
 import "./style.css";
@@ -58,20 +56,7 @@ function Home(props) {
                         <Grid item xs={12}>
                             <p className={classes.welcomeMsg}>Create an account to save your tasks <br /> and access them any where. Its FREE <br /> forever </p>
                         </Grid>
-                        {/* <Grid item xs={12}>
-                            <Button variant="extendedFab" aria-label="Delete" className="Facebook-btn">
-                                <img src={Fbicon} alt="Facebook Icon" />
-                                <span className="Facebook-text">Continue With facebook</span>
-                            </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Link to="/login" style={{ textDecoration: 'none' }}>
-                                <Button variant="extendedFab" aria-label="Delete" className="mail-btn">
-                                    <img src={Mailicon} alt="Facebook Icon" />
-                                    <span className="email-text">Continue With Email</span>
-                                </Button>
-                            </Link>
-                        </Grid> */}
+                       
                         <Grid item xs={12}>
                             <Link to="/todoList" style={{textDecoration: 'none'}}>
                                 <Button variant="extendedFab" aria-label="Delete" className="Facebook-btn">
@@ -91,4 +76,5 @@ function Home(props) {
 Home.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(Home);

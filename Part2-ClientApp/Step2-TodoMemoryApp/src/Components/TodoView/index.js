@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -29,8 +28,6 @@ class Todoview extends Component {
             done: false,
             searchText: '',
         }
-        // console.log('moment date is: ', moment().format('ll'))
-        // console.log('Store data is : ', this .props.data)
         this.searchHandler = this.searchHandler.bind(this);
     }
     
@@ -40,7 +37,6 @@ class Todoview extends Component {
 
 
     handleChangeexpand = id => (event, expanded) => {
-        // console.log(event.target)
         if (event.target.classList.contains("some")) {
             return null
         } else {
@@ -53,14 +49,12 @@ class Todoview extends Component {
     }
 
     toggleCheck = (item) => {
-        const { done } = this.state;
-        this.setState({ done: !done });
 
         const record = {
             id: item.id,
             title: item.title,
             desc: item.desc,
-            done: !done,
+            done: !item.done,
             createAt: item.createAt
         }
 

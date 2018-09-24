@@ -40,7 +40,7 @@ class Update extends Component {
         //Call Update-ToDo action
         this.props.updateToDo(record);
 
-        // Reset input fields of form
+        
         this.updateToDoForm.reset();
 
         // redirect the path 
@@ -113,6 +113,6 @@ function mapStateToProps(data) {
 // Export this component with the style.js file
 //////////
 
-// export default withStyles(styles)(Update);
+
 
 export default withRouter(connect(mapStateToProps, { updateToDo })(withStyles(styles)(Update)));

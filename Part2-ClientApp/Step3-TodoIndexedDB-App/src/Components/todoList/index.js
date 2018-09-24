@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateToDo } from '../Redux/actions/UpdateToDoActions';
-// import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
