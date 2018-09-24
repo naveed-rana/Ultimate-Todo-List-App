@@ -45,19 +45,12 @@ function AddReducer(state = INITIAL_STATE, action) {
             {
                 var updateState = state.todoList;
                 let id = action.payload.id;
-                var index = updateState.findIndex((x) => x.id === id);
-    
-                if (index > -1) {
-                
-                    // "action.payload" object is coming from the update action 
-                    updateState[index] = action.payload;
-                   
-                }
-
-
-                return ({
+                let newList = updateState.filter((item) => item.id != id);
+                 newList.unshift(action.payload);
+        
+           return ({
                     ...state,
-                    todoList: updateState
+                    todoList: newList
                 });
                
             }
