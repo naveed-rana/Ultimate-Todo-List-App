@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-exports.module = function () {
+module.exports = function () {
 
     mongoose
   .connect(

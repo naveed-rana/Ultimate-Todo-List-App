@@ -3,7 +3,7 @@ syntax = "proto3";
 
 // define todo type message
 message Todo {
-  string id = 1;
+  string _id = 1;
   string title = 2;
   string desc = 3;
   bool done = 4;

@@ -5,7 +5,7 @@ const protoLoader = require("@grpc/proto-loader");
 const serviceDefinition = protoLoader.loadSync(PROTO_PATH);
 const PORT = 10000;
 const todoModel = require("./models/todoModel");
-const setupMongoDb = require('./config');
+const setupMongoDb = require('./config/index');
 
 //connection
 setupMongoDb();
@@ -19,7 +19,7 @@ server.addService(serviceDefinition.TodoService, {
 	InsertTodo(call, callback){
 		let getTodo = call.request.todo;
     let payload = {
-    id: getTodo.id,
+    _id: getTodo.id,
     title: getTodo.title,
     desc: getTodo.desc,
     done: getTodo.done,
