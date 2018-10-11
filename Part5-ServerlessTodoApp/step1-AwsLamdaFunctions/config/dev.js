@@ -1,0 +1,1 @@
+module.exports = 'postgresql://naveed5547:naveedrana1214@tododb.cqftgg4dkoaz.us-east-1.rds.amazonaws.com:5431/tododb';
