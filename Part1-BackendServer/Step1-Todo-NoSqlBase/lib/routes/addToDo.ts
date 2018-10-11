@@ -40,7 +40,7 @@ router.get('/tasks',(req,res)=>{
 
 
 //get one request restfull api
-router.get('/tasks:id',(req,res)=>{
+router.get('/tasks/:id',(req,res)=>{
     
     todoModels.findOne({id:req.params.id},(err,data)=>{
         if(err){

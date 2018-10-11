@@ -1,0 +1,14 @@
+{
+  "name": "ultimate-todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --forceExit --coverage --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pg-promise": "^8.4.6"
+  }
+}

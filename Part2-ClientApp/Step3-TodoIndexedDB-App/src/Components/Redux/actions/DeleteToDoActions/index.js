@@ -1,4 +1,5 @@
 import db from '../../../config/db';
+import {toast}  from 'react-toastify';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
 //Call Reducer
@@ -20,9 +21,11 @@ export function removeToDo(id) {
                 //////////
                 // When Delete record against given id, then call reducer
                 //////////
-
+                toast.success("Successfully Deleted!");
                 //Call Reducer
                 dispatch(removeTodoAction(id));
-            });
+            }).catch((err)=>{
+                toast.error("Error Occoured! Try Again");
+            })
     };
 }

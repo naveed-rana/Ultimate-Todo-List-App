@@ -1,4 +1,5 @@
 import db from '../../../config/db';
+import {toast}  from 'react-toastify';
 export const UPDATE_TODO = 'UPDATE_TODO';
 
 // Call reducer for update realtime
@@ -16,17 +17,16 @@ export function updateToDo(data) {
         db.todos
             .update(data.id, { title: data.title, desc: data.desc, done: data.done, createAt: data.createAt })
             .then(function (updated) {
-                if (updated) {
                     //////////
                     // "update" function of dexie take 2 parameters, 1st for id 2nd for data which we want to update
                     //////////
-
+                    toast.success("Successfully Updated!");
                     //Call Reducer
                     dispatch(updateTodoAction(data));
-                }
-                else
-                    console.log('failed to update');
-            });
+            
+            }).catch((err)=>{
+                    toast.error("Error Occoured! Try Again");
+            })
 
     };
 }

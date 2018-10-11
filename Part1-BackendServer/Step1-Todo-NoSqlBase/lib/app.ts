@@ -44,5 +44,5 @@ App.use('/todo/api/v1.0', todoRouter);
 
 
 //serve static files
-App.use(express.static(path.join(__dirname, './build')));
+App.use(express.static('./build'));
 export {App};

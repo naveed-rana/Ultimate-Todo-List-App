@@ -24,8 +24,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run workbox",
     "test": "react-scripts test --env=jsdom --verbose --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "workbox": "workbox generateSW workbox-config.js"
+
   }
 }

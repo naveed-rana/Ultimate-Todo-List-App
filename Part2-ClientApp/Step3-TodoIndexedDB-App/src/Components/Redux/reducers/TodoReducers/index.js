@@ -41,15 +41,14 @@ function AddReducer(state = INITIAL_STATE, action) {
 
         case UPDATE_TODO:
             {
-                var updateState = state.todoList;
-                let id = action.payload.id;
-                let newList = updateState.filter((item) => item.id != id);
-                newList.unshift(action.payload);
-
-                return ({
-                    ...state,
-                    todoList: newList
-                });
+                return Object.assign({}, state, {
+                    todoList: state.todoList.map((todo) => {
+                        if (todo.id == action.payload.id)
+                           todo = action.payload
+                        return todo
+                   })
+               })
+   
             }
 
         default:

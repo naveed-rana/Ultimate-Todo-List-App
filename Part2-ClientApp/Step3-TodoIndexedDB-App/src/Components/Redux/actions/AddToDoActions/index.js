@@ -1,4 +1,5 @@
 import db from '../../../config/db';
+import {toast}  from 'react-toastify';
 export const ADD_TODO = 'ADD_TODO';
 
 
@@ -18,13 +19,11 @@ export function addToDo(data) {
         db.table('todos')
             .add(data)
             .then((id) => {
-                //////////
-                // "id" in then param is the id of inserted record
-                // Then also save data into Redux (store)
-                //////////
-
-                //Call Reducer
+                toast.success("Successfully Added!");
+                //dispatch reducer
                 dispatch(addTodoAction(data));
-            });
+            }).catch((err)=>{
+                toast.error("Error Occoured! Try Again");
+            })
     }
 }

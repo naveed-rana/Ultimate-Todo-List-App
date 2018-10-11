@@ -5,7 +5,7 @@
 
 /config/dev.js
 # testing
-
+/coverage
 
 # production
 push.sh

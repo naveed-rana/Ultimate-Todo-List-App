@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+
+service Service {
+    rpc Foo(String) returns (String) {}
+}
+
+message String {
+    string foo = 1;
+}
+

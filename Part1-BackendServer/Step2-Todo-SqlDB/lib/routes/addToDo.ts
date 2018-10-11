@@ -11,9 +11,8 @@ router.get('/',(req,res)=>{
 //todo post restfull api
 
 router.post('/tasks',(req,res)=>{
-    console.log("at step 1");
-    console.log("at step 1");
-    db.one('INSERT INTO todo(title, description ,createat,done,id) VALUES($1, $2, $3, $4,$5) RETURNING id', [req.body.title, req.body.description, req.body.createat,req.body.done,req.body.id])
+
+    db.one('INSERT INTO todos (title, description ,createat,done,id) VALUES($1, $2, $3, $4,$5) RETURNING id', [req.body.title, req.body.description, req.body.createat,req.body.done,req.body.id])
     .then(data => {
         console.log("full");
         console.log(data.id); // print new user id;
@@ -29,7 +28,7 @@ router.post('/tasks',(req,res)=>{
 
 //get request restfull api using postgress db
 router.get('/tasks',(req,res)=>{
-    db.any('SELECT * FROM todo')
+    db.any('SELECT * FROM todos')
     .then(function(data) {
         // success;
         res.status(200).json(data);
@@ -45,7 +44,7 @@ router.get('/tasks',(req,res)=>{
 //get one request restfull api
 router.get('/tasks:id',(req,res)=>{
     
-    db.any('SELECT * FROM todo WHERE id = $1', [req.params.id])
+    db.any('SELECT * FROM todos WHERE id = $1', [req.params.id])
     .then(function(data) {
         // success;
         console.log(data);
@@ -61,7 +60,7 @@ router.get('/tasks:id',(req,res)=>{
 //put request restfull api
 router.put('/tasks/:id',(req,res)=>{
     
-    db.result('UPDATE todo SET title = $1, description = $2, done =$3  WHERE id = $4', [req.body.title, req.body.description, req.body.done ,req.params.id])
+    db.result('UPDATE todos SET title = $1, description = $2, done =$3  WHERE id = $4', [req.body.title, req.body.description, req.body.done ,req.params.id])
     .then(function(data) {
         // success;
         res.status(200).json("updated");
@@ -77,7 +76,7 @@ router.put('/tasks/:id',(req,res)=>{
 //delete
 router.delete('/tasks/:id',(req,res)=>{
  
-    db.result('DELETE FROM todo WHERE id = $1', req.params.id)
+    db.result('DELETE FROM todos WHERE id = $1', req.params.id)
     .then(result => {
         // rowCount = number of rows affected by the query
         console.log(result.rowCount);

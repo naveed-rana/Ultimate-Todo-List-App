@@ -54,18 +54,7 @@ describe('POST logout sql test', function() {
   });
 });
 
-//test post athenticate req in user route
-describe('POST athenticate test sql', function() {
-  it('responds with json', function(done) {
-    request(App)
-      .post('/user/authenticate')
-      .expect(200)
-      .end(function(err, res) {
-        if (err) return done(err);
-        done();
-      });
-  });
-});
+
 
 
 

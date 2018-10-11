@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1537208311933" clover="3.2.0">
-  <project timestamp="1537208311934" name="All files">
-    <metrics statements="109" coveredstatements="84" conditionals="24" coveredconditionals="8" methods="24" coveredmethods="14" elements="157" coveredelements="106" complexity="0" loc="109" ncloc="109" packages="5" files="8" classes="8">
+<coverage generated="1537889885133" clover="3.2.0">
+  <project timestamp="1537889885133" name="All files">
+    <metrics statements="112" coveredstatements="94" conditionals="24" coveredconditionals="10" methods="24" coveredmethods="19" elements="160" coveredelements="123" complexity="0" loc="112" ncloc="112" packages="5" files="8" classes="8">
       <package name="lib">
         <metrics statements="26" coveredstatements="26" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <file name="app.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\app.ts">
@@ -76,8 +76,8 @@
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
-          <line num="9" count="2" type="stmt"/>
           <line num="11" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
         </file>
         <file name="usersSchema.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\models\usersSchema.ts">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -88,9 +88,9 @@
         </file>
       </package>
       <package name="lib.routes">
-        <metrics statements="54" coveredstatements="34" conditionals="14" coveredconditionals="3" methods="17" coveredmethods="9"/>
+        <metrics statements="57" coveredstatements="44" conditionals="14" coveredconditionals="5" methods="17" coveredmethods="14"/>
         <file name="addToDo.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\routes\addToDo.ts">
-          <metrics statements="32" coveredstatements="18" conditionals="10" coveredconditionals="2" methods="11" coveredmethods="5"/>
+          <metrics statements="35" coveredstatements="26" conditionals="10" coveredconditionals="4" methods="11" coveredmethods="9"/>
           <line num="1" count="2" type="stmt"/>
           <line num="2" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
@@ -101,31 +101,34 @@
           <line num="14" count="1" type="stmt"/>
           <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="16" count="0" type="stmt"/>
-          <line num="19" count="1" type="stmt"/>
-          <line num="26" count="2" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
           <line num="27" count="2" type="stmt"/>
-          <line num="28" count="2" type="cond" truecount="1" falsecount="1"/>
-          <line num="29" count="0" type="stmt"/>
-          <line num="32" count="2" type="stmt"/>
-          <line num="40" count="2" type="stmt"/>
-          <line num="42" count="0" type="stmt"/>
-          <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="44" count="0" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="43" count="2" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="46" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="47" count="0" type="stmt"/>
-          <line num="54" count="2" type="stmt"/>
-          <line num="56" count="0" type="stmt"/>
-          <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="64" count="0" type="stmt"/>
-          <line num="67" count="0" type="stmt"/>
-          <line num="74" count="2" type="stmt"/>
-          <line num="76" count="0" type="stmt"/>
-          <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="78" count="0" type="stmt"/>
-          <line num="81" count="0" type="stmt"/>
-          <line num="87" count="2" type="stmt"/>
+          <line num="50" count="1" type="stmt"/>
+          <line num="57" count="2" type="stmt"/>
+          <line num="58" count="1" type="stmt"/>
+          <line num="60" count="1" type="stmt"/>
+          <line num="67" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="71" count="1" type="stmt"/>
+          <line num="78" count="2" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="80" count="0" type="stmt"/>
+          <line num="81" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="82" count="0" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="91" count="2" type="stmt"/>
         </file>
         <file name="users.ts" path="F:\Bootcamp\Ultimate-Todo-List-App\Part1-BackendServer\Step1-Todo-NoSqlBase\lib\routes\users.ts">
-          <metrics statements="22" coveredstatements="16" conditionals="4" coveredconditionals="1" methods="6" coveredmethods="4"/>
+          <metrics statements="22" coveredstatements="18" conditionals="4" coveredconditionals="1" methods="6" coveredmethods="5"/>
           <line num="1" count="2" type="stmt"/>
           <line num="2" count="2" type="stmt"/>
           <line num="3" count="2" type="stmt"/>
@@ -133,20 +136,20 @@
           <line num="7" count="2" type="stmt"/>
           <line num="8" count="1" type="stmt"/>
           <line num="13" count="2" type="stmt"/>
-          <line num="14" count="0" type="stmt"/>
-          <line num="15" count="0" type="stmt"/>
-          <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="17" count="0" type="stmt"/>
-          <line num="20" count="0" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
           <line num="27" count="2" type="stmt"/>
           <line num="29" count="1" type="stmt"/>
           <line num="34" count="2" type="stmt"/>
           <line num="35" count="1" type="stmt"/>
           <line num="36" count="1" type="stmt"/>
           <line num="40" count="2" type="stmt"/>
-          <line num="41" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="42" count="0" type="stmt"/>
-          <line num="45" count="1" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
           <line num="49" count="2" type="stmt"/>
         </file>
       </package>
