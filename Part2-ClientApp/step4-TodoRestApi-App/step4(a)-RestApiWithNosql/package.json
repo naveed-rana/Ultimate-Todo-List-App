@@ -9,7 +9,7 @@
     "dexie": "^2.0.4",
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.20.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "ng-mat-search-bar": "^2.0.0-beta.1",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
