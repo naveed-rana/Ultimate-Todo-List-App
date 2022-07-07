@@ -13,7 +13,7 @@
     "redux-thunk": "^2.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.20.0",
     "axios": "^0.18.0",
